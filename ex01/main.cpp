@@ -1,6 +1,9 @@
-#include <iostream>  // For std::cout, std::cin
-#include <string>    // For std::string
-#include <iomanip>   // For formatted table output
+
+#include "contact_hpp"
+#include "phonebook_hpp"
+// #include <iostream>  // For std::cout, std::cin
+// #include <string>    // For std::string
+// #include <iomanip>   // For formatted table output
 
 /* Steps for implement
 1. set up Conatct class(like structure):
@@ -11,7 +14,9 @@
 
 int main()//no need ac /av[]
 {
-    //access to contact class
-    //access to phonebook
+    Contact newContact;
+
+    newContact.setContact();//access to contact class
+    newContact.displayContact();//display contact info
 
 }
