@@ -4,10 +4,11 @@
 
 NAME	= phonebook
 
-CC		= c++
-CCFLAGS	= -Wall -Wextra -Wextra -std=c++98 #-g
-SRCS = main.cpp
-OBJS	= $(SRCS:.cpp=.o)
+CXX		= c++
+CCFLAGS	= -Wall -Wextra -std=c++98 -MMD -MP#-g
+INCLU = Contact.hpp Phonebook.hpp
+SRCS = main.cpp Contact.cpp Phonebook.cpp 
+OBJS = $(SRCS:.cpp=.o)
 
 # **************************************************************************** #
 #                                  RULES                                       #
@@ -16,18 +17,18 @@ OBJS	= $(SRCS:.cpp=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	@$(CC) -s $(CCFLAGS) $(OBJS) -o $(NAME)
+	@$(CXX) -s $(CCFLAGS) $(OBJS) -o $(NAME)
 	@echo "$(BABEBLUEB)$(NAME) CREATED!$(RESET)"
 
-%.o: %.cpp
-	$(CC) $(CFLAG) -c $< -o $@
+%.o: %.cpp $(INCLU)
+	$(CXX) $(CCFLAGS) -c $< -o $@
 
 clean:
-		rm -f $(OBJS)
+	@rm -f $(OBJS)
 
 fclean: clean
-		rm -f $(NAME)
-		@echo "$(BLUE_BBG)$(NAME) REMOVED!$(RESET)"
+	rm -f $(NAME)
+	@echo "$(BLUE_BBG)$(NAME) REMOVED!$(RESET)"
 
 re: fclean all
 
