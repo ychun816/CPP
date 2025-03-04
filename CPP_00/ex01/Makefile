@@ -9,6 +9,7 @@ CCFLAGS	= -Wall -Wextra -std=c++98 -MMD -MP#-g
 INCLU = Contact.hpp Phonebook.hpp
 SRCS = main.cpp Contact.cpp Phonebook.cpp 
 OBJS = $(SRCS:.cpp=.o)
+DEPS = $(OBJS:.o=.d)
 
 # **************************************************************************** #
 #                                  RULES                                       #
@@ -24,7 +25,7 @@ $(NAME) : $(OBJS)
 	$(CXX) $(CCFLAGS) -c $< -o $@
 
 clean:
-	@rm -f $(OBJS)
+	@rm -f $(OBJS) $(DEPS)
 
 fclean: clean
 	rm -f $(NAME)

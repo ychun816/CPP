@@ -3,24 +3,38 @@
 
 #include <iostream>  // For std::cout, std::cin
 #include <string>    // For std::string
-// #include <iomanip>   // For formatted table output
-
 
 //The underscore (_) prefix is a common convention in C++ 
 //to indicate that these variables are private and should only be accessed through the class's public getter and setter methods.
 class Contact
 {
+    public:
+        Contact();  // Constructor
+        ~Contact(); //deconstructor
+
+    //set value 
+    void    setFirstname(std::string str);
+    void    setLastname(std::string str);
+    void    setNickname(std::string str);
+    void    setPhoneNr(std::string str);
+    void    setSecret(std::string str);
+
+    //get value -- getter method:
+    void    getFirstname(void) const { return _firstName; }
+    void    getLastname(void) const; { return lastName; }
+    void    getNickname(void) const;
+    void    getPhoneNr(void) const;
+    void    getSecret(void) const;
+
+    bool createContact(void);
+
+    //private attributes to store contact details
     private:
     std::string _firstName;
     std::string _lastName;
     std::string _nickName;
     std::string _phoneNr;
     std::string _secret;
-
-    public:
-    Contact();  // Constructor
-    void setContact();
-    void displayContact() const;// CANNOT modify any member variables
 };
 
 #endif

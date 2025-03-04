@@ -11,11 +11,12 @@
 - init string variable
 - set functions in class
 2. set up Phonebook class
-*/
+
 //getline-> arg= ADD, SEARCH, HELP
 //ADD ->setcntact
 //SEARCH -> displaycontact
 //HELP -> print commands
+*/
 
 //welcome msg
 void    welcome_msg()
@@ -36,7 +37,6 @@ void    display_cmds(std::string arg)//string args
         std::cout << "[EXIT] : Exit Phonebook" << std::endl;
 }
 
-
 //1. Prevent Infinite Loops
 //If the user closes the input stream (e.g., by pressing Ctrl+D on Linux/macOS or Ctrl+Z on Windows), 
 //std::getline(std::cin, line) will fail, and the program might keep running indefinitely unless you check for EOF.
@@ -53,8 +53,8 @@ int main()
     {
         std::cout << "Please Enter a Command >";
         //prevent infinite loop
-        std::getline(std::cin, input);//Uses std::getline(std::cin, line); to read the entire line
-        if (std::cin.eof())//If the user enters EOF (Ctrl+D on Linux/macOS, Ctrl+Z on Windows), the loop breaks.
+        std::getline(std::cin, input);
+        if (std::cin.eof())//If the user enters EOF (Ctrl+D on Linux/macOS, Ctrl+Z on Windows), the loop breaks
             break ;
         if (input == "ADD")
             //show contact -> book
