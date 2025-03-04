@@ -20,11 +20,16 @@ class Contact
     void    setSecret(std::string str);
 
     //get value -- getter method:
-    void    getFirstname(void) const { return _firstName; }
-    void    getLastname(void) const; { return lastName; }
-    void    getNickname(void) const;
-    void    getPhoneNr(void) const;
-    void    getSecret(void) const;
+    // void    getFirstname(void) const { return _firstName; }
+    // void    getLastname(void) const { return _lastName; }
+    // void    getNickname(void) const { return _nickName; }
+    // void    getPhoneNr(void) const { return _phoneNr; }
+    // void    getSecret(void) const { return _secret; }
+    std::string Contact::getFirstname(void) const { return _firstName; }
+    std::string Contact::getLastname(void) const { return _lastName; }
+    std::string Contact::getNickname(void) const { return _nickName; }
+    std::string Contact::getPhoneNr(void) const { return _phoneNr; }
+    std::string Contact::getSecret(void) const { return _secret; }
 
     bool createContact(void);
 
