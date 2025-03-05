@@ -67,13 +67,12 @@ int main()
             contact.createContact();//HOW TO WRITE?
             display_cmds("EXIT");
         }
-
-        if (input == "SEARCH")///
-            //do search -> book
-        if (input == "HELP")
-            display_cmds("HELP");
         if (input == "EXIT")
             display_cmds("EXIT");
+        if (input == "HELP")
+            display_cmds("HELP");
+        if (input == "SEARCH")///
+            //do search -> book
         std::cout << std::endl;
         return (0);
     }

@@ -125,7 +125,6 @@ bool    Contact::createContact(void)
     }
 ///should i add length limit??
 
-
     //secret
     while (secret.empty())
     {

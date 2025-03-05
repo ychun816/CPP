@@ -1,15 +1,22 @@
-
 #ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 
-// class Phonebook
-// {
-//     Phonebook();
-//     ~Phonebook();
-//     void    display_contact(void);
+#include "Contact.hpp"
+#include <iostream>
+#include <cstdlib>
+#include <cstring>
 
+# define MAX_CONTACT 8
 
-// }
+class   Phonebook
+{
+    public:
+    Phonebook(void);
+    ~Phonebook(void);
+
+    private:
+
+}
 
 
 #endif
