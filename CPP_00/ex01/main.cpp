@@ -21,20 +21,25 @@
 //welcome msg
 void    welcome_msg()
 {
-    std::cout << "Welcome to Phonebook!!" << std::endl;
+    std::cout << "┈┈୨୧┈┈ 🧸🍒 Welcome to Phonebook!! 🍒🧸 ┈┈୨୧┈┈" << std::endl;
+    std::cout << std::endl;
 }
 //display commands for HELP
 void    display_cmds(std::string arg)//string args
 {
-    if (arg == "HELP")
+    if (arg == "INDEX" || arg == "HELP")
     {
         std::cout << "[ADD] : Add contact info" << std::endl;
         std::cout << "[SEARCH] : Search contact info" << std::endl;
         std::cout << "[HELP] : Display all commands" << std::endl;
         std::cout << "[EXIT] : Exit Phonebook" << std::endl;
+        std::cout << std::endl;
     }
     else if (arg == "EXIT")
-        std::cout << "[EXIT] : Exit Phonebook" << std::endl;
+    {
+        std::cout << std::endl;
+        std::cout << "┈┈୨୧┈┈ Successfully Exit Phonebook ┈┈୨୧┈┈" << std::endl;
+    }
 }
 
 //1. Prevent Infinite Loops
@@ -44,22 +49,27 @@ void    display_cmds(std::string arg)//string args
 int main()
 {
     std::string input;
+    Contact contact;
     // Phonebook phonebook;
     //Contact newContact; ??
 
     welcome_msg();
-    display_cmds("HELP");
+    display_cmds("INDEX");
     while(true)
     {
-        std::cout << "Please Enter a Command >";
+        std::cout << "𓀎 Please Enter a Command 𓀎 ➔ ";
         //prevent infinite loop
         std::getline(std::cin, input);
         if (std::cin.eof())//If the user enters EOF (Ctrl+D on Linux/macOS, Ctrl+Z on Windows), the loop breaks
             break ;
         if (input == "ADD")
-            //show contact -> book
-        if (input == "SEARCH")
-            //do search -> book 
+        {
+            contact.createContact();//HOW TO WRITE?
+            display_cmds("EXIT");
+        }
+
+        if (input == "SEARCH")///
+            //do search -> book
         if (input == "HELP")
             display_cmds("HELP");
         if (input == "EXIT")
@@ -67,6 +77,6 @@ int main()
         std::cout << std::endl;
         return (0);
     }
-    // newContact.setContact();//access to contact class
-    // newContact.displayContact();//display contact info
 }
+
+// •┈┈┈┈┈┈୨୧┈┈┈┈┈┈•

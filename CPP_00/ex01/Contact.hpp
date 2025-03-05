@@ -1,5 +1,5 @@
 #ifndef CONTACT_HPP
-#define CONTACT_HPP
+# define CONTACT_HPP
 
 #include <iostream>  // For std::cout, std::cin
 #include <string>    // For std::string
@@ -19,17 +19,12 @@ class Contact
     void    setPhoneNr(std::string str);
     void    setSecret(std::string str);
 
-    //get value -- getter method:
-    // void    getFirstname(void) const { return _firstName; }
-    // void    getLastname(void) const { return _lastName; }
-    // void    getNickname(void) const { return _nickName; }
-    // void    getPhoneNr(void) const { return _phoneNr; }
-    // void    getSecret(void) const { return _secret; }
-    std::string Contact::getFirstname(void) const { return _firstName; }
-    std::string Contact::getLastname(void) const { return _lastName; }
-    std::string Contact::getNickname(void) const { return _nickName; }
-    std::string Contact::getPhoneNr(void) const { return _phoneNr; }
-    std::string Contact::getSecret(void) const { return _secret; }
+    //get value -- getter method
+    std::string getFirstname(void) const { return _firstName; }
+    std::string getLastname(void) const { return _lastName; }
+    std::string getNickname(void) const { return _nickName; }
+    std::string getPhoneNr(void) const { return _phoneNr; }
+    std::string getSecret(void) const { return _secret; }
 
     bool createContact(void);
 
