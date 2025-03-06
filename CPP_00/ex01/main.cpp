@@ -56,23 +56,44 @@ int main()
     display_cmds("INDEX");
     while(true)
     {
-        std::cout << "𓀎 Please Enter a Command 𓀎 ➔ ";
+        std::cout << "🦋 𓀎 Please Enter a Command 𓀎 ➔ ";
         //prevent infinite loop
         std::getline(std::cin, input);
         if (std::cin.eof())//If the user enters EOF (Ctrl+D on Linux/macOS, Ctrl+Z on Windows), the loop breaks
-            break ;
-        if (input == "ADD")
+            break;
+        if (input == "EXIT")
+        {
+            display_cmds("EXIT");
+            break;
+        }
+        else if (input == "ADD")
         {
             contact.createContact();
-            display_cmds("EXIT");
+            continue;
         }
         else if (input == "HELP")
+        {
             display_cmds("HELP");
-        else if (input == "SEARCH")///
+            continue;
+        }
+        else if (input == "SEARCH")
+        {
             phonebook.displayAllContacts();
-        if (input == "EXIT")
-            display_cmds("EXIT");
-        std::cout << std::endl;
+            std::cout << "Enter index of contact to view: " << std::endl;
+            std::getline(std::cin, input);  // Read the index from the user
+            phonebook.searchContact(input);
+        }
+        // if (input == "EXIT")
+        // {
+        //     display_cmds("EXIT");
+        //     break;
+        // }
+        // else if (!(input == "ADD" && input == "SEARCH" && input == "HELP" && input == "EXIT"))
+        else
+        {
+            std::cout << "Command Not Found. Type 'HELP' for Command Index." << std::endl;
+            continue;
+        }
         return (0);
     }
 }

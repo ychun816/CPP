@@ -5,7 +5,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
-#include <iomanip>//for setw() func
+#include <iomanip>//For setw() func
+#include <sstream> //For using std::stringstream
 
 # define MAX_CONTACT 8 
 
@@ -26,7 +27,8 @@ class   Phonebook
         std::string truncateName(const std::string& str) const;//const char* str in C
 
     public:
-        void    addContact(const Contact& new_contact); 
+        void    addContact(const Contact& new_contact);
+        void    searchContact(std::string input);
         void    displayAllContacts(void) const;
         void    displayCertainContact(int index) const;
 };

@@ -136,8 +136,9 @@ bool    Contact::createContact(void)
     setNickname(trim_space(nickName));
     setPhoneNr(phoneNr);
     setSecret(trim_space(secret));
+    std::cout << std::endl;
     std::cout << "✨ New Contact successfully added to phonebook! ✨" << std::endl;
-    Contact::displayContact();
+    // Contact::displayContact();
     return true;
 }
 

@@ -28,6 +28,7 @@ class Contact
 
     bool createContact(void);
     void displayContact(void) const;
+    std::string searchContact(std::string input);
 
     //private attributes to store contact details
     private:
