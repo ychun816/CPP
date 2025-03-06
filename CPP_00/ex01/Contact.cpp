@@ -66,11 +66,18 @@ bool check_is_nbr(std::string nbr)
  * @note str.erase(str.find_first_not_of(' ') + 1);
  * Returns the index of the last non-space character.
  * +1: We add 1 because we want to remove the space after the last non-space character, which means we need to start erasing after the last non-space character.
-*/
+@note 
+std::string::npos is a constant representing the largest possible value for size_t.
+ndicate that a search for a substring failed (i.e., the substring was not found).
+ */
 std::string trim_space(std::string& str)
 {
+    size_t end;
+
     str.erase(0, str.find_first_not_of(' '));
-    str.erase(str.find_first_not_of(' ') + 1);
+    end = str.find_last_not_of(' ');
+    if (end != std::string::npos)//checks if the substring was found 
+        str.erase(end + 1);
     return str;
 }
 
@@ -147,8 +154,8 @@ bool    Contact::createContact(void)
  void Contact::displayContact(void) const
  {
     std::cout << "First Name: " << getFirstname() << std::endl;
-    std::cout << "Last Name: " << getFirstname() << std::endl;
-    std::cout << "Nick Name: " << getFirstname() << std::endl;
-    std::cout << "Phone Number: " << getFirstname() << std::endl;
-    std::cout << "Darkest Secret: " << getFirstname() << std::endl;
+    std::cout << "Last Name: " << getLastname() << std::endl;
+    std::cout << "Nick Name: " << getNickname() << std::endl;
+    std::cout << "Phone Number: " << getPhoneNr() << std::endl;
+    std::cout << "Darkest Secret: " << getSecret() << std::endl;
  }

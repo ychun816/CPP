@@ -68,7 +68,10 @@ int main()
         }
         else if (input == "ADD")
         {
-            contact.createContact();
+            Contact newContact;
+            if (newContact.createContact())
+                phonebook.addContact(newContact);
+                // contact.createContact();
             continue;
         }
         else if (input == "HELP")
@@ -83,19 +86,13 @@ int main()
             std::getline(std::cin, input);  // Read the index from the user
             phonebook.searchContact(input);
         }
-        // if (input == "EXIT")
-        // {
-        //     display_cmds("EXIT");
-        //     break;
-        // }
-        // else if (!(input == "ADD" && input == "SEARCH" && input == "HELP" && input == "EXIT"))
         else
         {
             std::cout << "Command Not Found. Type 'HELP' for Command Index." << std::endl;
             continue;
         }
-        return (0);
     }
+    return (0);
 }
 
 // •┈┈┈┈┈┈୨୧┈┈┈┈┈┈•

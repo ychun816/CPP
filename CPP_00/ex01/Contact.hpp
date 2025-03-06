@@ -2,7 +2,7 @@
 # define CONTACT_HPP
 
 #include <iostream>  // For std::cout, std::cin
-#include <string>    // For std::string
+#include <string>    // For std::string, std::string::npos
 
 //The underscore (_) prefix is a common convention in C++ 
 //to indicate that these variables are private and should only be accessed through the class's public getter and setter methods.

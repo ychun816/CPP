@@ -3,6 +3,8 @@
 //constructor
 Phonebook::Phonebook(void)
 {
+    current_count = 0;//need init?
+    oldest_contact = 0;//need init?
 }
 
 //decontructor
@@ -39,9 +41,9 @@ void    Phonebook::displayAllContacts(void) const
     for (int i = 0; i < current_count; i++)
     {
         std::cout << std::setw(10) << (i + 1) << " | " //Display index starting from 1
-        << std::setw(10) << truncateName(contacts[i].getFirstname()) << " | "
-        << std::setw(10) << truncateName(contacts[i].getLastname()) << " | "
-        << std::setw(10) << truncateName(contacts[i].getNickname()) << " | " << std::endl;
+            << std::setw(10) << truncateName(contacts[i].getFirstname()) << " | "
+            << std::setw(10) << truncateName(contacts[i].getLastname()) << " | " << std::endl;
+            // << std::setw(10) << truncateName(contacts[i].getNickname()) << " | " << std::endl;
     }
 
 }
