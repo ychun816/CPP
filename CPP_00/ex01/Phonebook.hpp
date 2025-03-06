@@ -14,8 +14,16 @@ class   Phonebook
     Phonebook(void);
     ~Phonebook(void);
 
-    private:
+    void    addContact(const Contact& new_contact); 
+    void    displayAllContacts(void) const;
+    void    displayContact(int index) const;
 
+    private:
+    // Contact	contacts[8];
+    int current_count;
+    int oldest_contact;
+
+    std::string truncate(const std::string& str) const;//const char* str in C
 }
 
 

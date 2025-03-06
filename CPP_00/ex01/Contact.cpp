@@ -8,7 +8,6 @@ Contact::Contact(void)
 //decontructor
 Contact::~Contact(void)
 {
-
 }
 
 //set contact value

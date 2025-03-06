@@ -50,8 +50,7 @@ int main()
 {
     std::string input;
     Contact contact;
-    // Phonebook phonebook;
-    //Contact newContact; ??
+    Phonebook phonebook;
 
     welcome_msg();
     display_cmds("INDEX");
@@ -64,7 +63,7 @@ int main()
             break ;
         if (input == "ADD")
         {
-            contact.createContact();//HOW TO WRITE?
+            contact.createContact();
             display_cmds("EXIT");
         }
         if (input == "EXIT")
@@ -72,7 +71,8 @@ int main()
         if (input == "HELP")
             display_cmds("HELP");
         if (input == "SEARCH")///
-            //do search -> book
+            //do search -> phonebook
+            phonebook.displayContact();
         std::cout << std::endl;
         return (0);
     }
