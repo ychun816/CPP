@@ -1,7 +1,7 @@
 
 #include "Contact.hpp"
+#include "Phonebook.hpp"
 
-// #include "Phonebook.hpp"
 // #include <iostream>  // For std::cout, std::cin
 // #include <string>    // For std::string
 // #include <iomanip>   // For formatted table output
@@ -66,13 +66,12 @@ int main()
             contact.createContact();
             display_cmds("EXIT");
         }
+        else if (input == "HELP")
+            display_cmds("HELP");
+        else if (input == "SEARCH")///
+            phonebook.displayAllContacts();
         if (input == "EXIT")
             display_cmds("EXIT");
-        if (input == "HELP")
-            display_cmds("HELP");
-        if (input == "SEARCH")///
-            //do search -> phonebook
-            phonebook.displayContact();
         std::cout << std::endl;
         return (0);
     }

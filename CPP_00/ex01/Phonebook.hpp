@@ -5,26 +5,31 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
+#include <iomanip>//for setw() func
 
-# define MAX_CONTACT 8
+# define MAX_CONTACT 8 
 
 class   Phonebook
 {
     public:
-    Phonebook(void);
-    ~Phonebook(void);
-
-    void    addContact(const Contact& new_contact); 
-    void    displayAllContacts(void) const;
-    void    displayContact(int index) const;
+        Phonebook(void);
+        ~Phonebook(void);
 
     private:
-    // Contact	contacts[8];
-    int current_count;
-    int oldest_contact;
+        Contact	contacts[MAX_CONTACT];
+        //contacts is an array of Contact objects.
+        //contacts[i] accesses the i-th contact in the array.
+        int current_count;
+        int oldest_contact;
 
-    std::string truncate(const std::string& str) const;//const char* str in C
-}
+        //Shortens the string to fit within 10 characters
+        std::string truncateName(const std::string& str) const;//const char* str in C
+
+    public:
+        void    addContact(const Contact& new_contact); 
+        void    displayAllContacts(void) const;
+        void    displayCertainContact(int index) const;
+};
 
 
 #endif

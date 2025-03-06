@@ -27,6 +27,7 @@ class Contact
     std::string getSecret(void) const { return _secret; }
 
     bool createContact(void);
+    void displayContact(void) const;
 
     //private attributes to store contact details
     private:
