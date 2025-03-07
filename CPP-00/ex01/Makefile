@@ -5,11 +5,11 @@
 NAME	= phonebook
 
 CXX		= c++
-CCFLAGS	= -Wall -Wextra -std=c++98 -MMD -MP#-g
+CCFLAGS	= -Wall -Wextra -std=c++98 #-MMD -MP#-g
 INCLU = Contact.hpp Phonebook.hpp
 SRCS = main.cpp Contact.cpp Phonebook.cpp 
 OBJS = $(SRCS:.cpp=.o)
-DEPS = $(OBJS:.o=.d)
+# DEPS = $(OBJS:.o=.d)
 
 # **************************************************************************** #
 #                                  RULES                                       #
@@ -21,11 +21,12 @@ $(NAME) : $(OBJS)
 	@$(CXX) -s $(CCFLAGS) $(OBJS) -o $(NAME)
 	@echo "$(BABEBLUEB)$(NAME) CREATED!$(RESET)"
 
-%.o: %.cpp $(INCLU)
+%.o: %.cpp  $(INCLU)
 	$(CXX) $(CCFLAGS) -c $< -o $@
 
 clean:
-	@rm -f $(OBJS) $(DEPS)
+	@rm -f $(OBJS) 
+#$(DEPS)
 
 fclean: clean
 	rm -f $(NAME)
