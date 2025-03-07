@@ -12,7 +12,6 @@
 #include <functional>//for std::mem_fun_ref
 #include "Account.hpp"
 
-
 int		main( void ) {
     // Define type aliases for convenience
 	typedef std::vector<Account::t>							  accounts_t;// Define type aliases for convenience
