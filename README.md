@@ -1,8 +1,6 @@
 # C++
 
-### Understanding C++ as already having learned C
-
-#### 📌 Some Basics Concepts: https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/Sy6jdBIcJx
+#### 📌 Some Basics Concepts for C++ as already having learned C : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/Sy6jdBIcJx
 
 #### 📌 Contructor & Destructor: https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rJPm_t4oJx
 
