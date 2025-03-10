@@ -24,16 +24,17 @@ void    Zombie::announce(void)
 //Dynamically allocate/create a Zombie on the heap using new
 //Assign a name to the zombie
 //Return a pointer to the newly created zombie
+//arrow operator, used to access members of an object through a pointer.
 Zombie* Zombie::newZombie( std::string name )
 {
-    Zombie *newZombie = new Zombie();
-    newZombie = setName(name);
+    Zombie *zb_heap = new Zombie();// Allocate on heap
+    zb_heap->setName(name);
     return (newZombie);
 }
 
 void    Zombie::randomChump(std::string name)
 {
-    Zombie newZombie;
-    newZombie = setName(name);
-    std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+    Zombie zb_stack;
+    zb_stack.setName(name);
+    zb_stack.announce();
 }

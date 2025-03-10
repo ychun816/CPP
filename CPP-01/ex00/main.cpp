@@ -2,17 +2,17 @@
 
 int main()
 {
-    Zombie *newZombie;
-    std::string input_name;
+    //zombie in stack -> manually allocate
+    Zombie *zb_heap;
+    //zombie in heap -> destroyed automatically
+    Zombie zb_stack;
 
-    std::getline(std::cin, input_name);
-
-// Heap allocation (must delete manually)    
+// Heap zombie
     newZombie = newZombie(input_name);
-    annouce();
-    Zombie();
 
-// Stack allocation (auto destroyed) 
+
+// Stack zombie (auto destroyed) 
     randomChump(input_name);
     ~Zombie();
+    delete 
 }
