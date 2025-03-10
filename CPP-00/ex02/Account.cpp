@@ -9,14 +9,16 @@
 
 #include "Account.hpp"
 
-/**
+/** STEPS:
 1. Constructor & Destructor
 2. Static variable init & implement get-static-variable-value funcs
-3. 
-
+3. checkAmount
+3. time stamp
+4. displayAccountsInfos
+5. makeDeposit
+6. makeWithdrawal
+7. displayStatus
 */
-
-
 
 // Constructor
 Account::Account( int initial_deposit ):
@@ -71,18 +73,46 @@ static int	Account::getNbWithdrawals( void )
     return _totalNbWithdrawals;
 }
 
-
-
-//time stamp
-static void	Account::_displayTimestamp( void )
+//Check Amount -> How to check how to implement?:
+//-It's a simple getter method (marked as const which means it doesn't modify the object)
+//-Based on its name and the class context, it clearly returns the current account balance
+int Account::checkAmount(void) const
 {
-    
+    return _amount;
 }
 
-
-
-
-
+/** time stamp
+@note std::time_t std::time(nullptr);
+-> std::time() Return current calendar time encoded as a time_t object,
+-> which typically represented as seconds elapsed since the Unix epoch (January 1, 1970, 00:00:00 UTC).
+-> nullptr (the value is only returned) / OR std::time_t std::time(arg); (Pointer to a time_t object to store the time value)
+@note std::tm* timeinfo = std::localtime(&now);
+-> tm structure containing the broken-down time! (ie. tm_sec, tm_min, tm_hour, tm_mday, tm_mon, tm_year)
+@note struct tm* localtime(const time_t* timer);
+-> converts a calendar time (stored as a time_t value) into a broken-down time structure, adjusted for the local timezone.
+@note setfill()
+-> fill character for padding when the field width is larger than the data to display.
+*/
+static void	Account::_displayTimestamp( void )
+{
+    // Get current time
+    std::time_t now = std::time(nullptr);
+    // Convert to local time components
+    std::tm* timeinfo = std::localtime(&now);
+    
+    //format [19920104_091532]
+    std::cout "[";
+    //year&date
+    std::cout << std::setfill('0') << std::setw(4) << (timeinfo->tm_year + 1900);//why +1900??
+    std::cout << std::setfill('0') << std::setw(2) << (timeinfo->tm_mon + 1);//why + 1??cuz start frm jan(1)?
+    std::cout << std::setfill('0') << std::setw(2) << timeinfo->tm_mday;
+    std::cout "_";
+    //hour,minute,second
+    std::cout << std::setfill('0') << std::setw(2) << timeinfo->tm_hour;
+    std::cout << std::setfill('0') << std::setw(2) << timeinfo->tm_min;
+    std::cout << std::setfill('0') << std::setw(2) << timeinfo->tm_sec;
+    std::cout "] ";
+}
 
 //display account info
 static void	Account::displayAccountsInfos( void )
@@ -93,6 +123,56 @@ static void	Account::displayAccountsInfos( void )
     std::cout << "withdrawals:" << getNbWithdrawals() << ";";
 }
 
+//makeDeposit
+//[19920104_091532] index:0;p_amount:42;deposit:5;amount:47;nb_deposits:1
+void	makeDeposit( int deposit )
+{
+    int p_amount = _amount;
+
+    
+    //record the deposit
+    //single amount&times
+    _amount = _amount + deposit;
+    _nbDeposits++;
+    //total amount&times
+    _totalAmount = _totalAmount + deposit;
+    _totalNbDeposits++;
+
+    _displayTimestamp();
+    std::cout << "index:" << _accountIndex << ";";
+    std::cout << "p_amount" << p_amount << ";";
+    std::cout << "deposit:" << deposit << ";"; 
+    std::cout << "amount:" << _amount << ";";
+    std::cout << "nb_deposits:" << ":" << nb_deposits << std::endl;
+}
+
+//makeWithdrawal
+//[19920104_091532] index:0;p_amount:47;withdrawal:refused
+//[19920104_091532] index:1;p_amount:819;withdrawal:34;amount:785;nb_withdrawals:1
+bool	makeWithdrawal( int withdrawal )
+{
+    _displayTimestamp();
+    std::cout << "index:" << _accountIndex << ";";
+    std::cout << "p_amount" << _amount << ";";
+    if (_amount < withdrawal)
+    {
+        std::cout << "withdrawal:refused" << std::endl;
+        return false;
+    }
+    //record the withdrawal
+    //single amount&times
+    _amount = _amount - withdrawal;
+    _nbWithdrawals++;
+   //total amount&times
+    _totalAmount = _totalAmount - withdrawal;
+    _totalNbWithdrawals++;
+
+    //print withdrawl outcome
+    std::cout << "withdrawal:" << withdrawal << ";";
+    std::cout << "amount:" << _amount << ";";
+    std::cout << "nb_withdrawals:" << _nbWithdrawals << std::endl;
+    return true;
+}
 
 //display status
 void	Account::displayStatus( void ) const
@@ -105,8 +185,7 @@ void	Account::displayStatus( void ) const
 }
 
 
-
-
+///////
 /** some notes
 The syntax you're asking about is the initialization list in a C++ constructor. Let me break it down:
 
