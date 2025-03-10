@@ -1,14 +1,14 @@
 # C++
 
-## Understanding C++ as already having learned C:
+## Understanding C++ as already having learned C
 
-### Some Basics:
+#### Some Basics:
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/Sy6jdBIcJx
 
-### Contructor & Destructor:
+#### Contructor & Destructor:
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rJPm_t4oJx
 
-### Getter Method:
+#### Getter Method:
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/H1eQh3oj1x
 
 
