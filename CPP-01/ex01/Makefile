@@ -7,7 +7,7 @@ NAME	= zombieHorde
 CXX		= c++
 CCFLAGS	= -Wall -Wextra -std=c++98 #-MMD -MP#-g
 INCLU = Zombie.hpp
-SRCS =  main.cpp Zombie.cpp
+SRCS =  main.cpp Zombie.cpp  zombieHorde.cpp 
 OBJS = $(SRCS:.cpp=.o)
 # DEPS = $(OBJS:.o=.d)
 

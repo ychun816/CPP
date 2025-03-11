@@ -1,12 +1,17 @@
 #include "Zombie.hpp"
 
-
 int main()
 {
-    Zombie zb_heap;
+    int nb_zombies = 10;
+    std::string name;
 
-    
-    zombieHorde( int N, std::string name );
+    std::cout << "🧟 ZOMBIE ARMY ALERTTT!🧟" << std::endl;
+    std::cout << "📢 NAME UR ZOMBIE ARMY: ";
+    std::getline(std::cin, name);
+    Zombie* horde_heap = zombieHorde(nb_zombies, name);
 
-    delete zb_heap;
+    // Delete the entire horde (important to use delete[] for arrays)
+    delete[] horde_heap;
+
+    return 0;
 }

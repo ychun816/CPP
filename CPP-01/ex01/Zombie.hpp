@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 
-
 /** STEPS:
 Let me walk you through the correct approach for implementing the zombieHorde function. Your general idea is on the right track, but there are some key elements we need to adjust.
 The requirement is to allocate N zombies in a single allocation, not N separate allocations. Let's break down the correct approach:
@@ -19,20 +18,18 @@ Return a pointer to the first zombie
 
 */
 
-
-class zombies
+class Zombie
 {
     public:
-        Zombie();
-        ~Zombie();
+        Zombie(void);
+        ~Zombie(void);
 
         void setName(std::string name);
         void announce( void );
 
     private:
-        _name;
-
-}
+        std::string _name;
+};
 
 Zombie*    zombieHorde( int N, std::string name );
 
