@@ -5,8 +5,6 @@ Stack-allocated zombies (like the one in your main function and in randomChump) 
 Heap-allocated zombies (created with new in newZombie) must be manually destroyed with delete
 */
 
-
-
 int main()
 {
     std::string input_name;
@@ -31,5 +29,4 @@ int main()
 
     // Stack zombie (auto destroyed) 
     randomChump(input_name);
-
 }
