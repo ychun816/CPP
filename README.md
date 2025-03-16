@@ -18,4 +18,5 @@ https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rJndvhisye
 
 ### 1️⃣ CPP-01
 
-Understanding Pointer & Reference 
+Understanding Pointer & Reference in C++: 
+https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rkVAGOghyg
