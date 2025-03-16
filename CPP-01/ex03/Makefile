@@ -2,12 +2,12 @@
 #                                 VARIABLES                                    #
 # **************************************************************************** #
 
-NAME	= Brain
+NAME	= violence
 
 CXX		= c++
 CCFLAGS	= -Wall -Wextra -std=c++98 #-MMD -MP#-g
-INCLU = HumanA.hpp HumanB.hpp Weapon.hpp
-SRCS = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp 
+INCLU = Weapon.hpp #HumanA.hpp HumanB.hpp 
+SRCS = main.cpp Weapon.cpp # HumanA.cpp HumanB.cpp 
 OBJS = $(SRCS:.cpp=.o)
 # DEPS = $(OBJS:.o=.d)
 

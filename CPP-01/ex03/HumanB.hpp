@@ -9,11 +9,14 @@
 class HumanB
 {
     public:
+    HumanB(Weapon* weapon);
+    ~HumanB();
 
-    attack()
+    setWeapon(Weapon *weapon_type);
+    attack();
 
     private:
-        std::string _weaponB;
+        std::string* _weaponB;//may have a weapon or not 
         std::string _nameB;
 }
 
