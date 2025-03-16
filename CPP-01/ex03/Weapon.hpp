@@ -1,8 +1,17 @@
 #ifndef WEAPON_HPP
 # define WEAPON_HPP
-#include <iostream>
 
-/*
+#include <iostream>
+#pragma once
+//For #pragma once:
+//prevent multiple inclusions of a header file.
+// ✔ Less code – No need for #ifndef and #define.
+//✔ Less chance of naming conflicts – No need to create unique macro names.
+//✔ Faster compilation – Modern compilers optimize #pragma once better than include guards.
+
+
+
+/* SUBJECT:
 A private attribute type, which is a string.
 • A getType() member function that returns a constant reference to type.
 • A setType() member function that sets type using the new value passed as a pa-
@@ -25,7 +34,8 @@ class Weapon
     ~Weapon();
 
     void setType(std::string weaponType);
-    void attack();
+    std::string getType() const;
+    // void attack();
 
     private:
         std::string _weaponName;

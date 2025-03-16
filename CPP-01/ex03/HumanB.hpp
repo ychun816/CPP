@@ -1,6 +1,7 @@
 #ifndef HUMANB_H
 # define HUMANB_H
 
+#include "Weapon.hpp"
 #include <iostream>
 
 //They both have a Weapon and a name.
@@ -9,15 +10,15 @@
 class HumanB
 {
     public:
-    HumanB(Weapon* weapon);
-    ~HumanB();
+        HumanB(std::string nameB);
+        ~HumanB();
 
-    setWeapon(Weapon *weapon_type);
-    attack();
+        void setWeapon(Weapon& weaponBType);
+        void attack();
 
     private:
-        std::string* _weaponB;//may have a weapon or not 
         std::string _nameB;
-}
+        Weapon* _weaponB;//may have a weapon or not 
+};
 
 #endif

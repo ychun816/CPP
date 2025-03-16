@@ -1,6 +1,7 @@
 #ifndef HUMANA_H
 # define HUMANA_H
 
+#include "Weapon.hpp"
 #include <iostream>
 
 //They both have a Weapon and a name.
@@ -10,14 +11,15 @@
 class HumanA
 {
     public:
-    HumanA(Weapon& weapon);
-    ~HumanA();
-    
-    attack();
+        HumanA(std::string nameA, Weapon& weaponAName);
+        ~HumanA();
+
+        std::string getType() const;
+        void attack();
 
     private:
-        std::string& _weaponA;//always have weapon
         std::string _nameA;
-}
+        Weapon& _weaponA;//always have weapon
+};
 
 #endif

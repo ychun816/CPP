@@ -1,9 +1,11 @@
 #include "Weapon.hpp"
 
+//!!assign weaponName to _weaponName
+// Weapon::Weapon(std::string weaponName) : _weaponName(weaponName) {}
+
 Weapon::Weapon(std::string weaponName)
 {
-    // std::getline(std::cin, weaponName);
-    weaponName = _weaponName;
+    _weaponName = weaponName;//assign, initialized
 }
 
 Weapon::~Weapon()
@@ -12,11 +14,18 @@ Weapon::~Weapon()
 
 void Weapon::setType(std::string weaponType)
 {
-    // std::getline(std::cin, weaponType);
-    weaponType = _weaponName;
+    _weaponName = weaponType; // Correctly updates the weapon name
+    // weaponType = _weaponName;//WRONG~~~~~
+
 }
 
-void Weapon::attack()
+std::string Weapon::getType() const 
 {
-    std::cout << " attacks with " << _weaponName << std::endl;
+    return (_weaponName);
 }
+
+//FOR FIRST TEST:
+// void Weapon::attack()
+// {
+//     std::cout << " attacks with " << getType() << std::endl;
+// }
