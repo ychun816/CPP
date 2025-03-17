@@ -9,8 +9,6 @@
 
 */
 
-
-
 int main(int ac, char *av[])//takes 3 args
 {
     (void)av;
