@@ -13,9 +13,7 @@ class Filename
     Filename();
     ~Filename();
 
-    void replaceNWriteToFile(filename, s1, s2);
-
-    // private:
+    void replaceNWriteToFile(std::string filename, std::string s1, std::string s2);
 
 };
 
