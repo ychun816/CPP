@@ -18,7 +18,7 @@ https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/r1TCoR4hJg
 + [Walk-thru] For bonus ex2, Understanding Reverse Engineering:
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rJndvhisye
 
-### 1️⃣ CPP-01 (Understading Pointer/Reference ; File Handlings)
+### 1️⃣ CPP-01 (Understading Pointer/Reference; File Handlings; Switch Statement)
 
 + Pointer & Reference in C++: 
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rkVAGOghyg
