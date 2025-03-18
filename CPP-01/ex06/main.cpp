@@ -5,14 +5,13 @@
 int main(int ac, char *av[])
 {
     Harl harl;
-    string input = av[1];
-    
-    if (ac == 2)
-    {
-        harl.filterComplains(input);
-    }
-    else//filter according to input av[1]
-        cout << "Error: Please Enter 1 Filter Index or Msg" << endl;//display all?
 
+    if (ac < 2)
+    {
+        cout << "Error: No valid input. Please Enter 1 Filter Message." << endl;//display all?
+        return 1;
+    }
+    string input = av[1];
+    harl.filterComplains(input);
     return 0;
 }
