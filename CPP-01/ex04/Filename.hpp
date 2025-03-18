@@ -4,17 +4,16 @@
 
 #include <iostream>
 #include <string>
-#include <fstream>
+#include <fstream> //file handling library
 #include <sstream>
 
 class Filename
 {
    public:
-    Filename();
-    ~Filename();
+        Filename();
+        ~Filename();
 
-    void replaceNWriteToFile(std::string filename, std::string s1, std::string s2);
-
+        void replaceNWriteToFile(std::string filename, std::string s1, std::string s2);
 };
 
 #endif 
