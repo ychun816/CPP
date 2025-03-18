@@ -20,5 +20,5 @@ https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rJndvhisye
 
 ### 1️⃣ CPP-01 (Understading Pointer/Reference ; File Handlings)
 
-Pointer & Reference in C++: 
++ Pointer & Reference in C++: 
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rkVAGOghyg
