@@ -2,17 +2,20 @@
 
 int main( void ) 
 {
-    Fixed a;
-    Fixed b( a );
-    Fixed c;
-    c = b;
-    std::cout << a.getRawBits() << std::endl;
-    std::cout << b.getRawBits() << std::endl;
+    Fixed a;//Call default constructor (a is initialized to 0)
+    Fixed b( a );//Call copy constructor
+    Fixed c;//Call the default constructor (c is initialized to 0)
+
+    c = b;//Call the copy assignment operator (assigns b's value to c)
+
+    std::cout << a.getRawBits() << std::endl;//Call getRawBits(), which prints 0 since all values are 0
+    std::cout << b.getRawBits() << std::endl;////🤡CHECK THIS PROB??-1153875768
     std::cout << c.getRawBits() << std::endl;
+
     return 0;
 }
 
-/** expected output:
+/* expected output:
 
 $> ./a.out
 Default constructor called
@@ -33,4 +36,4 @@ Destructor called
 Destructor called
 $>
 
- */
+*/

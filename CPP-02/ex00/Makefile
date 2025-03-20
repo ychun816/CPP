@@ -6,8 +6,8 @@ NAME	= Fixed
 
 CXX		= c++
 CCFLAGS	= -Wall -Wextra -std=c++98 #-MMD -MP#-g
-INCLU = Harl.hpp
-SRCS = main.cpp Harl.cpp
+INCLU = Fixed.hpp
+SRCS = main.cpp Fixed.cpp
 OBJS = $(SRCS:.cpp=.o)
 # DEPS = $(OBJS:.o=.d)
 
