@@ -16,11 +16,19 @@ Fixed::Fixed(): _value(0)
 //"this" 
 //is a pointer to the current object
 //*this ->means dereferencing the pointer to access the actual object
-//*this = other; copies the values of other into the current object
+//*this = other; calls the copy assignment operator (operator=) instead of directly copying the value.
+
+//The problem is that the copy assignment operator assumes that *this is already fully constructed, but in a constructor, the object is still being initialized.
+// Problem: Object Isn't Fully Constructed Yet
+//     When the copy constructor runs, *this is in the middle of being created.
+//     The assignment operator (operator=) is meant for assigning an already constructed object.
+//     Using *this = other; in a constructor creates unnecessary recursion and may lead to undefined behavior.
+
 Fixed::Fixed(const Fixed& other)
 {
     std::cout << "Copy constructor called" << std::endl;
-    *this = other;
+    // *this = other;
+    this->_value = other.getRawBits(); // Copy the value properly
 }
 
 //A copy assignment operator overload
@@ -37,7 +45,6 @@ Fixed& Fixed::operator=(const Fixed& other)
     return (*this);
 }
 
-
 //get raw int value
 int Fixed::getRawBits( void ) const
 {
@@ -48,7 +55,6 @@ int Fixed::getRawBits( void ) const
 //set raw int value
 void Fixed::setRawBits( int const raw )
 {
-    // std::cout << "getRawBits member function called" << std::endl;
     this->_value = raw;
 }
 
