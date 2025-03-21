@@ -27,7 +27,6 @@ class Fixed
 
         //set raw int value
         void setRawBits( int const raw );
-
 };
 
 #endif

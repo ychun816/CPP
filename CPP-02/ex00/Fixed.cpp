@@ -27,8 +27,8 @@ Fixed::Fixed(): _value(0)
 Fixed::Fixed(const Fixed& other)
 {
     std::cout << "Copy constructor called" << std::endl;
-    // *this = other;
     this->_value = other.getRawBits(); // Copy the value properly
+    // *this = other;
 }
 
 //A copy assignment operator overload
@@ -38,10 +38,10 @@ Fixed::Fixed(const Fixed& other)
 //Returning *this allows chaining assignments
 Fixed& Fixed::operator=(const Fixed& other)
 {
-    std::cout << "Copy assignment operator called" << std::endl;
     //check self-assignment (ie. a = a , unessary)
     if (this != &other)
         this->_value = this->getRawBits();
+    std::cout << "Copy assignment operator called" << std::endl;
     return (*this);
 }
 
