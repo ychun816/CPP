@@ -25,29 +25,30 @@ Handle integers and floating-point numbers and allows conversion between them
 class Fixed
 {
     private:
-    int _value;// Stores the fixed-point number
-    static const int _fractionalBits = 8; 
-// Number of fractional bits
-//because it is a compile-time constant and does not require a separate definition in the .cpp file.
+        int _value;// Stores the fixed-point number
+        static const int _fractionalBits = 8; 
+        // Number of fractional bits
+        //because it is a compile-time constant and does not require a separate definition in the .cpp file.
     
     public:
-    //constructor
-    Fixed();//default constructor
-    Fixed(const int intValue);//int constructor
-    Fixed(const float floatValue);//float constructor
-    Fixed(const Fixed& other);//copy constructor
-    Fixed& operator=(const Fixed& other);//assign constructor
-    ~Fixed();//destructor
+        //constructor
+        Fixed();//default constructor
+        Fixed(const int intValue);//int constructor
+        Fixed(const float floatValue);//float constructor
+        Fixed(const Fixed& other);//copy constructor
+        Fixed& operator=(const Fixed& other);//assign constructor
+        ~Fixed();//destructor
 
-    //get set raw bits
-    void setRawBits( int const raw );
-    int getRawBits( void ) const;
+        //get set raw bits
+        void setRawBits( int const raw );
+        int getRawBits( void ) const;
 
-    //converter
-    float toFloat( void ) const;
-    int toInt( void ) const;
+        //converter
+        float toFloat( void ) const;
+        int toInt( void ) const;
 };
 
+//static operator
 std::ostream& operator<<(std::ostream& output, const Fixed& fixed); 
 
 #endif
