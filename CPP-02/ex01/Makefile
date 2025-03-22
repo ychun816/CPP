@@ -9,7 +9,6 @@ CCFLAGS	= -Wall -Wextra -std=c++98 #-MMD -MP#-g
 INCLU = Fixed.hpp
 SRCS = main.cpp Fixed.cpp
 OBJS = $(SRCS:.cpp=.o)
-# DEPS = $(OBJS:.o=.d)
 
 # **************************************************************************** #
 #                                  RULES                                       #
@@ -26,7 +25,6 @@ $(NAME) : $(OBJS)
 
 clean:
 	@rm -f $(OBJS)
-#$(DEPS)
 
 fclean: clean
 	rm -f $(NAME)

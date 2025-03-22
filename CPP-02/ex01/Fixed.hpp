@@ -36,12 +36,8 @@ class Fixed
     Fixed(const int intValue);//int constructor
     Fixed(const float floatValue);//float constructor
     Fixed(const Fixed& other);//copy constructor
-
-    //destructor
-    ~Fixed();
-
-    //assign constructor
-    Fixed& operator=(const Fixed& other);
+    Fixed& operator=(const Fixed& other);//assign constructor
+    ~Fixed();//destructor
 
     //get set raw bits
     void setRawBits( int const raw );
@@ -50,13 +46,8 @@ class Fixed
     //converter
     float toFloat( void ) const;
     int toInt( void ) const;
-    
-}
+};
 
-
-
-
-
-
+std::ostream& operator<<(std::ostream& output, const Fixed& fixed); 
 
 #endif
