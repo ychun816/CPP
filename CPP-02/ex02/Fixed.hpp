@@ -5,10 +5,14 @@
 #include <cmath>
 
 /**
-@notes
+@notes Pre-increment/decrement
+- modifies the object and returns a reference to it
+- operation happen before returning => return *this as a reference to the current object.
+- returning a reference (Fixed&) avoids making a copy, improving performance
 
-
-
+@notes Post-increment/decrement
+- returns the original value before modifying the object.
+- Need to return the previous value => store the current object (temp = *this
 */
 
 class Fixed
@@ -52,8 +56,12 @@ class Fixed
     };
     
     //min max funcs
-    min();
-    max(const int a, const int b);
+    //min
+    static Fixed& min(Fixed& a, Fixed& b);
+    static const Fixed& min(const Fixed& a, const Fixed& b);
+
+    static Fixed& max(Fixed& a, Fixed& b);
+    static const Fixed& max(const Fixed& a, const Fixed& b);
 
     // Output stream overload
     std::ostream& operator<<(std::ostream& os, const Fixed& fixed) 
