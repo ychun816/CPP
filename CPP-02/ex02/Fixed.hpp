@@ -27,8 +27,11 @@ class Fixed
         Fixed(const int intValue);//int constructor 
         Fixed(const float floatValue);//float 
         Fixed(const Fixed& other);//copy contructor
-        Fixed &operator=(const Fixed& other);//assignment constructor
+        Fixed& operator=(const Fixed& other);//assignment constructor
         ~Fixed();//destructor
+
+        // void setRawBits( int const raw );
+        // int getRawBits( void ) const;
 
         //convertor
         float toFloat(void) const;
@@ -49,21 +52,21 @@ class Fixed
         Fixed operator/(const Fixed& other) const;
            
         Fixed& operator++();//pre increment ++a
-        Fixed operator++();//post increment a++
+        Fixed operator++(int);//post increment a++
     
         Fixed& operator--();//pre decrement
-        Fixed operator--();//post decrement
+        Fixed operator--(int);//post decrement
+
+        //min max funcs
+        //min
+        static Fixed& min(Fixed& a, Fixed& b);
+        static const Fixed& min(const Fixed& a, const Fixed& b);
+        //max
+        static Fixed& max(Fixed& a, Fixed& b);
+        static const Fixed& max(const Fixed& a, const Fixed& b);
     };
     
-    //min max funcs
-    //min
-    static Fixed& min(Fixed& a, Fixed& b);
-    static const Fixed& min(const Fixed& a, const Fixed& b);
-    //max
-    static Fixed& max(Fixed& a, Fixed& b);
-    static const Fixed& max(const Fixed& a, const Fixed& b);
-
     // Output stream overload
-    std::ostream& operator<<(std::ostream& os, const Fixed& fixed) 
+    std::ostream& operator<<(std::ostream& os, const Fixed& fixed);
 
 #endif

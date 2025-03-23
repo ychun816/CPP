@@ -25,17 +25,30 @@ If we use assignment (value = other.value; inside the constructor body), value i
 */
 Fixed::Fixed(const Fixed& other):_value(other._value)
 {
+    // this->_value = other.getRawBits();
 }
 
 //assignment constructor
-Fixed Fixed::&operator=(const Fixed& other)
+Fixed& Fixed::operator=(const Fixed& other)
 {
-    if (this != other)
-        this = other._value;
+    if (this != &other)
+        this->_value = other._value;
+        // this->_value = other.getRawBits();
     return (*this);
 }
 
-//destructor
+////RAW BITS
+// void Fixed::setRawBits( int const raw )
+// {
+//     this->_value = raw;
+// }
+
+// int Fixed::getRawBits( void ) const
+// {
+//     return (this->_value);
+// }
+
+//destructorm
 Fixed::~Fixed()
 {}
 
@@ -89,24 +102,25 @@ bool Fixed::operator!=(const Fixed& other) const
 //Adds the floating-point values of both Fixed numbers.
 Fixed Fixed::operator+(const Fixed& other) const
 {
-    return (Fixed) this->toFloat() + other.toFloat();
+    return (Fixed) (this->toFloat() + other.toFloat());
 }
 Fixed Fixed::operator-(const Fixed& other) const
 {
-    return (Fixed) this->toFloat() - other.toFloat(); 
+    return (Fixed) (this->toFloat() - other.toFloat()); 
 }
 Fixed Fixed::operator*(const Fixed& other) const
 {
-    return (Fixed) this->toFloat() * other.toFloat();  
+    return (Fixed) (this->toFloat() * other.toFloat());  
 }
+
 Fixed Fixed::operator/(const Fixed& other) const
 {
     if (other._value == 0)
     {
         std::cerr << "Error: Cannot Devide 0" << std::endl;
-        return (false);//1?
+        return false;//1?
     }
-    return (Fixed) this->toFloat() / other.toFloat(); 
+    return Fixed(this->toFloat() / other.toFloat());
 }
 
 /**
@@ -130,7 +144,7 @@ Fixed& Fixed::operator++()
 //Creates a temporary copy of the object
 //Increase the original object
 //Returns the tmp (original value before increment/decrement)
-Fixed Fixed::operator++()
+Fixed Fixed::operator++(int)
 {
     Fixed og = *this;
     _value = _value + 1;
@@ -145,7 +159,7 @@ Fixed& Fixed::operator--()
 }
 
 ////decrement--
-Fixed Fixed::operator--()
+Fixed Fixed::operator--(int)
 {
     Fixed og = *this;
     _value = _value - 1;
@@ -153,31 +167,38 @@ Fixed Fixed::operator--()
 }
 
 ///min & max
-
 //min
-static Fixed& min(Fixed& a, Fixed& b)
+Fixed& Fixed::min(Fixed& a, Fixed& b)
 {
-
+    if (a < b)
+        return (a);
+    else
+        return (b);
 }
 
-static const Fixed& min(const Fixed& a, const Fixed& b)
+const Fixed& Fixed::min(const Fixed& a, const Fixed& b)
 {
-
+    return (a < b) ? a : b;
 }
 
 //max
-static Fixed& max(Fixed& a, Fixed& b)
+Fixed& Fixed::max(Fixed& a, Fixed& b)
 {
-
+    if (a > b)
+        return (a);
+    else
+        return (b);
 }
 
-static const Fixed& max(const Fixed& a, const Fixed& b)
+const Fixed& Fixed::max(const Fixed& a, const Fixed& b)
 {
-
+    return (a > b) ? a : b;
 }
 
 ////Output stream overload
-std::ostream& operator<<(std::ostream& os, const Fixed& fixed) 
+//Overloads the << operator to allow std::cout << fixedObject;
+std::ostream& operator<<(std::ostream& output, const Fixed& fixedNb) 
 {
-
+    output << fixedNb.toFloat();
+    return output;
 }
