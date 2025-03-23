@@ -59,12 +59,11 @@ class Fixed
     //min
     static Fixed& min(Fixed& a, Fixed& b);
     static const Fixed& min(const Fixed& a, const Fixed& b);
-
+    //max
     static Fixed& max(Fixed& a, Fixed& b);
     static const Fixed& max(const Fixed& a, const Fixed& b);
 
     // Output stream overload
     std::ostream& operator<<(std::ostream& os, const Fixed& fixed) 
-
 
 #endif

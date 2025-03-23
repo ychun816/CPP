@@ -18,27 +18,20 @@ Fixed::Fixed(const int intValue)
 //float
 //use roundf() to get proximate int
 //roundf(floatValue * (1 << _fractionalBits) => roundf(floatValue * 256)
-
 Fixed::Fixed(const float floatValue)
 {
     _value =  roundf(floatValue * (1 << _fractionalBits));
     std::cout << "Float constructor called" << std::endl;
 }
 
-//destructor
-Fixed::~Fixed()
-{
-    std::cout << "Destructor called" << std::endl;
-}
-
-////copy constructor
+//copy constructor
 Fixed:: Fixed(const Fixed& other)
 {
     this->_value = other.getRawBits(); // Copy the value properly
     std::cout << "Copy constructor called" << std::endl;
 }
 
-////assignment operator
+//assignment operator
 Fixed& Fixed::operator=(const Fixed& other)
 {
     if (this != &other)
@@ -47,6 +40,11 @@ Fixed& Fixed::operator=(const Fixed& other)
     return (*this);
 }
 
+//destructor
+Fixed::~Fixed()
+{
+    std::cout << "Destructor called" << std::endl;
+}
 ////RAW BITS
 void Fixed::setRawBits( int const raw )
 {
