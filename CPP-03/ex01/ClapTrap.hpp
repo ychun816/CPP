@@ -12,10 +12,9 @@ class ClapTrap
 
     public:
         ClapTrap();
-        ClapTrap(const std::string& name);
         ~ClapTrap();
         
-        // void setName(const std::string& name);
+        void setName(const std::string& name);
         
         void attack(const std::string& target);
         void takeDamage(unsigned int amount);
