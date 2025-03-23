@@ -19,6 +19,8 @@ https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/r1TCoR4hJg
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rJndvhisye
 
 ### 1️⃣ CPP-01 (Understading Pointer/Reference; File Handlings; Switch Statement)
-
 + Pointer & Reference in C++: 
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rkVAGOghyg
+
+### 1️⃣ CPP-02 (Understanding Fixed-Point, Operator Overload)
+
