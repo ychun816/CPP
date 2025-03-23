@@ -58,18 +58,6 @@ void ClapTrap::takeDamage(unsigned int amount)
         }
     }
 }
-// void ClapTrap::takeDamage(unsigned int amount)
-// {
-//     if (_hitPoints == 0 || amount >= _hitPoints)
-//     {
-//         _hitPoints = 0;
-//         std::cout << "🤡ClapTrap " << _name << " is out of attack point!!" << std::endl;
-//         return;
-//     }
-//     _hitPoints = _hitPoints - amount;
-//     std::cout << "💥ClapTrap " << _name << " takes " << amount << " points of damage! Remaining HitPoints: " << _hitPoints << std::endl;
-// }
-
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
