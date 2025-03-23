@@ -3,10 +3,10 @@
 int main()
 {
     ClapTrap clapTrap = ClapTrap();
-    clapTrap.setName("ClapTrap");
-    clapTrap.attack("target");
-
-
+    clapTrap.setName("THE GIANTS👹");
+    clapTrap.attack("VILLANGE🏘");
+    clapTrap.takeDamage(5);
+    clapTrap.beRepaired(5);
 
 
     return 0;
