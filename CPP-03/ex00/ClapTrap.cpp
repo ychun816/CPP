@@ -17,6 +17,30 @@ ClapTrap::ClapTrap(const std::string& name)
     std::cout << "--- (Contructor) ClapTrap Created : " << _name << " ---" << std::endl << std::endl;
 }
 
+//copy constructor
+ClapTrap::ClapTrap(const ClapTrap& other)
+{
+    _name = other._name;
+    _hitPoints = other._hitPoints;
+    _energyPoints = other._energyPoints;
+    _attackDamage = other._attackDamage;
+    std::cout << "ClapTrap " << _name << "is copied!" << std::endl;
+}
+
+//assignation operator
+ClapTrap ClapTrap::operator=(const ClapTrap& other)
+{
+    if (this != &other)
+    {
+        _name = other._name;
+        _hitPoints = other._hitPoints;
+        _energyPoints = other._energyPoints;
+        _attackDamage = other._attackDamage;
+    }
+    std::cout << "ClapTrap " << _name << "is assigned!" << std::endl;
+    return (*this);
+}
+
 ClapTrap::~ClapTrap()
 {
     std::cout << std::endl << "--- (Destructor) ClapTrap Closed : " << _name << " ---" << std::endl;
