@@ -4,7 +4,7 @@
 #include <iostream>
 class ClapTrap
 {
-    private:
+    protected://make scavtrap can access
         std::string _name;
         unsigned int _hitPoints;
         unsigned int _energyPoints;
