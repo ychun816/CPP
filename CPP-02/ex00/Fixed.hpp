@@ -12,15 +12,9 @@ class Fixed
     public:
         //A default constructor 
         Fixed();//_value(0);
-        
-        //A copy constructor
-        Fixed(const Fixed& other);
-
-        //A copy assignment operator overload
-        Fixed& operator=(const Fixed& other);
-
-        // Destructor
-        ~Fixed();
+        Fixed(const Fixed& other);//A copy constructor
+        Fixed& operator=(const Fixed& other);//A copy assignment operator overload
+        ~Fixed();// Destructor
 
         //get raw int value
         int getRawBits( void ) const;
