@@ -2,15 +2,16 @@
 
 int main()
 {
-    ClapTrap clapTrap = ClapTrap("THE GIANTS👹");
-    // clapTrap.setDamage(5);
-    clapTrap.attack("VILLANGE 1🏘");
-    clapTrap.takeDamage(10);
-    clapTrap.beRepaired(8);
+    ClapTrap clapTrap = ClapTrap("👹THE GIANTS");
 
-    clapTrap.attack("VILLANGE 2🏘");
-    clapTrap.takeDamage(9);
-    clapTrap.beRepaired(6);
+    clapTrap.attack("🧌 VILLANGER 1");
+    clapTrap.takeDamage(5);
+    clapTrap.beRepaired(4);//hitpoint = 9
+
+    std::cout << std::endl;
+    clapTrap.attack("🧞 VILLANGER 2");
+    clapTrap.takeDamage(8);
+    clapTrap.beRepaired(5);
 
     return 0;
 }

@@ -4,7 +4,7 @@
 #include <iostream>
 class ClapTrap
 {
-    protected://make scavtrap can access
+    private:
         std::string _name;
         unsigned int _hitPoints;
         unsigned int _energyPoints;
@@ -12,7 +12,9 @@ class ClapTrap
 
     public:
         ClapTrap();
-        ClapTrap(const std::string& name);
+        ClapTrap(const std::string& name);//set name
+        ClapTrap(const ClapTrap& other);//copy constructor
+        ClapTrap operator=(const ClapTrap& other);//assignation operator
         ~ClapTrap();
         
         // void setName(const std::string& name);
