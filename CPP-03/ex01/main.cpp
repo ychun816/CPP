@@ -4,34 +4,34 @@
 int main()
 {
     ////claptrap
-    std::cout << "[ClapTrap]" << std::endl;
-    ClapTrap clapTrap = ClapTrap("👹THE GIANTS");
+    std::cout << "===== [CLAPTRAP] =====" << std::endl;
+    ClapTrap clap = ClapTrap("👹CLAP PAPA");
     //target1
-    clapTrap.attack("target1");
-    clapTrap.takeDamage(5);
-    clapTrap.beRepaired(3);
+    clap.attack("target A");
+    clap.takeDamage(5);
+    clap.beRepaired(3);
     //target2
-    clapTrap.attack("target2");
-    clapTrap.takeDamage(15);
-    clapTrap.beRepaired(10);
+    clap.attack("target B");
+    clap.takeDamage(15);
+    clap.beRepaired(10);
     std::cout << std::endl;
 
     ////scavtrap
     // _hitPoints = 100;
     // _energyPoints = 50;
     // _attackDamage = 20;
-    std::cout << "[ScavTrap]" << std::endl;
-    ScavTrap scavTrap = ScavTrap("🐣BABY SCAV");
+    std::cout << "===== [SCAVTRAP] =====" << std::endl;
+    ScavTrap scav = ScavTrap("🐣GUARDIAN SCAV");
     //moster1
-    scavTrap.attack("monster1");
-    scavTrap.takeDamage(20);
-    scavTrap.beRepaired(15);
-    scavTrap.guardGate();
+    scav.attack("monster A");
+    scav.takeDamage(20);
+    scav.beRepaired(15);
+    scav.guardGate();
     //moster2
-    scavTrap.attack("monster2");
-    scavTrap.takeDamage(100);
-    scavTrap.beRepaired(5);
-    scavTrap.guardGate();
+    scav.attack("monster B");
+    scav.takeDamage(100);
+    scav.beRepaired(5);
+    scav.guardGate();
 
     return 0;
 }
