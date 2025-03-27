@@ -5,7 +5,7 @@ ClapTrap::ClapTrap()
     _hitPoints = 10;
     _energyPoints = 10;
     _attackDamage = 0;
-    std::cout << "--- Default Constructor Created ---" << std::endl << std::endl;
+    // std::cout << "------ Default Contructor Created ------" << std::endl << std::endl;
 }
 
 ClapTrap::ClapTrap(const std::string& name)
@@ -14,7 +14,7 @@ ClapTrap::ClapTrap(const std::string& name)
     _hitPoints = 10;
     _energyPoints = 10;
     _attackDamage = 0;
-    std::cout << "--- (Contructor) ClapTrap Created : " << _name << " ---" << std::endl << std::endl;
+    std::cout << "------ (Contructor) ClapTrap Created : " << _name << " ------" << std::endl << std::endl;
 }
 
 //copy constructor
@@ -43,7 +43,7 @@ ClapTrap ClapTrap::operator=(const ClapTrap& other)
 
 ClapTrap::~ClapTrap()
 {
-    std::cout << std::endl << "--- (Destructor) ClapTrap Closed : " << _name << " ---" << std::endl;
+    std::cout << std::endl << "------ (Destructor) ClapTrap Closed : " << _name << " ------" << std::endl;
 }
 
 // void ClapTrap::setName(const std::string& name)
@@ -60,7 +60,7 @@ void ClapTrap::attack(const std::string& target)
         _energyPoints--;
     }
     else
-        std::cout << "💀ClapTrap " << _name << " is out of energy! DEAD!!" << std::endl;
+        std::cout << "💀ClapTrap " << _name << " has no energy to attack!" << std::endl;
 }
 
 //Hit points (10), representing the health of the ClapTrap
