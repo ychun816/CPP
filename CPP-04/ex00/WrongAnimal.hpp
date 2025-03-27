@@ -1,18 +1,23 @@
 #ifndef WRONGANIMAL_HPP
 #define WRONGANIMAL_HPP
 
-#include "Animal.hpp"
-#include "WrongCat.hpp"
+// #include "WrongCat.hpp"//CANNOT INCLUDE!
+#include <iostream>
+#include <string>
 
-class WrongAnimal : public Animal
+class WrongAnimal
 {
+    protected:
+        std::string _type;
+
     public:
         WrongAnimal();//default construct
-        WrongAnimal(WrongAnimal& other);//copy
-        WrongAnimal operator=(WrongAnimal& other);//assign operator
-        ~WrongAnimal();//destruc
-    
-    
+        WrongAnimal(const WrongAnimal& other);//copy
+        WrongAnimal& operator=(const WrongAnimal& other);//assign operator
+        virtual ~WrongAnimal();//destruc
+
+    	void makeSound() const;// Non-virtual, no polymorphism
+        std::string getType() const;
 };
 
 #endif

@@ -1,16 +1,17 @@
 #ifndef WRONGCAT_HPP
 #define WRONGCAT_HPP
 
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
 class WrongCat : public WrongAnimal
 {
     public:
-        WrongCat ();//default construct
-        WrongCat (WrongCat & other);//copy
-        WrongCat  operator=(WrongCat & other);//assign operator
-        ~WrongCat ();//destruc
-        
+        WrongCat();//default construct
+        WrongCat(const WrongCat& other);//copy
+        WrongCat& operator=(const WrongCat& other);//assign operator
+        ~WrongCat();//destruc
+    
+        void makeSound(void) const;
 };
 
 #endif

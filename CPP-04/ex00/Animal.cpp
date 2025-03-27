@@ -1,7 +1,7 @@
 #include "Animal.hpp"
 
 //con-de structs
-Animal::Animal() : _type("Default")//default construct
+Animal::Animal() : _type("DEFAULT")//default construct
 {
     std::cout << "Animal " << _type << " is created" << std::endl;
 }
@@ -16,19 +16,19 @@ Animal& Animal::operator=(const Animal& other)//assign operator
 {
     if (this != &other)
         _type = other._type;
-    std::cout << "Animal " << _type << " has been assigned!" << std::endl;
+    std::cout << "Animal " << _type << " has been assigned" << std::endl;
     return (*this);
 }
 
 Animal::~Animal()//destruc -> virtual only put in header 
 {
-    std::cout << "Animal is destroyed" << std::endl;
+    std::cout << "Animal " << _type << " is destroyed" << std::endl;
 }
 
 //funcs
 void Animal::makeSound(void) const
 {
-    std::cout << "Animal makes a sound" << std::endl;
+    std::cout << "Animal " << _type << " makes a sound" << std::endl;
 }
 
 std::string Animal::getType(void) const
