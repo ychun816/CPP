@@ -3,12 +3,12 @@
 //con-de structs
 Dog::Dog()//default construct
 {
-    _type = "Dog";
+    _type = "defaultDog";
     std::cout << "Dog " << _type << " is created" << std::endl;
 }
-Dog::Dog(const Dog& other) _type(other._type) //copy
+Dog::Dog(const Dog& other) //Animal(other)  // Explicitly call base class copy constructor//_type(other._type) //copy
 {
-    // *this = other;//_type = other._type;  // Manually copying the member variable
+    *this = other;//_type = other._type;  // Manually copying the member variable
     std::cout << "Dog " << _type << " has been copied" << std::endl;
 }
 Dog& Dog::operator=(const Dog& other)//assign operator
