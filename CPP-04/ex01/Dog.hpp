@@ -6,7 +6,9 @@
 
 class Dog : public Animal  // Correct class inheritance
 {
-public:
+    private:
+        Brain *brain;
+    public:
     Dog();  // Default constructor
     Dog(const Dog& other);  // Copy constructor
     Dog& operator=(const Dog& other);  // Assignment operator

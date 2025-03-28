@@ -3,8 +3,8 @@
 
 int main() 
 {
-    //Create array of Animals: 2 dogs and 2 cats to check
-    std::cout << "========== Create Animals ==========" << std::endl;
+    /*Create array of Animals: 2 dogs and 2 cats to check*/
+    std::cout << "\n========== Create Animals ==========" << std::endl;
     const Animal* animals[4];
 	animals[0] = new Dog();
 	std::cout << std::endl;
@@ -15,35 +15,44 @@ int main()
     animals[3] = new Dog();
 	std::cout << std::endl;
 
-    //Deep Copy Test ->Dog brain
-    //Creates a Dog dynamically.
-    //set the first idea in the dog's Brain.
-    std::cout << "========== Deep Copy test ==========" << std::endl;
+    /* Deep Copy Test ->Dog brain
+    - Creates a Dog dynamically
+    - Set the first idea in the dog's Brain
+	*/
+    std::cout << "\n========== Deep Copy test ==========" << std::endl;
     Dog *dog1 = new Dog();
-    dog1->getBrain()->setIdea(0, "Bite mama's shoes!!");
-    std::cout << std::endl;
+    dog1->getBrain()->setIdea(0, "Bite mama's shoes👠!!");
+	std::cout << "Dog1 Brain Ideas[0] : " << dog1->getBrain()->getIdea(0) << std::endl;
 
-    //Copy Constructor Test
-    //Copies dog1 into dog2 using the copy constructor.
-    std::cout << "========== Copy Constructor test ==========" << std::endl;
+	/* Copy Constructor Test
+    - Copies dog1 into dog2 using the copy constructor.
+	*/
+    std::cout << "\n========== Copy Constructor test ==========" << std::endl;
     Dog dog2_cp(*dog1);
-    std::cout << std::endl;
+	std::cout << "Dog1 Brain Ideas[0] : " << dog2_cp.getBrain()->getIdea(0) << std::endl;
+	std::cout << "Dog2(copied frm Dog1) Brain Ideas[0]: " << dog2_cp.getBrain()->getIdea(0) << std::endl;
 
-    //Assignment Operator Test
-    //Creates a temporary Dog object dog3 (stack-allocated).
-    //Sets an idea in dog3's brain: "Another idea".
-    //Assigns dog3 = dog2; (this tests the operator= overload).
-    //Prints dog3's idea again to verify if dog3 correctly copied dog2.
-    std::cout << "========== Assignment Operator test ==========" << std::endl;
+	/* Assignment Operator Test
+    - Creates a temporary Dog object dog3 (stack-allocated).
+    - Sets an idea in dog3's brain: "Another idea".
+    - Assigns dog3 = dog2; (this tests the operator= overload).
+    - Prints dog3's idea again to verify if dog3 correctly copied dog2.
+    */
+	std::cout << "\n========== Assignment Operator test ==========" << std::endl;
     Dog dog3;
-    //->set idea in dog3
-    dog3 = dog2;
-    //print to check if correclty assigned 
+    //->set idea in dog3 & print to check
+	dog3.getBrain()->setIdea(0, "Behave🦴?");
+	std::cout << "Dog3 Brain Ideas[0] : " << dog3.getBrain()->getIdea(0) << std::endl;
+	//assign dog3 = dog2_cp
+    dog3 = dog2_cp;
+    //print to check if correclty assigned
+	std::cout << "Dog3 (assigned frm Dog2) Brain Ideas[0] : " << dog3.getBrain()->getIdea(0) << std::endl;
 
-    //cleanup
-    //Deletes all dynamically allocated Animal objects.
-    //delete dog1 in the end outside of loop -> avoid leak
-    std::cout << "========== Cleanup ==========" << std::endl;
+    /*cleanup
+    - Deletes all dynamically allocated Animal objects.
+    - Delete dog1 in the end outside of loop -> avoid leak
+    */
+	std::cout << "\n========== Cleanup ==========" << std::endl;
     for (int i = 0; i < 4; i++)
     {
         delete animals[i];

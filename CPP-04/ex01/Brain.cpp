@@ -39,16 +39,17 @@ Brain::~Brain()//decons
 
 void Brain::setIdea(int index, const std:: string& idea)
 {
-    if (int index >= 0 && int index < 100)
+    int i = 0;
+    if (index >= 0 && index < 100)
     {
         ideas[i] = idea;
     }
-    std::cout << "Idea [ " << index << " ] is set: " << idea << std::endl;
+    std::cout << "🧠 Idea [ " << index << " ] is set: " << idea << std::endl;
 }
 
 std::string Brain::getIdea(int index) const
 {
-    return (index >= 0 && index < 100) ? "Invalid index (Range: 0 - 99)\n";
+    return ((index >= 0 && index < 100) ? ideas[index] : "Invalid index (Range: 0 - 99)\n");
 }
 
 /* NOTES ON COPY CONSTRUCT
