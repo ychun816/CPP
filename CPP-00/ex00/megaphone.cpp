@@ -1,7 +1,11 @@
 #include <iostream>
 
-using namespace std;
+// using namespace std;
 
+/**
+ * 1. loop through the args
+ * 2. get len of each str -> to upper 
+ */
 int main(int ac, char *av[])
 {
     if (ac == 1)

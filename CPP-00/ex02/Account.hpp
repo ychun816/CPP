@@ -7,7 +7,6 @@
 //                                                                            //
 // ************************************************************************** //
 
-
 #pragma once// Ensures the header file is included only once during compilation
 #ifndef __ACCOUNT_H__
 #define __ACCOUNT_H__
@@ -17,7 +16,6 @@
 // ************************************************************************** //
 
 class Account {
-
 
 public:
 
@@ -38,7 +36,6 @@ public:
 	bool	makeWithdrawal( int withdrawal );
 	int		checkAmount( void ) const;
 	void	displayStatus( void ) const;
-
 
 private:
 
@@ -68,6 +65,5 @@ private:
 // -*- mode: c++-mode;                                                       -*-
 // -*- fill-column: 75; comment-column: 75;                                  -*-
 // ************************************************************************** //
-
 
 #endif /* __ACCOUNT_H__ */

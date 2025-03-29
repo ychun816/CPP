@@ -1,14 +1,7 @@
 #include "Contact.hpp"
 
-//constructor
-Contact::Contact(void)
-{
-}
-
-//decontructor
-Contact::~Contact(void)
-{
-}
+Contact::Contact(void){}
+Contact::~Contact(void){}
 
 //set contact value
 void   Contact::setFirstname(std::string str)
@@ -59,16 +52,15 @@ bool check_is_nbr(std::string nbr)
 /** trim space
  * (1) Erase leading spaces (frm str start)
  * (2) Erase trailing spaces (frm str end)
- * 
  * @note std::string& str: the parameter str is passed by reference (&)
  * @note [function] str.erase(start_position, length);
  * Find the first character in a string that is NOT part of a given set of characters
  * @note str.erase(str.find_first_not_of(' ') + 1);
  * Returns the index of the last non-space character.
  * +1: We add 1 because we want to remove the space after the last non-space character, which means we need to start erasing after the last non-space character.
-@note 
-std::string::npos is a constant representing the largest possible value for size_t.
-ndicate that a search for a substring failed (i.e., the substring was not found).
+ * @note std::string::npos 
+ * -> is a constant representing the largest possible value for size_t.
+ * -> indicate that a search for a substring failed (i.e., the substring was not found).
  */
 std::string trim_space(std::string& str)
 {
@@ -76,7 +68,7 @@ std::string trim_space(std::string& str)
 
     str.erase(0, str.find_first_not_of(' '));
     end = str.find_last_not_of(' ');
-    if (end != std::string::npos)//checks if the substring was found 
+    if (end != std::string::npos)
         str.erase(end + 1);
     return str;
 }
@@ -91,7 +83,7 @@ bool    Contact::createContact(void)
     std::string firstName;
     std::string lastName;
     std::string nickName;
-    std::string phoneNr;//need atoi?
+    std::string phoneNr;
     std::string secret;
 
     //firstname
@@ -120,8 +112,7 @@ bool    Contact::createContact(void)
     {
         std::cout << "Please enter your phone number: ";
         std::getline(std::cin, phoneNr);
-        //check if is nbr
-        if ( check_is_nbr(phoneNr) == false)
+        if ( check_is_nbr(phoneNr) == false)//check if is nbr
         {
             std::cout << "Enter valid phone number, plz?" << std::endl;
             phoneNr.clear();
@@ -129,7 +120,6 @@ bool    Contact::createContact(void)
         }
         if (std::cin.eof()) return false;
     }
-///should i add length limit??
 
     //secret
     while (secret.empty())
@@ -149,8 +139,7 @@ bool    Contact::createContact(void)
     return true;
 }
 
-/** display contact
- */
+/** display contact */
  void Contact::displayContact(void) const
  {
     std::cout << "First Name: " << getFirstname() << std::endl;
