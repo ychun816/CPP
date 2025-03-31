@@ -28,3 +28,4 @@ https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rkVAGOghyg
 
 ### 4️⃣ CPP-04 (Subtype Polymorphism, Abstract Classes, and Interfaces)
 
+### 4️⃣ CPP-05 (Nested class, Try/Catch, throw())
