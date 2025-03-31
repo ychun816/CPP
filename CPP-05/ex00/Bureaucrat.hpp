@@ -17,15 +17,21 @@ class Bureaucrat
 
         std::string getName() const;
         int getGrade() const;
-        // void incrementGrade();
-        // void decrementGrade();
         
+        void incrementGrade();
+        void decrementGrade();
+        
+        //nested classes
+        //custom exception classes
+        class GradeTooLowException;
+        class GradeTooHighException;
+    
     private:
         std::string _name;
         int _grade;
 };
 
-static std::ostream& operator<<(std::ostream& output, const Bureaucrat& bureaucrat);
+std::ostream& operator<<(std::ostream& output, const Bureaucrat& bureaucrat);
 
 #endif 
 
