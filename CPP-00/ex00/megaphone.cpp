@@ -18,6 +18,7 @@ int main(int ac, char *av[])
         std::string str = av[i];
         for (int j = 0; j < str.length(); j++)
             std::cout << (char)std::toupper(str[j]);
+        std::cout << " ";
     }
     std::cout << std::endl;
     return (0);
