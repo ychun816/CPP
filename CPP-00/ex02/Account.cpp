@@ -99,10 +99,10 @@ void	Account::makeDeposit( int deposit )
 
     _displayTimestamp();
     std::cout << "index:" << this->_accountIndex << ";"
-              << "p_amount" << (this->_amount - deposit) << ";"
+              << "p_amount:" << (this->_amount - deposit) << ";"
               << "deposit:" << deposit << ";"
               << "amount:" << this->_amount << ";"
-              << "nb_deposits:" << ":" << this->_nbDeposits << std::endl; 
+              << "nb_deposits:" << this->_nbDeposits << std::endl; 
 }
 
 /** makeWithdrawal
@@ -113,7 +113,7 @@ bool	Account::makeWithdrawal( int withdrawal )
 {
     _displayTimestamp();
     std::cout << "index:" << this->_accountIndex << ";"
-              << "p_amount" << this->_amount << ":";
+              << "p_amount:" << this->_amount << ":";
 
     // Checks if the account has enough money for withdrawal
     if (this->_amount >= withdrawal)
