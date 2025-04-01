@@ -7,7 +7,7 @@ int main()
     {
         std::cout << "==== Create a Person A ====" << std::endl;
         Bureaucrat validPerson("BOB", 10);
-        Form signableForm("Easy Form", 11, 11);//signable , executable
+        Form signableForm("CONTRACT", 11, 11);//signable , executable
         std::cout << signableForm << std::endl;
     }
     catch(const std::exception& e)

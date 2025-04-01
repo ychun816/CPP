@@ -1,11 +1,12 @@
 #ifndef FORM_HPP
 # define FORM_HPP
 
-#include "Bureaucrat.hpp"
+// #include "Bureaucrat.hpp"
 #include <iostream>
 #include <string>
+#include <exception>
 
-// class Bureaucrat;  // ✅ Forward declaration (fixes circular dependency)
+class Bureaucrat;  // ✅ Forward declaration (fixes circular dependency)
 
 //private attributes:
 // • A constant name.
@@ -37,15 +38,15 @@ class Form
         
         ////member funcs
         //getter
-        std::string getName();
+        std::string getName() const;
         int getSignGrade() const;
         int getExeGrade() const;
-        bool isSigned();
+        bool isSigned() const;
 
         ////nested class
         //Form::GradeTooHighException and Form::GradeTooLowException
-        class GradeTooLowException;
-        class GradeTooHighException;
+        class GradeTooLowException{};
+        class GradeTooHighException{};
 
 };
 

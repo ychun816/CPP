@@ -1,11 +1,12 @@
 #ifndef BRUEAUCRAT_HPP
 # define BRUEAUCRAT_HPP
 
-#include "Form.hpp"
+// #include "Form.hpp"
 #include <iostream>
 #include <string>
+#include <exception>
 
-// class Form;
+class Form;
 
 //A constant name
 //A grade that ranges from 1 (highest possible grade) to 150 (lowest possible grade
