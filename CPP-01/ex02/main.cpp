@@ -40,5 +40,5 @@ int main()
     std::cout << "➝ [Value]" << std::endl;
     std::cout << "✰ value of the string variable: " << str << std::endl;
     std::cout << "✰ value pointed to by stringPTR: " << *stringPTR << std::endl;
-    std::cout << "✰ value pointed to by stringPTR: " << stringREF << std::endl;
+    std::cout << "✰ value pointed to by stringREF: " << stringREF << std::endl;
 }
