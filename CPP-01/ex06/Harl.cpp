@@ -1,49 +1,50 @@
 #include "Harl.hpp"
-using namespace std;
 
+//CONSTRUCTOR & DESTRUCTOR
 Harl::Harl(){}
 Harl::~Harl(){}
 
-//private helper funcs
+//PRIVATE FUNCS
 void Harl::debug( void )
 {
-    cout << "[DEBUG]" << endl;
-    cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special- ketchup burger. I really do!" << endl;
+    std::cout << "[DEBUG]" << std::endl;
+    std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special- ketchup burger. I really do!" << std::endl << std::endl;
 }
 
 void Harl::info( void )
 {
-    cout << "[INFO]" << endl;
-    cout << "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!" << endl;
+    std::cout << "[INFO]" << std::endl;
+    std::cout << "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!" << std::endl << std::endl;
 }
 
 void Harl::warning( void )
 {
-    cout << "[WARNING]" << endl;
-    cout << "I think I deserve to have some extra bacon for free. I’ve been coming for years, whereas you started working here just last month." << endl;
+    std::cout << "[WARNING]" << std::endl;
+    std::cout << "I think I deserve to have some extra bacon for free. I’ve been coming for years, whereas you started working here just last month." << std::endl << std::endl;
 }
 
 void Harl::error( void )
 {
-    cout << "[ERROR]" << endl;
-    cout << "This is unacceptable! I want to speak to the manager now." << endl;
+    std::cout << "[ERROR]" << std::endl;
+    std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl << std::endl;
 }
 
-
-//@note
-//switch statement is used to determine which log level was matched
-//create index -> essentially help map the string input (level) to a specific function call (in this case, one of the functions in the funcPtr[] array).
-//int index = -1; // Initialize the index variable with -1 (default invalid value)
-
-void Harl::filterComplains( std::string level)
+//PULIC FUNCS
+/**
+ * @note
+ * switch statement is used to determine which log level was matched
+ * create index -> essentially help map the string input (level) to a specific function call (in this case, one of the functions in the funcPtr[] array).
+ * int index = -1; // Initialize the index variable with -1 (default invalid value -> indicate no match)
+*/
+void Harl::filterComplains( std::string cmd)
 {
-    string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-    void (Harl::*funcPtr[])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error}; //put & for the address 
+    string cmds[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+    void (Harl::*funcPtr[])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error}; 
 
-    int index = -1; // Default to an invalid value, indicating no match
+    int index = -1;
     for (int i = 0; i < 4; i++)
     {
-        if (level == levels[i])
+        if (cmd == cmds[i])
         {
             index = i;    
             break;// Exit loop once match is found
@@ -71,7 +72,6 @@ void Harl::filterComplains( std::string level)
 
 
 /* GENERAL SYNTAX FOR SWITCH
-
 switch (expression) {
     case value1:
         // Code to execute if expression == value1
@@ -86,5 +86,4 @@ switch (expression) {
     default:
         // Code to execute if no case matches
 }
-
 */

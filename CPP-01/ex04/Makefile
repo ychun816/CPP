@@ -29,7 +29,7 @@ clean:
 #$(DEPS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) test.txt.replace
 	@echo "$(BLUE_BBG)$(NAME) REMOVED!$(RESET)"
 
 re: fclean all

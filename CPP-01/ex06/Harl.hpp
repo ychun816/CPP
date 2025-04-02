@@ -9,10 +9,10 @@ using namespace std;
 class Harl
 {
     public:
-        Harl();//do i need?
-        ~Harl();//do i need?
+        Harl();
+        ~Harl();
 
-        void    filterComplains( std::string level );//decide which function to display
+        void    filterComplains( std::string level );//decide which function to display according to input
         
     private:
         void debug( void );
