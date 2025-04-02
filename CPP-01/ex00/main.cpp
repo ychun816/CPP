@@ -14,19 +14,19 @@ int main()
     std::getline(std::cin, input_name);
     std::cout << std::endl;
 
-    //zombie in stack -> manually allocate
+    //zombie in stack -> destroyed automatically
+    std::cout << "===== Stack Zombie =====" << std::endl;
+    // Zombie zb_stack;
+    randomChump(input_name);//Zombie zb_stack -> auto destroyed
+    std::cout << std::endl;
+
+    //zombie in heap -> allocate & destroy manually
+    std::cout << "===== Heap Zombie =====" << std::endl;
     Zombie *zb_heap;
-    //zombie in heap -> destroyed automatically
-    Zombie zb_stack;
-
-
-    // Heap zombie
     zb_heap = newZombie(input_name);
     zb_heap->announce();
     delete  zb_heap;
+    std::cout << std::endl;
 
-    std::cout << "--------------------------" << std::endl;
-
-    // Stack zombie (auto destroyed) 
-    randomChump(input_name);
+    return (0);
 }

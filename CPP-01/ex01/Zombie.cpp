@@ -7,7 +7,7 @@ Zombie::Zombie()
 Zombie::~Zombie()
 {
     if (!_name.empty())
-        std::cout << _name << " Zombie is Destryoed!" << std::endl;//destroyed
+        std::cout << _name << " Zombie is destryoed!" << std::endl;//destroyed
 }
 
 //setname

@@ -2,13 +2,13 @@
 
 Zombie::Zombie()
 {
-    // std::cout << _name << " Zombie is Created!" << std::endl;//created
+    std::cout << "default Zombie is created (Constructor)" << std::endl;//created
 }
 
 Zombie::~Zombie()
 {
     if (!_name.empty())
-        std::cout << _name << " Zombie is Destryoed!" << std::endl;//destroyed
+        std::cout << _name << " Zombie is destroyed (Destructor)" << std::endl;//destroyed
 }
 
 //setname

@@ -4,9 +4,16 @@
 #include "Weapon.hpp"
 #include <iostream>
 
-//They both have a Weapon and a name.
-//While HumanA takes the Weapon in its constructor, HumanB does not.
-//HumanB may not always have a weapon, whereas HumanA will always be armed.
+/** Rules for HumanA & HumanB:
+ * - They both have a Weapon and a name
+ * - While HumanA takes the Weapon in its constructor, HumanB does not
+ * - HumanB may not always have a weapon, whereas HumanA will always be armed
+*/
+/** @note Weapon* _weaponB;
+ * - Can be null
+ * - Can be assigned (=changed to point to something else)
+ * - Change to the pointed object affect only this pointer
+ */
 class HumanB
 {
     public:
@@ -18,7 +25,7 @@ class HumanB
 
     private:
         std::string _nameB;
-        Weapon* _weaponB;//may have a weapon or not 
+        Weapon* _weaponB;//may not always have weapon
 };
 
 #endif
