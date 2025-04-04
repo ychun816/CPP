@@ -3,34 +3,26 @@
 
 #include <iostream>
 
+/**
+ * @note  static const int fractionalBits = 8;
+ * A static constant integer to store the number of fractional bits.
+ * Its value will always be the integer literal 8
+ */
 class Fixed
 {
     private:
-        int _value;//An integer to store the fixed-point number value
-        static const int fractionalBits = 8;//A static constant integer to store the number of fractional bits. Its value will always be the integer literal 8
+        int _value;
+        static const int fractionalBits = 8;
 
     public:
-        //A default constructor 
-        Fixed();//_value(0);
-        Fixed(const Fixed& other);//A copy constructor
-        Fixed& operator=(const Fixed& other);//A copy assignment operator overload
-        ~Fixed();// Destructor
+        Fixed();//default
+        Fixed(const Fixed& other);//copy constructor
+        Fixed& operator=(const Fixed& other);//assign
+        ~Fixed();//destructor
 
-        //get raw int value
-        int getRawBits( void ) const;
-
-        //set raw int value
-        void setRawBits( int const raw );
+        //MEMBER FUNCS
+        int getRawBits( void ) const;//get raw int value
+        void setRawBits( int const raw );//set raw int value
 };
 
 #endif
-
-
-/*
-Implement Orthodox Canonical Form: 
-- Default constructor
-- Copy constructor
-- Copy assignment operator (operator=)
-- Destructor
-
-*/
