@@ -1,6 +1,6 @@
 #include "Fixed.hpp"
 
-////CONSTRUCTOR
+//CONSTRUCTOR & DESTRUCTOR
 //default
 Fixed::Fixed():_value(0)
 {
@@ -45,7 +45,8 @@ Fixed::~Fixed()
 {
     std::cout << "Destructor called" << std::endl;
 }
-////RAW BITS
+
+////MEMBER FUNCS
 void Fixed::setRawBits( int const raw )
 {
     this->_value = raw;
@@ -56,7 +57,7 @@ int Fixed::getRawBits( void ) const
     return (this->_value);
 }
 
-////CONVERTER
+//CONVERTER
 //float
 //(1 << _fractionalBits) computes 2^_fractionalBits. If _fractionalBits = 8, then 1 << 8 = 256
 //_value / 256 converts the fixed-point value to a floating-point number.

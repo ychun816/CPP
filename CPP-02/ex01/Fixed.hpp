@@ -25,10 +25,8 @@ Handle integers and floating-point numbers and allows conversion between them
 class Fixed
 {
     private:
-        int _value;// Stores the fixed-point number
+        int _value;
         static const int _fractionalBits = 8; 
-        // Number of fractional bits
-        //because it is a compile-time constant and does not require a separate definition in the .cpp file.
     
     public:
         //constructor
@@ -39,6 +37,7 @@ class Fixed
         Fixed& operator=(const Fixed& other);//assign constructor
         ~Fixed();//destructor
 
+        //MEMBER FUNCS
         //get set raw bits
         void setRawBits( int const raw );
         int getRawBits( void ) const;

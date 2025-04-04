@@ -18,6 +18,7 @@ class Fixed
         Fixed();//default
         Fixed(const Fixed& other);//copy constructor
         Fixed& operator=(const Fixed& other);//assign
+        //init int
         ~Fixed();//destructor
 
         //MEMBER FUNCS
