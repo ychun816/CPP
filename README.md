@@ -25,8 +25,8 @@ https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rJndvhisye
 
 + ex00 | following Orthodox Canonical class form : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/ry9Uc8TTyl
 + ex01
-  Fixed- Point : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/S1uenO661l
-  Operator overload : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/BJRoauTTkx
+- Fixed- Point : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/S1uenO661l
+- Operator overload : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/BJRoauTTkx
 
 
 ### 3️⃣ CPP-03 (Inheritance)
