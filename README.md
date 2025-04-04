@@ -1,4 +1,4 @@
-# C++
+# C++ for newbs
 
 #### 📌 Some Basics Concepts for C++ (after learning C)
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/Sy6jdBIcJx
