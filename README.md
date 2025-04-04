@@ -1,4 +1,4 @@
-# C++
+# C++ for newbs
 
 #### 📌 Some Basics Concepts for C++ (after learning C)
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/Sy6jdBIcJx
@@ -23,7 +23,10 @@ https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rJndvhisye
 
 ### 2️⃣ CPP-02 (Following Orthodox Canonical class form / Understanding Fixed-Point, Operator Overload)
 
-+ ex00 following Orthodox Canonical class form : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/ry9Uc8TTyl
++ ex00 | following Orthodox Canonical class form : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/ry9Uc8TTyl
++ ex01
+- Fixed- Point : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/S1uenO661l
+- Operator overload : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/BJRoauTTkx
 
 
 ### 3️⃣ CPP-03 (Inheritance)
