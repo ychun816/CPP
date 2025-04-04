@@ -8,9 +8,8 @@ Fixed::Fixed():_value(0)
 }
 
 //copy
-Fixed:: Fixed(const Fixed& other)
+Fixed::Fixed(const Fixed& other) : _value(other.getRawBits())
 {
-    this->_value = other.getRawBits(); // Copy the value properly
     std::cout << "Copy constructor called" << std::endl;
 }
 
@@ -27,9 +26,8 @@ Fixed& Fixed::operator=(const Fixed& other)
 /** init int value
  * Multiply by 2^8 => << frationalBits
  */
-Fixed::Fixed(const int intValue)
+Fixed::Fixed(const int intValue) : _value(intValue << _fractionalBits)
 {
-    _value = intValue << _fractionalBits;
     std::cout << "Int constructor called" << std::endl;
 }
 
@@ -37,9 +35,8 @@ Fixed::Fixed(const int intValue)
  * use roundf() to get proximate int
  * roundf(floatValue * (1 << _fractionalBits) => roundf(floatValue * 256)
  */
-Fixed::Fixed(const float floatValue)
+Fixed::Fixed(const float floatValue) : _value(roundf(floatValue * (1 << _fractionalBits)))
 {
-    _value =  roundf(floatValue * (1 << _fractionalBits));
     std::cout << "Float constructor called" << std::endl;
 }
 
@@ -85,3 +82,27 @@ std::ostream& operator<<(std::ostream& output, const Fixed& fixed)
     output << fixed.toFloat();// Convert fixed-point to float for printing
     return (output);
 }
+
+/* Alternatives
+
+//copy
+Fixed:: Fixed(const Fixed& other)
+{
+    this->_value = other.getRawBits(); // Copy the value properly
+    std::cout << "Copy constructor called" << std::endl;
+}
+
+//init value -int 
+Fixed::Fixed(const int intValue)
+{
+    _value = intValue << _fractionalBits;
+    std::cout << "Int constructor called" << std::endl;
+}
+
+//init value -float
+Fixed::Fixed(const float floatValue)
+{
+    _value =  roundf(floatValue * (1 << _fractionalBits));
+    std::cout << "Float constructor called" << std::endl;
+}
+*/

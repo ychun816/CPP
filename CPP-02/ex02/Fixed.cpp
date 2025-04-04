@@ -2,7 +2,9 @@
 
 ////CONSTRUCTORS
 Fixed::Fixed():_value(0)
-{}
+{
+    std::cout << "Default constructor called" << std::endl;
+}
 
 //int constructor 
 Fixed::Fixed(const int intValue)
@@ -17,40 +19,27 @@ Fixed::Fixed(const float floatValue)
 }
 
 //copy contructor
-/*
-Why Use value(other.value) Instead of value = other.value;?
-Efficiency:
-Using the initializer list (value(other.value)) directly initializes value when memory is allocated.
-If we use assignment (value = other.value; inside the constructor body), value is first default-initialized and then assigned, which is less efficient.
-*/
 Fixed::Fixed(const Fixed& other):_value(other._value)
 {
     // this->_value = other.getRawBits();
+    std::cout << "Copy constructor called" << std::endl;
 }
 
 //assignment constructor
 Fixed& Fixed::operator=(const Fixed& other)
 {
+    std::cout << "Copy assignment operator called" << std::endl;
     if (this != &other)
         this->_value = other._value;
         // this->_value = other.getRawBits();
     return (*this);
 }
 
-////RAW BITS
-// void Fixed::setRawBits( int const raw )
-// {
-//     this->_value = raw;
-// }
-
-// int Fixed::getRawBits( void ) const
-// {
-//     return (this->_value);
-// }
-
-//destructorm
+//destructor
 Fixed::~Fixed()
-{}
+{
+    std::cout << "Destructor called" << std::endl;
+}
 
 ////CONVERTOR
 float Fixed::toFloat(void) const
@@ -94,20 +83,24 @@ bool Fixed::operator!=(const Fixed& other) const
     return (_value != other._value);
 }
 
-////cal operator
-//Calls the toFloat() method on the current object (this)
-//Converts the current Fixed object to a floating-point number.
-//Calls toFloat() on the other object (another Fixed number).
-//Converts other to a float.
-//Adds the floating-point values of both Fixed numbers.
+////calculate operator
+/**
+ * Call the toFloat() method on the current object (this)
+ * Convert the current Fixed object to a floating-point number
+ * Call toFloat() on the other object (another Fixed number)
+ * Convert other to a float
+ * Adds the floating-point values of both Fixed numbers
+ */
 Fixed Fixed::operator+(const Fixed& other) const
 {
     return (Fixed) (this->toFloat() + other.toFloat());
 }
+
 Fixed Fixed::operator-(const Fixed& other) const
 {
     return (Fixed) (this->toFloat() - other.toFloat()); 
 }
+
 Fixed Fixed::operator*(const Fixed& other) const
 {
     return (Fixed) (this->toFloat() * other.toFloat());  
@@ -118,20 +111,20 @@ Fixed Fixed::operator/(const Fixed& other) const
     if (other._value == 0)
     {
         std::cerr << "Error: Cannot Devide 0" << std::endl;
-        return false;//1?
+        return false;
     }
     return Fixed(this->toFloat() / other.toFloat());
 }
 
 /**
-@notes Pre-increment/decrement
-- modifies the object and returns a reference to it
-- operation happen before returning => return *this as a reference to the current object.
-- returning a reference (Fixed&) avoids making a copy, improving performance
-
-@notes Post-increment/decrement
-- returns the original value before modifying the object.
-- Need to return the previous value => store the current object (temp = *this
+ * @note Pre-increment/decrement
+ * - modifies the object and returns a reference to it
+ * - operation happen before returning => return *this as a reference to the current object.
+ * - returning a reference (Fixed&) avoids making a copy, improving performance
+ * 
+ * @note Post-increment/decrement
+ * - returns the original value before modifying the object.
+ * - Need to return the previous value => store the current object (temp = *this
 */
 //++increment
 Fixed& Fixed::operator++()
@@ -140,10 +133,12 @@ Fixed& Fixed::operator++()
     return (*this);// Return the modified object
 }
 
-//increment++
-//Creates a temporary copy of the object
-//Increase the original object
-//Returns the tmp (original value before increment/decrement)
+
+/** //increment++
+ * - Creates a temporary copy of the object
+ * - Increase the original object
+ * - Returns the tmp (original value before increment/decrement
+ */
 Fixed Fixed::operator++(int)
 {
     Fixed og = *this;
@@ -151,14 +146,14 @@ Fixed Fixed::operator++(int)
     return (og);
 }
 
-////--decrement
+//--decrement
 Fixed& Fixed::operator--()
 {
     _value = _value -1;//decrease first
     return (*this);
 }
 
-////decrement--
+//decrement--
 Fixed Fixed::operator--(int)
 {
     Fixed og = *this;
