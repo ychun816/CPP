@@ -31,14 +31,14 @@ class Fixed
     public:
         //constructor
         Fixed();//default constructor
-        Fixed(const int intValue);//int constructor
-        Fixed(const float floatValue);//float constructor
         Fixed(const Fixed& other);//copy constructor
         Fixed& operator=(const Fixed& other);//assign constructor
+        Fixed(const int intValue);//int constructor
+        Fixed(const float floatValue);//float constructor
         ~Fixed();//destructor
 
         //MEMBER FUNCS
-        //get set raw bits
+        //set&get raw bits
         void setRawBits( int const raw );
         int getRawBits( void ) const;
 
