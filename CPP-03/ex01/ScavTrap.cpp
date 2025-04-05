@@ -12,43 +12,40 @@ ScavTrap::ScavTrap() : ClapTrap()  // Call to base class default constructor
 }
 
 //copy
+//no need to assign every same variable again!!
 ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other)
 {
-    ClapTrap::operator=(other); // Use ClapTrap's assignment operator
-    _name = other._name;
-    _hitPoints = other._hitPoints;
-    _energyPoints = other._energyPoints;
-    _attackDamage = other._attackDamage;
-    std::cout << "ClapTrap " << _name << "is copied!" << std::endl;
+    std::cout << "------ Child Constructor) ScavTrap " << _name << " Copied ------" << std::endl;
 }
 
 //assign
+// Use ClapTrap's assignment operator
+//no need to assign every same variable again!!
 ScavTrap& ScavTrap::operator=(const ScavTrap& other)
 {
     if (this != &other)
     {
-        ClapTrap::operator=(other); // Use ClapTrap's assignment operator
-        _name = other._name;
-        _hitPoints = other._hitPoints;
-        _energyPoints = other._energyPoints;
+        ClapTrap::operator=(other);
         _attackDamage = other._attackDamage;
     }
-    std::cout << "ScavTrap " << _name << "is assigned!" << std::endl;
+    std::cout << "------ (Child Constructor) ScavTrap " << _name << " Assigned ------" << std::endl;
     return (*this);
 }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name) // Call to base class constructor with name
+//set name
+//Although _name is inherited, still explicitly assign it
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
-    _name = name; //Although _name is inherited, still explicitly assign it.
+    _name = name;
     _hitPoints = 100;
     _energyPoints = 50;
     _attackDamage = 20;
-    std::cout << "------ (Child Constructor) ScavTrap created : " << _name << " ------" << std::endl;
+    std::cout << "------ (Child Constructor) ScavTrap Created : " << _name << " ------" << std::endl;
 }
 
 ScavTrap::~ScavTrap()
 {
-    std::cout << "------ (Child Destructor) ScavTrap closed : " << _name << " ------" << std::endl;
+    std::cout << "------ (Child Destructor) ScavTrap Destroyed : " << _name << " ------" << std::endl;
 }
 
 //member funcs

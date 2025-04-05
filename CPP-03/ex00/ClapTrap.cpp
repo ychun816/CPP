@@ -83,18 +83,6 @@ void ClapTrap::takeDamage(unsigned int amount)
         _hitPoints -= amount;
         std::cout << "💥ClapTrap " << _name << " takes " << amount << " points of damage! Remaining HP: " << _hitPoints << std::endl;
     }
-
-    // if (amount > _hitPoints) 
-    //     std::cout << "🚫ClapTrap " << _name << " is already destroyed! Can't take damage at all!" << std::endl;
-    // else 
-    // {
-    //     _hitPoints = _hitPoints - amount;
-    //     std::cout << "💥ClapTrap " << _name << " takes " << amount << " points of damage! Remaining HP: " << _hitPoints << std::endl;
-    //     if (_hitPoints == 0)
-    //     {
-    //         std::cout << "->> 🆘💀Out of HP! ClapTrap " << _name << " cannot take more damage!" << std::endl;
-    //     }
-    // }
 }
 
 //beRepaired
@@ -113,3 +101,20 @@ void ClapTrap::beRepaired(unsigned int amount)
     else
         std::cout << "💀ClapTrap " << _name << " is out of energy and cannot be repaired!" << std::endl << std::endl;
 }
+
+/* ALTERNATIVE
+void ClapTrap::takeDamage(unsigned int amount)
+{
+    if (amount > _hitPoints) 
+        std::cout << "🚫ClapTrap " << _name << " is already destroyed! Can't take damage at all!" << std::endl;
+    else 
+    {
+        _hitPoints = _hitPoints - amount;
+        std::cout << "💥ClapTrap " << _name << " takes " << amount << " points of damage! Remaining HP: " << _hitPoints << std::endl;
+        if (_hitPoints == 0)
+        {
+            std::cout << "->> 🆘💀Out of HP! ClapTrap " << _name << " cannot take more damage!" << std::endl;
+        }
+    }
+}
+*/

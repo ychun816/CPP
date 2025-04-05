@@ -1,49 +1,47 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap()
+FragTrap::FragTrap() : ClapTrap()
 {
     _hitPoints = 100;
     _energyPoints = 100;
     _attackDamage = 30;
 }
 
+//copy
+//no need to assign every variable again!!
+FragTrap::FragTrap(const FragTrap& other) : ClapTrap(other)
+{
+    std::cout << "(Child Constructor) FragTrap " << _name << " copied" << std::endl;
+}
+
+//assign
+//Use ClapTrap's assignment operator
+//no need to assign every variable again!!
+FragTrap& FragTrap::operator=(const FragTrap& other)
+{
+    if (this != &other)
+    {
+        ClapTrap::operator=(other);
+        _attackDamage = other._attackDamage;
+    }
+    std::cout << "(Child Constructor) FragTrap " << _name << " assigned" << std::endl;
+    return (*this);
+}
+
+
 //construtor with name
-FragTrap::FragTrap(std::string name)
+FragTrap::FragTrap(std::string name) : ClapTrap(name) 
 {
     _name = name;
     _hitPoints = 100;
     _energyPoints = 100;
     _attackDamage = 30;
-    std::cout << "𖡼𖤣𖥧𖡼𓋼𖤣𖥧𓋼𓍊 (Grandchild Constructor) FragTrap created : " << _name << " 𖡼𖤣𖥧𖡼𓋼𖤣𖥧𓋼𓍊" << std::endl;
-}
-
-//copy
-FragTrap::FragTrap(const FragTrap& other)
-{
-    _name = other._name;
-    _hitPoints = other._hitPoints;
-    _energyPoints = other._energyPoints;
-    _attackDamage = other._attackDamage;
-    std::cout << "FragTrap " << _name << " copied!" << std::endl;
-}
-
-//assign
-FragTrap& FragTrap::operator=(const FragTrap& other)
-{
-    if (this != &other)
-    {
-        _name = other._name;
-        _hitPoints = other._hitPoints;
-        _energyPoints = other._energyPoints;
-        _attackDamage = other._attackDamage;
-    }
-    std::cout << "FragTrap " << _name << " assigned!" << std::endl;
-    return (*this);
+    std::cout << "(Child Constructor) FragTrap Created : " << _name << std::endl;
 }
 
 FragTrap::~FragTrap()
 {
-    std::cout << "𖡼𖤣𖥧𖡼𓋼𖤣𖥧𓋼𓍊 (GrandChild Destructor) FragTrap closed : " << _name << " 𖡼𖤣𖥧𖡼𓋼𖤣𖥧𓋼𓍊" << std::endl;
+    std::cout << "(Child Constructor) FragTrap Destroyed : " << _name << std::endl;
 }
 
 void FragTrap::attack(const std::string& target)

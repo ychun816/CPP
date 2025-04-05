@@ -1,6 +1,6 @@
 #include "ClapTrap.hpp"
 
-/*rules
+/*subject rules
 When ClapTrap attacks, it causes its target to lose <attack damage> hit points.
 When ClapTrap repairs itself, it regains <amount> hit points.
 Attacking and repairing each cost 1 energy point.

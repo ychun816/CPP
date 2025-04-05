@@ -1,14 +1,10 @@
 #include "ClapTrap.hpp"
 
 //CONSTRUCTORS & DESTRUCTORS
+//default
 ClapTrap::ClapTrap() : _name("Default"), _hitPoints(10), _energyPoints(10), _attackDamage(0) 
 {
     std::cout << "--- Default Constructor Created ---" << std::endl;
-}
-
-ClapTrap::ClapTrap(const std::string& name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
-{
-    std::cout << "--- (Contructor) ClapTrap Created : " << _name << " ---" << std::endl;
 }
 
 //copy constructor
@@ -33,6 +29,12 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other)
     }
     std::cout << "ClapTrap " << _name << " Assigned" << std::endl;
     return (*this);
+}
+
+//set name
+ClapTrap::ClapTrap(const std::string& name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
+{
+    std::cout << "--- (Contructor) ClapTrap Created : " << _name << " ---" << std::endl;
 }
 
 ClapTrap::~ClapTrap()
