@@ -12,17 +12,21 @@ class ClapTrap
 
     public:
         ClapTrap();
-        ClapTrap(const std::string& name);//set name
         ClapTrap(const ClapTrap& other);//copy constructor
-        ClapTrap operator=(const ClapTrap& other);//assignation operator
+        ClapTrap& operator=(const ClapTrap& other);//assignation operator
+        ClapTrap(const std::string& name);//init name
         ~ClapTrap();
-        
-        // void setName(const std::string& name);
-        
+
+        //member funcs
         void attack(const std::string& target);
         void takeDamage(unsigned int amount);
         void beRepaired(unsigned int amount);
-};
 
+        //getters
+        std::string getName() const;
+        unsigned int getHitPoints() const;
+        unsigned int getEnergyPoints() const;
+        unsigned int getAttackDamage() const;
+};
 
 #endif 
