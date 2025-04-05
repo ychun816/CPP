@@ -1,15 +1,20 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap()
+//For inheritance, the derived class (ScavTrap) inherits the members of the base class (ClapTrap)
+//calling the base class constructor is generally considered a better practice according to common C++ conventions
+
+
+//constructs & destructors
+ScavTrap::ScavTrap() : ClapTrap()  // Call to base class default constructor
 {
     _hitPoints = 100;
     _energyPoints = 50;
     _attackDamage = 20;
 }
 
-ScavTrap::ScavTrap(std::string name)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name) // Call to base class constructor with name
 {
-    _name = name;
+    _name = name; //Although _name is inherited, still explicitly assign it.
     _hitPoints = 100;
     _energyPoints = 50;
     _attackDamage = 20;
@@ -21,6 +26,7 @@ ScavTrap::~ScavTrap()
     std::cout << "------ (Child Destructor) ScavTrap closed : " << _name << " ------" << std::endl;
 }
 
+//member funcs
 void ScavTrap::attack(const std::string& target)
 {
     if (_hitPoints > 0 && _energyPoints > 0)
