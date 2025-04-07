@@ -1,6 +1,5 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
-#include "FragTrap.hpp"
 
 static void displayClapTrapInfo(const ClapTrap& clapTrap)
 {
@@ -12,12 +11,12 @@ static void displayClapTrapInfo(const ClapTrap& clapTrap)
     std::cout << "﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌" << std::endl;
 }
 
-
-
 int main()
 {
     //// CLAPTRAP TEST
-    std::cout << "===== [CLAPTRAP TEST] =====" << std::endl;
+    std::cout << "=========================" << std::endl;
+    std::cout << "===== CLAPTRAP TEST =====" << std::endl;
+    std::cout << "=========================" << std::endl;
     ClapTrap clap("👹PAPA");
     displayClapTrapInfo(clap);
     
@@ -37,7 +36,7 @@ int main()
     //// SCAVTRAP TEST
     std::cout << "\n\n🌱🪻🌱🥀🌱🌷🌱🌾🌱🌱🌱🌾🌱🪻🌱🌷🌱🌱🌱🌾🌱🪻🌱🌷🌱🌱🌱🌾🌱🪻🌱" << std::endl;
     std::cout << "=========================" << std::endl;
-    std::cout << "===== FRAGTRAP TEST =====" << std::endl;
+    std::cout << "===== SCAVTRAP TEST =====" << std::endl;
     std::cout << "=========================" << std::endl;
 
     // Test ScavTrap creation with name
@@ -58,37 +57,6 @@ int main()
     scav.beRepaired(20);  // Should fail, ScavTrap is dead
     scav.guardGate();     // Test guard gate after death (shouldn't be possible)
     displayClapTrapInfo(scav);  // Display updated ScavTrap status
-
-    //// FRAGTRAP TEST
-    std::cout << "\n\n🌱🪻🌱🥀🌱🌷🌱🌾🌱🌱🌱🌾🌱🪻🌱🌷🌱🌱🌱🌾🌱🪻🌱🌷🌱🌱🌱🌾🌱🪻🌱" << std::endl;
-    std::cout << "=========================" << std::endl;
-    std::cout << "===== FRAGTRAP TEST =====" << std::endl;
-    std::cout << "=========================" << std::endl;
-
-    // Test FragTrap creation with name
-    FragTrap frag("💣BOMBER");
-    displayClapTrapInfo(frag);
-    
-    // Test attack on villain A
-    frag.attack("👾Villain A");
-    frag.takeDamage(40);  // Take 40 damage, should reduce HP
-    frag.beRepaired(20);  // Repair 20 HP, should increase HP
-    frag.highFivesGuys(); // Test FragTrap's special "high five" ability
-    displayClapTrapInfo(frag);  // Display updated FragTrap status
-
-    // Additional test scenario: FragTrap after taking massive damage
-    std::cout << "\n===== [ADDITIONAL SCENARIOS] =====" << std::endl;
-    frag.takeDamage(90);  // HP should go to 0
-    frag.beRepaired(50);  // Trying to repair when dead -> should fail
-    frag.attack("👾Villain B"); // Trying to attack without health -> should fail (HP=0)
-    displayClapTrapInfo(frag);  // Display updated FragTrap status
-
-    // Check if attack and repair work after FragTrap has no HP
-    std::cout << "\n===== [FRAGTRAP DEAD CASES] =====" << std::endl;
-    frag.attack("👾Villain C");  // Should fail due to dead status (HP=0)
-    frag.takeDamage(10);       // Should not affect HP, FragTrap is already dead
-    frag.beRepaired(10);       // Should fail because FragTrap is dead
-    displayClapTrapInfo(frag);  // Display final FragTrap status
 
     return 0;
 }
