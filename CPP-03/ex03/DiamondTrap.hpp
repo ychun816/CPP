@@ -1,5 +1,5 @@
-#ifndef DIAMOND_HPP
-#define DIAMOND_HPP
+#ifndef DIAMONDTRAP_HPP
+#define DIAMONDTRAP_HPP
 
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
@@ -10,6 +10,7 @@ class DiamondTrap : public FragTrap, public ScavTrap
 {
     private:
         std::string _name;// DiamondTrap's own name
+
     public:
         DiamondTrap();
         DiamondTrap(const DiamondTrap& other);
@@ -20,7 +21,6 @@ class DiamondTrap : public FragTrap, public ScavTrap
         //member funcs
         void attack(const std::string& target);
         void whoAmI();
-
 };
 
 #endif

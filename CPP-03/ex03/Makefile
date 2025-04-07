@@ -2,12 +2,12 @@
 #                                 VARIABLES                                    #
 # **************************************************************************** #
 
-NAME	= FragTrap
+NAME	= DiamondTrap
 
 CXX		= c++
 CCFLAGS	= -Wall -Wextra -std=c++98 #-MMD -MP#-g
-INCLU = ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
-SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
+INCLU = ClapTrap.hpp ScavTrap.hpp FragTrap.hpp DiamondTrap.hpp
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # **************************************************************************** #
