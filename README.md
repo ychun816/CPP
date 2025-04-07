@@ -28,8 +28,9 @@ https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rJndvhisye
 - Fixed- Point : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/S1uenO661l
 - Operator overload : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/BJRoauTTkx
 
-
-### 3️⃣ CPP-03 (Inheritance)
+### 3️⃣ CPP-03 (Inheritance & Class Ambiguity)
++ Inheritance (Abstract & Concrete class) : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/S1IIYb2pkg  
++ Multiple Inheritance Ambiguity : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/SJTVPv-0Je
 
 ### 4️⃣ CPP-04 (Subtype Polymorphism, Abstract Classes, and Interfaces)
 
