@@ -14,24 +14,24 @@ https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/r1TCoR4hJg
 
 ## Notes for each Project
 
-### 0️⃣ CPP-00 (Understading Super Basics)
+### 0️⃣ CPP-00
 + [Walk-thru] For bonus ex2, Understanding Reverse Engineering:
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rJndvhisye
 
-### 1️⃣ CPP-01 (Understading Pointer/Reference; File Handlings; Switch Statement)
+### 1️⃣ CPP-01 (Pointer/Reference / File Handlings / Switch Statement)
 + Pointer & Reference in C++ : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rkVAGOghyg
 
-### 2️⃣ CPP-02 (Following Orthodox Canonical class form / Understanding Fixed-Point, Operator Overload)
+### 2️⃣ CPP-02 (Orthodox Canonical class form / Fixed-Point / Operator Overload)
 
 + Orthodox Canonical class form : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/ry9Uc8TTyl
 + Fixed- Point : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/S1uenO661l
 + Operator overload : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/BJRoauTTkx
 
-### 3️⃣ CPP-03 (Inheritance & Class Ambiguity)
+### 3️⃣ CPP-03 (Inheritance / Class Ambiguity)
 + Inheritance (Abstract & Concrete class) : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/S1IIYb2pkg  
 + Multiple Inheritance Ambiguity : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/SJTVPv-0Je
 
-### 4️⃣ CPP-04 (Subtype Polymorphism, Abstract Classes, and Interfaces)
+### 4️⃣ CPP-04 (Subtype Polymorphism / Abstract Class / Interface)
 
 ### 5️⃣ CPP-05 (Nested class, Try/Catch, throw())
 
