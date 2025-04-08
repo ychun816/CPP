@@ -37,7 +37,4 @@ Classes that cannot be instantiated directly but serve as a base for derived cla
 By making Animal abstract,
 we ensure it serves only as a base class
 preventing mistakes like accidentally creating Animal objects
-
-
-
 */

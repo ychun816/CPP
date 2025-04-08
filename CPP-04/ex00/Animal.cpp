@@ -1,18 +1,17 @@
 #include "Animal.hpp"
 
 //con-de structs
-Animal::Animal() : _type("DEFAULT")//default construct
+Animal::Animal() : _type("DEFAULT")
 {
     std::cout << "Animal " << _type << " is created" << std::endl;
 }
 
-Animal::Animal(const Animal& other) : _type(other._type)//copy->preferred way in C++
+Animal::Animal(const Animal& other) : _type(other._type)
 {
-    // *this = other;//_type = other._type;  // Manually copying the member variable
     std::cout << "Animal " << _type << " has been copied" << std::endl;
 }
 
-Animal& Animal::operator=(const Animal& other)//assign operator
+Animal& Animal::operator=(const Animal& other)
 {
     if (this != &other)
         _type = other._type;
@@ -20,18 +19,19 @@ Animal& Animal::operator=(const Animal& other)//assign operator
     return (*this);
 }
 
-Animal::~Animal()//destruc -> virtual only put in header 
+//destructor
+//virtual only put in header 
+Animal::~Animal()
 {
     std::cout << "Animal " << _type << " is destroyed" << std::endl;
 }
 
-//funcs
+//getter 
+std::string Animal::getType(void) const {return (_type);}
+
+//member funcs
 void Animal::makeSound(void) const
 {
     std::cout << "Animal " << _type << " makes a sound" << std::endl;
 }
 
-std::string Animal::getType(void) const
-{
-    return (_type);
-}

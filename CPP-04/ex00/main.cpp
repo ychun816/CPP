@@ -1,30 +1,30 @@
-// #include "Animal.hpp"
+#include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
-// #include "WrongAnimal.hpp"
+#include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
 int main() 
 {
-    //animals test
     std::cout << "========== Animals ==========" << std::endl;
     std::cout << "-------- constructors --------" << std::endl;
-    const Animal* meta = new Animal(); 
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
-    std::cout << j->getType() << " " << std::endl;
-    std::cout << i->getType() << " " << std::endl;
+    const Animal* animal = new Animal(); 
+    const Animal* cat = new Cat();
+    const Animal* dog = new Dog();
+    std::cout << cat->getType() << " " << std::endl;
+    std::cout << dog->getType() << " " << std::endl;
+
     //make sound
-    std::cout << "-------- make sounds --------" << std::endl;
-    i->makeSound(); //will output the cat sound!
-    j->makeSound();
-    meta->makeSound();
+    std::cout << "\n-------- make sounds --------" << std::endl;
+    animal->makeSound();
+    dog->makeSound();
+    cat->makeSound();
 
     // Cleanup
-    std::cout << "-------- cleanup --------" << std::endl;
-    delete meta;
-    delete j;
-    delete i;
+    std::cout << "\n-------- cleanup --------" << std::endl;
+    delete animal;
+    delete dog;
+    delete cat;
 
     //Wrong animal
     //Wrong Cat
@@ -32,9 +32,9 @@ int main()
     std::cout << "-------- constructors --------" << std::endl;
     const WrongAnimal* wrongAnimal = new WrongAnimal(); 
     const WrongAnimal* wrongCat = new WrongCat();
-    // const WrongAnimal* error = new Cat();
+    // const WrongAnimal* error = new Cat(); //not compilable
     std::cout << wrongCat->getType() << " " << std::endl;
-    // std::cout << error->getType() << " " << std::endl;
+    // std::cout << error->getType() << " " << std::endl; //not compilable
     
     //make sound
     std::cout << "-------- make sounds --------" << std::endl;

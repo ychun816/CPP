@@ -1,16 +1,16 @@
 #include "WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal() : _type("DEFAULT-W")//default construct
+WrongAnimal::WrongAnimal() : _type("DEFAULT-W")
 {
     std::cout << "default WrongAnimal " <<  _type << " is created" << std::endl;
 }
 
-WrongAnimal::WrongAnimal(const WrongAnimal& other) :  _type(other._type)//copy
+WrongAnimal::WrongAnimal(const WrongAnimal& other) :  _type(other._type)
 {
     std::cout << "WrongAnimal " <<  _type << " has been copied" << std::endl;
 }
 
-WrongAnimal& WrongAnimal::operator=(const WrongAnimal& other)//assign operator
+WrongAnimal& WrongAnimal::operator=(const WrongAnimal& other)
 {
     if (this != &other)
         _type = other._type;
@@ -18,17 +18,18 @@ WrongAnimal& WrongAnimal::operator=(const WrongAnimal& other)//assign operator
     return (*this);
 }
 
-WrongAnimal::~WrongAnimal()//destruc
+WrongAnimal::~WrongAnimal()
 {
     std::cout << "WrongAnimal " <<  _type << " is destroyed" << std::endl;
 }
 
-void WrongAnimal::makeSound() const// Non-virtual, no polymorphism
+//getter
+std::string WrongAnimal::getType() const{return (_type);}
+
+//member func
+// Non-virtual, no polymorphism
+void WrongAnimal::makeSound() const
 {
     std::cout << "WrongAnimal makes a sound" << std::endl;
 }
 
-std::string WrongAnimal::getType() const
-{
-    return (_type);
-}
