@@ -7,16 +7,21 @@
 class Cat : public Animal 
 {
 	private:
-		Brain *brain;
+		Brain *_brain;
 
 	public:
-	Cat();
-	Cat(const Cat& other);
-	Cat& operator=(const Cat &other);
-	~Cat();
+		Cat();
+		Cat(std::string type);//construct with type
+		Cat(const Cat& other);
+		Cat& operator=(const Cat &other);
+		~Cat();
+		
+		//member funcs
+		void makeSound() const;
+		void tellIdea(void) const;
 
-	void makeSound() const;
-	Brain* getBrain() const;
+		//getter
+		Brain* getBrain() const;
 };
 
 #endif

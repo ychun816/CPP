@@ -4,18 +4,24 @@
 #include "Animal.hpp"
 #include "Brain.hpp"
 
-class Dog : public Animal  // Correct class inheritance
+class Dog : public Animal
 {
     private:
-        Brain *brain;
-    public:
-    Dog();  // Default constructor
-    Dog(const Dog& other);  // Copy constructor
-    Dog& operator=(const Dog& other);  // Assignment operator
-    ~Dog();  // Destructor
+        Brain *_brain;
 
-    void makeSound() const;  // Override base class method
-    Brain* getBrain() const;
+    public:
+        Dog(); 
+        Dog(std::string type);//construct with type
+        Dog(const Dog& other);
+        Dog& operator=(const Dog& other);
+        ~Dog();
+
+        //member funcs
+        void makeSound() const;
+        void tellIdea(void) const;
+
+        //getter
+        Brain* getBrain() const;
 };
 
 #endif
