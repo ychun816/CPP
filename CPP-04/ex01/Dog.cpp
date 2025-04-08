@@ -24,6 +24,7 @@ Dog::Dog(const Dog& other) : Animal(other), _brain(new Brain(*other._brain))
 //assign
 //free the current _brain before assigning a new one-> if without -> leak
 //Best Practice Rule: Always handle deep-copy and resource management EXPLICITLY for pointer members
+//Always use this->_brain in class methods when accessing or assigning member variables. It’s safe, clear, and professional.
 Dog& Dog::operator=(const Dog& other)
 {
     if (this != &other)
@@ -36,10 +37,12 @@ Dog& Dog::operator=(const Dog& other)
     return (*this);
 }
 
+//allocated memory with new Brain(...) in your constructor
+//free the memory(_brain) in the destructor ->Free the memory allocated for Brain
 Dog::~Dog()
 {
     std::cout << "Dog " << _type << " is destroyed" << std::endl;
-    delete _brain;// Free the memory allocated for Brain
+    delete _brain;
 }
 
 

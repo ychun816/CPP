@@ -22,7 +22,7 @@ Cat& Cat::operator=(const Cat& other)
     if (this != &other)
     {
         Animal::operator=(other);
-        delete _brain;  // Delete current Brain before assigning new one
+        delete _brain;
         this->_brain = new Brain(*other._brain);
     }
     std::cout << "Cat " << _type << " has been assigned!" << std::endl;
@@ -34,7 +34,6 @@ Cat::~Cat()
     std::cout << "Cat " << _type << " is destroyed" << std::endl;
     delete _brain; // Free the memory allocated for Brain
 }
-
 
 //getter
 Brain* Cat::getBrain() const {return (_brain);}
