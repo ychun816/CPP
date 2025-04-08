@@ -17,6 +17,7 @@ class Animal
 
     public:
         Animal();
+        Animal(std::string type); //construct with type
         Animal(const Animal& other);
         Animal& operator=(const Animal& other);
         virtual ~Animal();//vitural destructor

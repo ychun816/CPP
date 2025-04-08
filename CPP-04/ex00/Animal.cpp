@@ -6,6 +6,11 @@ Animal::Animal() : _type("DEFAULT")
     std::cout << "Animal " << _type << " is created" << std::endl;
 }
 
+Animal::Animal(std::string type) : _type(type)
+{
+    std::cout << "Animal " << _type << " is created" << std::endl;
+}
+
 Animal::Animal(const Animal& other) : _type(other._type)
 {
     std::cout << "Animal " << _type << " has been copied" << std::endl;
@@ -34,4 +39,3 @@ void Animal::makeSound(void) const
 {
     std::cout << "Animal " << _type << " makes a sound" << std::endl;
 }
-

@@ -1,43 +1,88 @@
+#include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
+
+#define COUNT 4
 
 int main() 
 {
-    /*Create array of Animals: 2 dogs and 2 cats to check*/
+    //Create array of Animals
     std::cout << "\n========== Create Animals ==========" << std::endl;
-    const Animal* animals[4];
-	animals[0] = new Dog();
-	std::cout << std::endl;
-    animals[1] = new Dog();
-	std::cout << std::endl;
-    animals[2] = new Cat();
-	std::cout << std::endl;
-    animals[3] = new Dog();
-	std::cout << std::endl;
+    const Animal* animals[COUNT];
 
-    /* Deep Copy Test ->Dog brain
-    - Creates a Dog dynamically
-    - Set the first idea in the dog's Brain
-	*/
+    for (unsigned int i = 0; i < COUNT; i++)
+    {
+        if (i < COUNT / 2)
+        {
+            std::cout << "[ " << i + 1 << " ] ";
+            animals[i] = new Dog();
+        }
+
+        else
+        {
+            std::cout << "[ " << i + 1 << " ] ";
+            animals[i] = new Cat();
+        }
+    }
+
+    //create Dog & set ideas
+    std::cout << "\n======== Set & Print Dog Idea (Deep Copy) ========" << std::endl;
+    Dog* dog1 = new Dog();
+    dog1->getBrain()->setIdea(0, "🦴 ME WANT A BONE! 🦴");
+    std::cout << "Dog1 Idea[0]: " << dog1->getBrain()->getIdea(0) << std::endl;
+
+    //copy Dog1 to Dog2_cp
+    std::cout << "\n======== Test Copy Constructor ========" << std::endl;
+    Dog dog2_cp(*dog1);
+    std::cout << "Dog2_cp (copied) Idea[0]: " << dog2_cp.getBrain()->getIdea(0) << std::endl;
+
+    //assign Dog2_cp to Dog3 & //create Dog3 & set idea
+    std::cout << "\n======== Test Assignment Operator ========" << std::endl;
+    Dog dog3;
+    dog3.getBrain()->setIdea(0, "💤 VAMIR A MIMI! 💤");
+    std::cout << "Dog3 Original Idea[0]: " << dog3.getBrain()->getIdea(0) << std::endl;
+
+    dog3 = dog2_cp;//assign dog2_cp to dog3
+    std::cout << "Dog3 After Assignment Idea[0]: " << dog3.getBrain()->getIdea(0) << std::endl;
+
+    //delete animals
+	std::cout << "\n========== Cleanup ==========" << std::endl;
+    for (unsigned int i = 0; i < 4; i++)
+    {
+        std::cout << "[ " << i + 1 << " ] ";
+        delete animals[i];
+        std::cout << std::endl;
+    }
+    delete dog1;
+
+
+    return 0; 
+}
+
+/* OTHER REF
+
+    //Deep Copy Test ->Dog brain
+    //Creates a Dog dynamically
+    //Set the first idea in the dog's Brain
     std::cout << "\n========== Deep Copy test ==========" << std::endl;
     Dog *dog1 = new Dog();
     dog1->getBrain()->setIdea(0, "Bite mama's shoes👠!!");
 	std::cout << "Dog1 Brain Ideas[0] : " << dog1->getBrain()->getIdea(0) << std::endl;
 
-	/* Copy Constructor Test
-    - Copies dog1 into dog2 using the copy constructor.
-	*/
+	//Copy Constructor Test
+    //Copies dog1 into dog2 using the copy constructor.
     std::cout << "\n========== Copy Constructor test ==========" << std::endl;
     Dog dog2_cp(*dog1);
 	std::cout << "Dog1 Brain Ideas[0] : " << dog2_cp.getBrain()->getIdea(0) << std::endl;
 	std::cout << "Dog2(copied frm Dog1) Brain Ideas[0]: " << dog2_cp.getBrain()->getIdea(0) << std::endl;
 
-	/* Assignment Operator Test
-    - Creates a temporary Dog object dog3 (stack-allocated).
-    - Sets an idea in dog3's brain: "Another idea".
-    - Assigns dog3 = dog2; (this tests the operator= overload).
-    - Prints dog3's idea again to verify if dog3 correctly copied dog2.
-    */
+	// Assignment Operator Test
+    // - Creates a temporary Dog object dog3 (stack-allocated).
+    // - Sets an idea in dog3's brain: "Another idea".
+    // - Assigns dog3 = dog2; (this tests the operator= overload).
+    // - Prints dog3's idea again to verify if dog3 correctly copied dog2.
 	std::cout << "\n========== Assignment Operator test ==========" << std::endl;
     Dog dog3;
     //->set idea in dog3 & print to check
@@ -48,12 +93,8 @@ int main()
     //print to check if correclty assigned
 	std::cout << "Dog3 (assigned frm Dog2) Brain Ideas[0] : " << dog3.getBrain()->getIdea(0) << std::endl;
 
-    /*cleanup
-    - Deletes all dynamically allocated Animal objects.
-    - Delete dog1 in the end outside of loop -> avoid leak
-    */
 	std::cout << "\n========== Cleanup ==========" << std::endl;
-    for (int i = 0; i < 4; i++)
+    for (unsigned int i = 0; i < 4; i++)
     {
         delete animals[i];
         std::cout << std::endl;
@@ -61,109 +102,68 @@ int main()
     delete dog1;
     std::cout << std::endl;
 
-    return 0; 
-}
 
-
-/*REF
-int main() {
-	const Animal* animals[4];
-
-	// Creating half dogs and half cats
-	animals[0] = new Dog();
-	std::cout << std::endl;
-	animals[1] = new Dog();
-	std::cout << std::endl;
-	animals[2] = new Cat();
-	std::cout << std::endl;
-	animals[3] = new Cat();
-	std::cout << std::endl;
-
-	// Setting and checking ideas
-	Dog *dog1 = new Dog();
-	std::cout << std::endl;
-	dog1->getBrain()->setIdea(0, "Chase the mailman!");
-	std::cout << std::endl;
-
-	Dog dog2(*dog1);
-	std::cout << std::endl;
-
-	std::cout << "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" << std::endl;
-	{
-	Dog dog3;
-	dog3.getBrain()->setIdea(0, "Another idea");
-	std::cout << "Dog3 Brain Idea[0]: " << dog3.getBrain()->getIdea(0) << std::endl;
-	dog3 = dog2;
-	std::cout << "Dog3 Brain Idea[0]: " << dog3.getBrain()->getIdea(0) << std::endl;
-	}
-	std::cout << "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" << std::endl;
-
-
-	// Dog dog2 = *dog1;  // Test deep copy
-	// std::cout << std::endl;
-
-	std::cout << "Dog1 Brain Idea[0]: " << dog1->getBrain()->getIdea(0) << std::endl;
-	std::cout << std::endl;
-	std::cout << "Dog2 Brain Idea[0]: " << dog2.getBrain()->getIdea(0) << std::endl;
-	std::cout << std::endl;
-
-	// Clean up
-	for (int i = 0; i < 4; ++i) {
-		delete animals[i];
-		std::cout << std::endl;
-	}
-	delete dog1;
-	std::cout << std::endl;
-
-	return (0);
-}
 */
 
 
 
 
-// int main() 
-// {
-//     //animals test
-//     std::cout << "========== Animals ==========" << std::endl;
-//     std::cout << "-------- constructors --------" << std::endl;
-//     const Animal* meta = new Animal(); 
-//     const Animal* j = new Dog();
-//     const Animal* i = new Cat();
-//     std::cout << j->getType() << " " << std::endl;
-//     std::cout << i->getType() << " " << std::endl;
-//     //make sound
-//     std::cout << "-------- make sounds --------" << std::endl;
-//     i->makeSound(); //will output the cat sound!
-//     j->makeSound();
-//     meta->makeSound();
 
-//     // Cleanup
-//     std::cout << "-------- cleanup --------" << std::endl;
-//     delete meta;
-//     delete j;
-//     delete i;
 
-//     //Wrong animal
-//     //Wrong Cat
-//     std::cout << "\n===== Wrong Animals =====" << std::endl;
-//     std::cout << "-------- constructors --------" << std::endl;
-//     const WrongAnimal* wrongAnimal = new WrongAnimal(); 
-//     const WrongAnimal* wrongCat = new WrongCat();
-//     // const WrongAnimal* error = new Cat();
-//     std::cout << wrongCat->getType() << " " << std::endl;
-//     // std::cout << error->getType() << " " << std::endl;
+
+
+
+/* TEST MAIN B
+
+#define COUNT 10
+
+// create loop to test
+// Declares the pointer animal as constant (pointer to a constant Animal object).
+int main()
+{
+    // const Animal *animal = new Animal();
+    const Animal *animals[COUNT];
     
-//     //make sound
-//     std::cout << "-------- make sounds --------" << std::endl;
-//     wrongAnimal->makeSound();
-//     wrongCat->makeSound(); //will output the cat sound!
-//     // error->makeSound();
+    std::cout << "-------- constructors --------" << std::endl;
+    for (unsigned int i = 0; i < 10; i ++)
+    {
+        if (i < (COUNT / 2)) //first five
+            animals[i] = new Dog();
+        else //later five
+            animals[i] = new Cat();
+    }
 
-//     // Cleanup
-//     std::cout << "-------- cleanup --------" << std::endl;
-//     delete wrongAnimal;
-//     delete wrongCat;
+    //print types
+    std::cout << "\n-------- print types --------" << std::endl;
+    for (unsigned int i = 0; i < COUNT; i++)
+    {
+        std::cout << "[ " << i + 1 << " ] " << "Animal type | " << animals[i]->getType() << std::endl;
+    }
 
-//     return 0; 
-// }
+    //make sounds
+    std::cout << "\n-------- make sounds --------" << std::endl;
+    for (unsigned int i = 0; i < COUNT; i++)
+    {
+        std::cout << "[ " << i + 1 << " ] " << "Make sounds | ";
+        animals[i]->makeSound();
+    }
+
+    //tell ideas (default)
+    std::cout << "\n-------- tell ideas --------" << std::endl;
+    for (unsigned int i = 0; i < COUNT; i++)
+    {
+        std::cout << "[ " << i + 1 << " ] " << "Tell ideas | ";
+        animals[i]->tellIdea();
+    }
+
+    //cleanup
+    std::cout << "\n-------- cleanup --------" << std::endl;
+    for (unsigned int i = 0; i < COUNT; i++)
+    {
+        std::cout << "[ " << i + 1 << " ] ";
+        delete animals[i];
+    }
+
+    return 0;
+}
+*/
