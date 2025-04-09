@@ -2,12 +2,12 @@
 #                                 VARIABLES                                    #
 # **************************************************************************** #
 
-NAME	= AnimalAbstract
+NAME	= Materia
 
 CXX		= c++
 CCFLAGS	= -Wall -Wextra -std=c++98 #-MMD -MP#-g
-INCLU = 
-SRCS = 
+INCLU = AMateria.hpp Cure.hpp Ice.hpp 
+SRCS = main.cpp AMateria.cpp Cure.cpp Ice.cpp 
 OBJS = $(SRCS:.cpp=.o)
 
 # **************************************************************************** #
