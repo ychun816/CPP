@@ -6,8 +6,8 @@ NAME	= AnimalAbstract
 
 CXX		= c++
 CCFLAGS	= -Wall -Wextra -std=c++98 #-MMD -MP#-g
-INCLU = AAnimal.hpp Cat.hpp Dog.hpp WrongAnimal.hpp WrongCat.hpp Brain.hpp
-SRCS = main.cpp AAnimal.cpp Cat.cpp  Dog.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
+INCLU = 
+SRCS = 
 OBJS = $(SRCS:.cpp=.o)
 
 # **************************************************************************** #

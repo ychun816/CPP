@@ -1,8 +1,6 @@
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
 
 #define COUNT 4
 
@@ -10,7 +8,7 @@ int main()
 {
     //Create array of Animals
     std::cout << "\n========== Create Animals ==========" << std::endl;
-    const Animal* animals[COUNT];
+    const AAnimal* animals[COUNT];
 
     for (unsigned int i = 0; i < COUNT; i++)
     {
@@ -103,67 +101,4 @@ int main()
     std::cout << std::endl;
 
 
-*/
-
-
-
-
-
-
-
-
-
-/* TEST MAIN B
-
-#define COUNT 10
-
-// create loop to test
-// Declares the pointer animal as constant (pointer to a constant Animal object).
-int main()
-{
-    // const Animal *animal = new Animal();
-    const Animal *animals[COUNT];
-    
-    std::cout << "-------- constructors --------" << std::endl;
-    for (unsigned int i = 0; i < 10; i ++)
-    {
-        if (i < (COUNT / 2)) //first five
-            animals[i] = new Dog();
-        else //later five
-            animals[i] = new Cat();
-    }
-
-    //print types
-    std::cout << "\n-------- print types --------" << std::endl;
-    for (unsigned int i = 0; i < COUNT; i++)
-    {
-        std::cout << "[ " << i + 1 << " ] " << "Animal type | " << animals[i]->getType() << std::endl;
-    }
-
-    //make sounds
-    std::cout << "\n-------- make sounds --------" << std::endl;
-    for (unsigned int i = 0; i < COUNT; i++)
-    {
-        std::cout << "[ " << i + 1 << " ] " << "Make sounds | ";
-        animals[i]->makeSound();
-    }
-
-    //tell ideas (default)
-    std::cout << "\n-------- tell ideas --------" << std::endl;
-    for (unsigned int i = 0; i < COUNT; i++)
-    {
-        std::cout << "[ " << i + 1 << " ] " << "Tell ideas | ";
-        animals[i]->tellIdea();
-    }
-
-    //cleanup
-    std::cout << "\n-------- cleanup --------" << std::endl;
-    for (unsigned int i = 0; i < COUNT; i++)
-    {
-        std::cout << "[ " << i + 1 << " ] ";
-        delete animals[i];
-    }
-
-    return 0;
-}
 */

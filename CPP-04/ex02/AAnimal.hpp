@@ -1,22 +1,22 @@
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef AANIMAL_HPP
+# define AANIMAL_HPP
 
 # include <iostream>
 # include <string>
 
 //Animal class change to abstract class -> virtual destructor
 //make pure virtual function
-class Animal 
+class AAnimal 
 {
     protected:
         std::string _type;
 
     public:
-        Animal();
-        Animal(std::string type); //construct with type
-        Animal(const Animal& other);
-        Animal& operator=(const Animal& other);
-        virtual ~Animal();
+        AAnimal();
+        AAnimal(std::string type); //construct with type
+        AAnimal(const AAnimal& other);
+        AAnimal& operator=(const AAnimal& other);
+        virtual ~AAnimal();
     
         //getter
         std::string getType(void) const;

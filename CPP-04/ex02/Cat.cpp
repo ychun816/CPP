@@ -1,18 +1,18 @@
 #include "Cat.hpp"
 
 //con-de structs
-Cat::Cat() : Animal("🐈"), _brain(new Brain())
+Cat::Cat() : AAnimal("🐈"), _brain(new Brain())
 {
     std::cout << "Default Cat " << _type << " is created" << std::endl;
 }
 
 //construct with type
-Cat::Cat(std::string type) : Animal(type), _brain(new Brain())
+Cat::Cat(std::string type) : AAnimal(type), _brain(new Brain())
 {
     std::cout << "Cat " << _type << " is created" << std::endl;
 }
 
-Cat::Cat(const Cat& other) : Animal(other), _brain(new Brain(*other._brain))
+Cat::Cat(const Cat& other) : AAnimal(other), _brain(new Brain(*other._brain))
 {
     std::cout << "Cat " << _type << " has been copied" << std::endl;
 }
@@ -21,7 +21,7 @@ Cat& Cat::operator=(const Cat& other)
 {
     if (this != &other)
     {
-        Animal::operator=(other);
+        AAnimal::operator=(other);
         delete _brain;
         this->_brain = new Brain(*other._brain);
     }

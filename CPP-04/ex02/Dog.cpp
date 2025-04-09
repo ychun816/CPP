@@ -1,14 +1,14 @@
 #include "Dog.hpp"
 
 //con-de structs
-Dog::Dog() : Animal("🐕"), _brain(new Brain())
+Dog::Dog() : AAnimal("🐕"), _brain(new Brain())
 {
     // _type = "🐕";
     std::cout << "Default Dog " << _type << " is created" << std::endl;
 }
 
 //construct with type
-Dog::Dog(std::string type) : Animal(type), _brain(new Brain())
+Dog::Dog(std::string type) : AAnimal(type), _brain(new Brain())
 {
     std::cout << "Dog " << _type << " is created" << std::endl;
 }
@@ -16,7 +16,7 @@ Dog::Dog(std::string type) : Animal(type), _brain(new Brain())
 //copy
 //Avoid calling assignment operator from constructor.
 //deep copy _brain directly in the initializer list or constructor body
-Dog::Dog(const Dog& other) : Animal(other), _brain(new Brain(*other._brain))
+Dog::Dog(const Dog& other) : AAnimal(other), _brain(new Brain(*other._brain))
 {
     std::cout << "Dog " << _type << " has been copied" << std::endl;
 }
@@ -29,7 +29,7 @@ Dog& Dog::operator=(const Dog& other)
 {
     if (this != &other)
     {
-        Animal::operator=(other);//Copy base class   
+        AAnimal::operator=(other);//Copy base class   
         delete _brain;//Clean up existing brain
         this->_brain = new Brain(*other._brain);//Deep copy of new brain
     }
