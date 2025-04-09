@@ -4,6 +4,8 @@
 # include <iostream>
 # include <string>
 
+//Animal class change to abstract class -> virtual destructor
+//make pure virtual function
 class Animal 
 {
     protected:
@@ -20,8 +22,8 @@ class Animal
         std::string getType(void) const;
         
         //membber funcs
-        virtual void makeSound(void) const;
-        virtual void tellIdea(void) const;
+        virtual void makeSound(void) const = 0;
+        virtual void tellIdea(void) const = 0;
 };
 
 #endif

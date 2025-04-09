@@ -2,7 +2,7 @@
 #                                 VARIABLES                                    #
 # **************************************************************************** #
 
-NAME	= AnimalBrain
+NAME	= AnimalAbstract
 
 CXX		= c++
 CCFLAGS	= -Wall -Wextra -std=c++98 #-MMD -MP#-g
