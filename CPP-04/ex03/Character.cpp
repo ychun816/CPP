@@ -80,13 +80,13 @@ void Character::equip(AMateria* m)
         if (_inventory[i] == NULL)
         {
             _inventory[i] = m->clone(); // Make a copy
-            delete m; // Delete the original to prevent memory leak
+            // delete m; // Delete the original to prevent memory leak
             std::cout << "Equip " << m->getType() << " to " << _name << std::endl;
             return ;
         }
     }
     std::cout << "❌Inventory full! Cannot equip more than 4 materias" << std::endl;
-    delete m; // Delete the materia if it couldn't be equipped
+    // delete m; // Delete the materia if it couldn't be equipped
 }
 
 //unequip()
@@ -99,8 +99,6 @@ void Character::unequip(int idx)
         std::cout << "Unequip " << _inventory[idx]->getType() << " from " << _name << std::endl;
         _inventory[idx] = NULL;
     }
-    else
-        std::cout << "❌Invalid slot or empty slot, cannot unequip" << std::endl;
 }
 
 void Character::use(int idx, ICharacter& target)

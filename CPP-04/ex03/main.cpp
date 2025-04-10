@@ -25,13 +25,13 @@ int main()
     AMateria* tmp;
     tmp = src->createMateria("ice");
     me->equip(tmp);
-    tmp = src->createMateria("cure");
+    tmp = src->createMateria("ice");
     me->equip(tmp);
-    tmp = src->createMateria("cure");
+    tmp = src->createMateria("ice");
     me->equip(tmp);
-    tmp = src->createMateria("cure");
+    tmp = src->createMateria("ice");
     me->equip(tmp);
-    tmp = src->createMateria("cure");//5th should fail!
+    tmp = src->createMateria("ice");//5th should fail!
     me->equip(tmp);
     std::cout << "----------- [Unequip on Character ME] --------------" << std::endl;
     me->unequip(0);
@@ -43,8 +43,8 @@ int main()
     ICharacter* bob = new Character("BOB");
 
     std::cout << "\n========== [ TEST use() ] ==========" << std::endl;
-    me->use(0, *bob);//ice
-    me->use(1, *bob);//cure
+    me->use(0, *bob);//cure
+    me->use(1, *bob);//ice
 
     std::cout << "\n========== [ Cleanup ] ==========" << std::endl;
 
