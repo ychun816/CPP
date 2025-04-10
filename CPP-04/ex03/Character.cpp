@@ -1,4 +1,5 @@
 #include "Character.hpp"
+#include <vector>
 
 ////constructor & destructor
 Character::Character() : _name("default")
@@ -40,8 +41,9 @@ Character& Character::operator=(const Character& src)
         //cleanup, set to NULL!
         for (int i = 0; i < 4; i++)
         {
-            delete _inventory[i];
-            _inventory[i] = NULL;
+            if (_inventory[i])
+                delete _inventory[i];
+            // _inventory[i] = NULL;
         }
         
         //assign
@@ -59,7 +61,11 @@ Character& Character::operator=(const Character& src)
 Character::~Character()
 {
     for (int i = 0; i < 4; i++)
+    {
         delete _inventory[i];
+        // _inventory[i] = NULL;
+    }
+    // clearTrash(); // EXTRA cleanup unequipped Materia
     std::cout << "Character default destructor called" << std::endl;
 }
 
@@ -79,14 +85,15 @@ void Character::equip(AMateria* m)
     {
         if (_inventory[i] == NULL)
         {
-            _inventory[i] = m->clone(); // Make a copy
+            _inventory[i] = m;
+            // _inventory[i] = m->clone(); // Make a copy
             // delete m; // Delete the original to prevent memory leak
             std::cout << "Equip " << m->getType() << " to " << _name << std::endl;
             return ;
         }
     }
     std::cout << "❌Inventory full! Cannot equip more than 4 materias" << std::endl;
-    // delete m; // Delete the materia if it couldn't be equipped
+    delete m; // Delete the materia if it couldn't be equipped
 }
 
 //unequip()
@@ -101,6 +108,23 @@ void Character::unequip(int idx)
     }
 }
 
+/*for cleanup vr*/
+// void Character::unequip(int idx) 
+// {
+//     if (idx >= 0 && idx < 4 && _inventory[idx]) 
+//     {
+//         if (_trashCount < 100) {
+//             _trash[_trashCount++] = _inventory[idx]; // Save for cleanup
+//         } else {
+//             std::cout << "⚠️ Trash is full! Deleting directly." << std::endl;
+//             delete _inventory[idx];
+//         }
+//         _inventory[idx] = NULL;
+//     }
+// }
+
+
+
 void Character::use(int idx, ICharacter& target)
 {
     if (idx >= 0 && idx < 4 && _inventory[idx])
@@ -108,3 +132,25 @@ void Character::use(int idx, ICharacter& target)
     else
         std::cout << "❌Cannot use: invalid slot or no materia equipped" << std::endl;
 }
+
+
+/*for cleanup unequip*/
+// Character::Character() : _trashCount(0) 
+// {
+//     for (int i = 0; i < 4; ++i)
+//         _inventory[i] = NULL;
+
+//     for (int i = 0; i < 100; ++i)
+//         _trash[i] = NULL;
+// }
+
+
+// void Character::clearTrash() 
+// {
+//     for (int i = 0; i < _trashCount; ++i) 
+//     {
+//         if (_trash[i])
+//             delete _trash[i];
+//     }
+//     _trashCount = 0;
+// }

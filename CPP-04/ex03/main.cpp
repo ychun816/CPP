@@ -6,6 +6,8 @@
 #include "IMateriaSource.hpp"
 #include "MateriaSource.hpp"
 
+
+/* LEAK WITH UNEQUIP*/
 int main()
 {
     std::cout << "========== [ Set Materia ] ==========" << std::endl;
@@ -34,7 +36,8 @@ int main()
     tmp = src->createMateria("ice");//5th should fail!
     me->equip(tmp);
     std::cout << "----------- [Unequip on Character ME] --------------" << std::endl;
-    me->unequip(0);
+    // me->unequip(0);//unequip need to delet -> use _trashLEAKKKKK!!!
+    
     tmp = src->createMateria("cure");//equip after unequip -> should work!
     me->equip(tmp);
 
