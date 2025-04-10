@@ -6,9 +6,7 @@
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
 
-//the user of the Materias
-//possesses an inventory of 4 slots, most 4 Materias
-//Deep copy in copy constructor and assignment operator
+///Derived concrete class (inherit frm Interface-ICharacter)
 class Character : public ICharacter
 {
     private:
@@ -22,8 +20,10 @@ class Character : public ICharacter
         Character& operator=(const Character& src);
         ~Character();
     
-        //member funcs
+        ////getter
         std::string const& getName() const;
+
+        ////member funcs
         void equip(AMateria* m);
         void unequip(int idx);
         void use(int idx, ICharacter& target);

@@ -4,6 +4,7 @@
 #include <iostream>
 #include "AMateria.hpp"
 
+///Interface
 class IMateriaSource
 {
     public:

@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-//derived/concrete class (inherit frm AMateria)
+//Derived concrete class (inherit frm Base Abstract class-AMateria)
 class Ice : public AMateria
 {
     public:
@@ -15,7 +15,7 @@ class Ice : public AMateria
         Ice& operator=(Ice const& src);
         ~Ice();
 
-        //member funcs
+        ////member funcs
         AMateria* clone() const;
         void use(ICharacter& target);
 };

@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-//derived/concrete class (inherit frm AMateria)
+//Derived concrete class (inherit frm Base Abstract class-AMateria)
 class Cure : public AMateria
 {
     public:
@@ -15,7 +15,7 @@ class Cure : public AMateria
         Cure& operator=(Cure const& src);
         ~Cure();
 
-        //member funcs
+        ////member funcs
         AMateria* clone() const;
         void use(ICharacter& target);
 };

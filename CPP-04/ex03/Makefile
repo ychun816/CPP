@@ -2,7 +2,7 @@
 #                                 VARIABLES                                    #
 # **************************************************************************** #
 
-NAME	= Materia
+NAME	= AMateria
 
 CXX		= c++
 CCFLAGS	= -Wall -Wextra -std=c++98 #-MMD -MP#-g

@@ -1,6 +1,6 @@
 #include "Character.hpp"
 
-//constructor & destructor
+////constructor & destructor
 Character::Character() : _name("default")
 {
     for (int i = 0; i < 4; i++)
@@ -16,6 +16,7 @@ Character::Character(std::string name) :  _name(name)
 }
 
 //deep copy the _inventory
+//AMateria type can access func-'clone()'
 Character::Character(const Character& src) :ICharacter(src), _name(src._name) 
 {
     for (int i = 0; i < 4; i++)
@@ -36,7 +37,7 @@ Character& Character::operator=(const Character& src)
     {
         this->_name = src._name;
 
-        //cleanup!! set to NULL!
+        //cleanup, set to NULL!
         for (int i = 0; i < 4; i++)
         {
             delete _inventory[i];
@@ -62,12 +63,13 @@ Character::~Character()
     std::cout << "Character default destructor called" << std::endl;
 }
 
-//getter
+
+////getter
 std::string const& Character::getName() const{ return (_name); }
 
-//member funcs
 
-//Character references it
+////member funcs
+//Character references it -> to be equipped 
 void Character::equip(AMateria* m)
 {
     if (!m)
@@ -77,22 +79,34 @@ void Character::equip(AMateria* m)
     {
         if (_inventory[i] == NULL)
         {
-            _inventory[i] = m;
-            break;//do i need?
+            _inventory[i] = m->clone(); // Make a copy
+            delete m; // Delete the original to prevent memory leak
+            std::cout << "Equip " << m->getType() << " to " << _name << std::endl;
+            return ;
         }
-    }   
+    }
+    std::cout << "❌Inventory full! Cannot equip more than 4 materias" << std::endl;
+    delete m; // Delete the materia if it couldn't be equipped
 }
 
+//unequip()
 //set NULL, not delete -> remove the pointer from the inventory
-// analogy: the character dropping the Materia on the ground — it still exists, but the character just isn't carrying it anymore.
+//analogy: the character dropping the Materia on the ground — it still exists, but character not holding it
 void Character::unequip(int idx)
 {
     if (idx >= 0 && idx < 4)
-         _inventory[idx] = NULL;
+    {
+        std::cout << "Unequip " << _inventory[idx]->getType() << " from " << _name << std::endl;
+        _inventory[idx] = NULL;
+    }
+    else
+        std::cout << "❌Invalid slot or empty slot, cannot unequip" << std::endl;
 }
 
 void Character::use(int idx, ICharacter& target)
 {
     if (idx >= 0 && idx < 4 && _inventory[idx])
         _inventory[idx]->use(target);
+    else
+        std::cout << "❌Cannot use: invalid slot or no materia equipped" << std::endl;
 }

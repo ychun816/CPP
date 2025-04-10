@@ -5,8 +5,8 @@
 #include "IMateriaSource.hpp"
 #include "AMateria.hpp"
 
-//he blueprint library for creating new Materias
-//store up to 4 learned materia templates
+
+//Derived concrete class (inherit frm Interface-IMateriaSource)
 class MateriaSource : public IMateriaSource
 {
     private:
@@ -18,8 +18,7 @@ class MateriaSource : public IMateriaSource
         MateriaSource& operator=(const MateriaSource& src);
         virtual ~MateriaSource();
 
-        //member funcs
-        // interface implementations
+        ////member funcs
         void learnMateria(AMateria* m);
         AMateria* createMateria(std::string const& type);
     
