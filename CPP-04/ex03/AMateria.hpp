@@ -23,9 +23,8 @@
 */
 
 
-
-
 //abstract class
+//abstract class, pure virtual func cannot be instantiated
 class AMateria
 {
     protected:

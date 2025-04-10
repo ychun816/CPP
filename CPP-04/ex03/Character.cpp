@@ -16,7 +16,7 @@ Character::Character(std::string name) :  _name(name)
 }
 
 //deep copy the _inventory
-Character::Character(const Character& src) : _name(src._name)
+Character::Character(const Character& src) :ICharacter(src), _name(src._name) 
 {
     for (int i = 0; i < 4; i++)
     {
@@ -25,12 +25,12 @@ Character::Character(const Character& src) : _name(src._name)
         else
             this->_inventory[i] = NULL;
     }
-    std::cout << "Character copy constructor called" << std::endl;
+    std::cout << "Character " << _name << " copy constructor called" << std::endl;
 }
 
 //deep copy
 //cleanup before assign!!!
-Character& Character::operator=(const Character& src) : ICharacter(src)
+Character& Character::operator=(const Character& src)
 {
     if (this != &src)
     {
@@ -50,14 +50,14 @@ Character& Character::operator=(const Character& src) : ICharacter(src)
                 this->_inventory[i] = src._inventory[i]->clone();
         }
     }
-    std::cout << "Character assignment operator called" << std::endl;
+    std::cout << "Character " << _name << " assignment operator called" << std::endl;
     return (*this);
 }
 
 //delete inventory!!!
 Character::~Character()
 {
-    for (int i = 0; i < 4, i++)
+    for (int i = 0; i < 4; i++)
         delete _inventory[i];
     std::cout << "Character default destructor called" << std::endl;
 }
@@ -73,7 +73,7 @@ void Character::equip(AMateria* m)
     if (!m)
         return ;
 
-    for (int i = 0; i < 4, i++)
+    for (int i = 0; i < 4; i++)
     {
         if (_inventory[i] == NULL)
         {

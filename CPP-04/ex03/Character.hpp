@@ -6,6 +6,7 @@
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
 
+//the user of the Materias
 //possesses an inventory of 4 slots, most 4 Materias
 //Deep copy in copy constructor and assignment operator
 class Character : public ICharacter
@@ -26,8 +27,6 @@ class Character : public ICharacter
         void equip(AMateria* m);
         void unequip(int idx);
         void use(int idx, ICharacter& target);
-
-
 };
 
 #endif

@@ -3,6 +3,10 @@
 #pragma once
 
 #include <iostream>
+// #include "AMateria.hpp"
+
+// Forward declare AMateria
+class AMateria;
 
 class ICharacter 
 {

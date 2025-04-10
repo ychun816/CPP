@@ -6,8 +6,8 @@ NAME	= Materia
 
 CXX		= c++
 CCFLAGS	= -Wall -Wextra -std=c++98 #-MMD -MP#-g
-INCLU = AMateria.hpp Cure.hpp Ice.hpp 
-SRCS = main.cpp AMateria.cpp Cure.cpp Ice.cpp 
+INCLU = ICharacter.hpp AMateria.hpp Character.hpp Cure.hpp Ice.hpp IMateriaSource.hpp MateriaSource.hpp 
+SRCS = AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp main.cpp 
 OBJS = $(SRCS:.cpp=.o)
 
 # **************************************************************************** #

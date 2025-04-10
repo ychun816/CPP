@@ -35,13 +35,13 @@ std::string const& AMateria::getType() const { return (_type);}
 //member funcs
 //clone
 //allow polymorphic copying
-AMateria* AMateria::clone() const
-{
-
-}
+// AMateria* AMateria::clone() const
+// {
+//     return (new AMateria(*this));
+// }
 
 
 void AMateria::use(ICharacter& target)
 {
-
+    std::cout << "* uses " << _type << " on " << target.getName() << " *" << std::endl;
 }
