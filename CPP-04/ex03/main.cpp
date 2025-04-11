@@ -36,15 +36,15 @@ int main()
     tmp = src->createMateria("ice");//5th should fail!
     me->equip(tmp);
     std::cout << "----------- [Unequip on Character ME] --------------" << std::endl;
-    // me->unequip(0);//unequip need to delet -> use _trashLEAKKKKK!!!
+    me->unequip(0);//unequip need to delet
     
     tmp = src->createMateria("cure");//equip after unequip -> should work!
     me->equip(tmp);
-
+    
     std::cout << "\n========== [ Set Character B ] ==========" << std::endl;
     std::cout << "----------- [Character : BOB] --------------" << std::endl;
     ICharacter* bob = new Character("BOB");
-
+    
     std::cout << "\n========== [ TEST use() ] ==========" << std::endl;
     me->use(0, *bob);//cure
     me->use(1, *bob);//ice
