@@ -3,6 +3,7 @@
 
 #include "Animal.hpp"
 
+//Derived concrete class (Inherit frm Base Abstract Class-Animal)
 class Dog : public Animal
 {
     public:

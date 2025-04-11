@@ -30,9 +30,7 @@ class AMateria
 
 #endif
 
-
-
-/*NOTES
+/* WHOLE STRUCTOR NOTE
 
  
        AMateria         (Base Abstract Class)

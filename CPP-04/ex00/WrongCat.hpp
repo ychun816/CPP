@@ -6,10 +6,10 @@
 class WrongCat : public WrongAnimal
 {
     public:
-        WrongCat();//default construct
-        WrongCat(const WrongCat& other);//copy
-        WrongCat& operator=(const WrongCat& other);//assign operator
-        ~WrongCat();//destruc
+        WrongCat();
+        WrongCat(const WrongCat& other);
+        WrongCat& operator=(const WrongCat& other);
+        ~WrongCat();
     
         void makeSound(void) const;
 };

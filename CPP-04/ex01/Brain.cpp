@@ -1,6 +1,6 @@
 #include "Brain.hpp"
 
-//constructor & destructor
+////constructor & destructor
 //init ideas to empty string
 Brain::Brain()
 {
@@ -39,14 +39,12 @@ Brain::~Brain()
     std::cout << "Brain is destroyed" << std::endl;
 }
 
-//member funcs
+////member funcs
 std::string Brain::getIdea(int index) const
 {
     return ((index >= 0 && index < 100) ? ideas[index] : "Invalid index (Range: 0 - 99)\n");
 }
 
-
-/* EXTRA*/
 void Brain::setIdea(int index, const std:: string& idea)
 {
     int i = 0;

@@ -5,14 +5,10 @@
 
 #define MAX_IDEAS 100
 
-/* IMPORTANT NOTIONS:
-Deep Copy vs. Shallow Copy
-SHALLOW COPY: Just copies the pointer, leading to multiple objects pointing to the same memory.
-DEEP COPY: Ensures each Dog or Cat gets its own copy of the Brain.
-*/
+//change private to protected -> derived class can access
 class Brain
 {
-    protected://change to protected
+    protected:
         std::string ideas[MAX_IDEAS];
 
     public:
@@ -22,9 +18,17 @@ class Brain
         Brain& operator=(const Brain& other);
         ~Brain();
 
-        //member funcs
+        ////member funcs
         void setIdea(int index, const std::string& idea);
         std::string getIdea(int index) const;
 };
 
 # endif
+
+/* 
+IMPORTANT NOTIONS:
+
+[Deep Copy vs. Shallow Copy]
+- SHALLOW COPY: Just copies the pointer, leading to multiple objects pointing to the same memory.
+- DEEP COPY: Ensures each Dog or Cat gets its own copy of the Brain.
+*/

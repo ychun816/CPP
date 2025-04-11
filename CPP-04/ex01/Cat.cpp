@@ -1,12 +1,11 @@
 #include "Cat.hpp"
 
-//con-de structs
+////con-de structs
 Cat::Cat() : Animal("🐈"), _brain(new Brain())
 {
     std::cout << "Default Cat " << _type << " is created" << std::endl;
 }
 
-//construct with type
 Cat::Cat(std::string type) : Animal(type), _brain(new Brain())
 {
     std::cout << "Cat " << _type << " is created" << std::endl;
@@ -29,24 +28,24 @@ Cat& Cat::operator=(const Cat& other)
     return (*this);
 }
 
+//DESTRUCTOR
+//Remember to delete the Brain pointer!!
 Cat::~Cat()
 {
     std::cout << "Cat " << _type << " is destroyed" << std::endl;
-    delete _brain; // Free the memory allocated for Brain
+    delete _brain;
 }
 
-//getter
+////getter
 Brain* Cat::getBrain() const {return (_brain);}
 
 
-//member funcs
-//make sound
+////member funcs
 void Cat::makeSound(void) const
 {
     std::cout << "Cat " << _type << " makes sound: Meow~~~" << std::endl;
 }
 
-//tell idea
 void Cat::tellIdea(void) const
 {
 	std::cout << this->_brain->getIdea(42) << std::endl;

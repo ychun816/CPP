@@ -5,8 +5,8 @@
 #include <iostream>
 // #include "AMateria.hpp"
 
-// Forward declare AMateria
-class AMateria;
+class AMateria;//Forward declare AMateria
+
 
 class ICharacter 
 {

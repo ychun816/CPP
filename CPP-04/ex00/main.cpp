@@ -50,7 +50,7 @@ int main()
     //make sound
     std::cout << "\n-------- make sounds --------" << std::endl;
     wrongAnimal->makeSound();
-    wrongCat->makeSound(); //will output the cat sound!
+    wrongCat->makeSound(); //willnot output the cat sound!
     // error->makeSound();
 
     // Cleanup

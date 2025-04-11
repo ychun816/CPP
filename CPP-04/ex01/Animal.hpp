@@ -11,15 +11,15 @@ class Animal
 
     public:
         Animal();
-        Animal(std::string type); //construct with type
+        Animal(std::string type);//construct with type
         Animal(const Animal& other);
         Animal& operator=(const Animal& other);
         virtual ~Animal();
     
-        //getter
+        ////getter
         std::string getType(void) const;
         
-        //membber funcs
+        ////member funcs
         virtual void makeSound(void) const;
         virtual void tellIdea(void) const;
 };

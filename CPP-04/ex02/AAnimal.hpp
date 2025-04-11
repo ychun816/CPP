@@ -21,7 +21,7 @@ class AAnimal
         //getter
         std::string getType(void) const;
         
-        //membber funcs
+        //member funcs
         virtual void makeSound(void) const = 0;
         virtual void tellIdea(void) const = 0;
 };

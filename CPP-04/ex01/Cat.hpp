@@ -16,11 +16,11 @@ class Cat : public Animal
 		Cat& operator=(const Cat &other);
 		~Cat();
 		
-		//member funcs
+		////member funcs
 		void makeSound() const;
 		void tellIdea(void) const;
 
-		//getter
+		////getter
 		Brain* getBrain() const;
 };
 

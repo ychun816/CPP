@@ -4,7 +4,7 @@
 # include <iostream>
 # include <string>
 
-/** BASE CLASS
+/** BASE ABSTRACT CLASS
  * @note
  * Base class destructor needs to be virtual when a class is hierarchy with polymorphism
  * If the destructor in base class not virtual -> base class destructor will be called instead of the derived class!!
@@ -20,7 +20,7 @@ class Animal
         Animal(std::string type); //construct with type
         Animal(const Animal& other);
         Animal& operator=(const Animal& other);
-        virtual ~Animal();//vitural destructor
+        virtual ~Animal();//virtual destructor
     
         virtual void makeSound(void) const;
         std::string getType(void) const;

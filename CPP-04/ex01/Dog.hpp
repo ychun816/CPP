@@ -16,11 +16,11 @@ class Dog : public Animal
         Dog& operator=(const Dog& other);
         ~Dog();
 
-        //member funcs
+        ////member funcs
         void makeSound() const;
         void tellIdea(void) const;
 
-        //getter
+        ////getter
         Brain* getBrain() const;
 };
 

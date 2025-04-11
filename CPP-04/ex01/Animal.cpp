@@ -1,6 +1,6 @@
 #include "Animal.hpp"
 
-//con-de structs
+////constructs & destructors
 Animal::Animal() : _type("DEFAULT")
 {
     std::cout << "Default Animal is created" << std::endl;
@@ -25,16 +25,15 @@ Animal& Animal::operator=(const Animal& other)
 }
 
 //destructor
-//virtual only put in header 
 Animal::~Animal()
 {
     std::cout << "Animal " << _type << " is destroyed" << std::endl;
 }
 
-//getter 
+///getter 
 std::string Animal::getType(void) const {return (_type);}
 
-//member funcs
+////member funcs
 void Animal::makeSound(void) const
 {
     std::cout << "Animal " << _type << " makes a sound" << std::endl;

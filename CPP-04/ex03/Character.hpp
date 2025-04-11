@@ -28,14 +28,6 @@ class Character : public ICharacter
         void unequip(int idx);
         void use(int idx, ICharacter& target);
 
-
-    //for cleanup
-    // private:
-    //     AMateria* _inventory[4];
-    //     AMateria* _trash[100]; // Store unequipped materias
-    //     int _trashCount;
-
-    //     void clearTrash(); // helper function
 };
 
 #endif

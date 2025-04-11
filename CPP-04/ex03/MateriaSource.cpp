@@ -11,21 +11,6 @@ MateriaSource::MateriaSource()
 //deep copy _prototypes
 MateriaSource::MateriaSource(const MateriaSource& src) : IMateriaSource(src)
 {
-    // for (int i = 0; i < 4; i++)
-    // {
-    //     if (src._prototypes[i])
-    //         this->_prototypes[i] = src._prototypes[i]->clone();
-    //     else
-    //         this->_prototypes[i] = NULL;
-    // }
-
-    //cleanup, set to NULL!
-    for (int i = 0; i < 4; i++)
-    {
-        delete _prototypes[i];
-        _prototypes[i] = NULL;
-    }
-        
     for (int i = 0; i < 4; i++)
     {
         if (src._prototypes[i])
@@ -66,7 +51,7 @@ MateriaSource::~MateriaSource()
         if (_prototypes[i])
         {
             delete _prototypes[i];
-            // _prototypes[i] = NULL;
+            _prototypes[i] = NULL;
         }
     }
     std::cout << "💧MateriaSource destructor called" << std::endl;
@@ -74,7 +59,9 @@ MateriaSource::~MateriaSource()
 
 
 ////member funcs
+
 //learnMateria
+// Clean up the original materia object if it's not equipped
 void MateriaSource::learnMateria(AMateria* m)
 {
     if (!m)
@@ -85,14 +72,12 @@ void MateriaSource::learnMateria(AMateria* m)
         if (_prototypes[i] == NULL)
         {
             _prototypes[i] = m;
-            // _prototypes[i] = m->clone();  // Clone before storing
-            // delete m;
             std::cout << "💧MateriaSource " << _prototypes[i]->getType() << " learned" << std::endl;
-            return ;// Exit the function after storing
+            return ;
         }
     }
     std::cout << "❌MateriaSource already full" << std::endl;
-    delete m;  // Clean up the original materia object if it's not equipped
+    delete m;
 }
 
 //createMateria

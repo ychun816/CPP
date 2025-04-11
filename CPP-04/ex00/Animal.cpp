@@ -35,6 +35,7 @@ Animal::~Animal()
 std::string Animal::getType(void) const {return (_type);}
 
 //member funcs
+//virtual func (not pure virtual func) -> need to implement in base abstract class!!
 void Animal::makeSound(void) const
 {
     std::cout << "Animal " << _type << " makes a sound" << std::endl;

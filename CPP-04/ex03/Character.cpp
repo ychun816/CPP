@@ -16,8 +16,10 @@ Character::Character(std::string name) :  _name(name)
     std::cout << "Character " << _name << " called" << std::endl;
 }
 
-//deep copy the _inventory
-//AMateria type can access func-'clone()'
+/** COPY CONSTRUCTOR 
+ * deep copy the _inventory
+ * AMateria type can access func-'clone()' 
+*/
 Character::Character(const Character& src) :ICharacter(src), _name(src._name) 
 {
     for (int i = 0; i < 4; i++)
@@ -30,8 +32,11 @@ Character::Character(const Character& src) :ICharacter(src), _name(src._name)
     std::cout << "Character " << _name << " copy constructor called" << std::endl;
 }
 
-//deep copy
-//cleanup before assign!!!
+/** ASSIGN OPERATOR 
+ * make deep copy    
+ * cleanup before assign!!!
+ * use AMateria's clone() to create a new instance of the materia
+*/
 Character& Character::operator=(const Character& src)
 {
     if (this != &src)
@@ -42,8 +47,10 @@ Character& Character::operator=(const Character& src)
         for (int i = 0; i < 4; i++)
         {
             if (_inventory[i])
+            {
                 delete _inventory[i];
-            // _inventory[i] = NULL;
+                _inventory[i] = NULL;
+            }
         }
         
         //assign
@@ -57,15 +64,15 @@ Character& Character::operator=(const Character& src)
     return (*this);
 }
 
-//delete inventory!!!
+//DESTRUCTOR
+//Remember to delete the AMateria pointers in the inventory!!
 Character::~Character()
 {
     for (int i = 0; i < 4; i++)
     {
         delete _inventory[i];
-        // _inventory[i] = NULL;
+        _inventory[i] = NULL;
     }
-    // clearTrash(); // EXTRA cleanup unequipped Materia
     std::cout << "Character default destructor called" << std::endl;
 }
 
@@ -75,7 +82,10 @@ std::string const& Character::getName() const{ return (_name); }
 
 
 ////member funcs
-//Character references it -> to be equipped 
+
+//EQUIP
+//Character references it -> to be equipped
+//Delete the materia if it couldn't be equipped
 void Character::equip(AMateria* m)
 {
     if (!m)
@@ -86,45 +96,25 @@ void Character::equip(AMateria* m)
         if (_inventory[i] == NULL)
         {
             _inventory[i] = m;
-            // _inventory[i] = m->clone(); // Make a copy
-            // delete m; // Delete the original to prevent memory leak
             std::cout << "Equip " << m->getType() << " to " << _name << std::endl;
             return ;
         }
     }
     std::cout << "❌Inventory full! Cannot equip more than 4 materias" << std::endl;
-    delete m; // Delete the materia if it couldn't be equipped
+    delete m;
 }
 
-//unequip()
-//set NULL, not delete -> remove the pointer from the inventory
-//analogy: the character dropping the Materia on the ground — it still exists, but character not holding it
+//UNEQUIP
+//Delete & remove the pointer from the inventory
 void Character::unequip(int idx)
 {
     if (idx >= 0 && idx < 4)
     {
         std::cout << "Unequip " << _inventory[idx]->getType() << " from " << _name << std::endl;
-        delete _inventory[idx]; // risky!//TRYING
+        delete _inventory[idx]; // risky?//TRYING
         _inventory[idx] = NULL;
     }
 }
-
-/*for cleanup vr*/
-// void Character::unequip(int idx) 
-// {
-//     if (idx >= 0 && idx < 4 && _inventory[idx]) 
-//     {
-//         if (_trashCount < 100) {
-//             _trash[_trashCount++] = _inventory[idx]; // Save for cleanup
-//         } else {
-//             std::cout << "⚠️ Trash is full! Deleting directly." << std::endl;
-//             delete _inventory[idx];
-//         }
-//         _inventory[idx] = NULL;
-//     }
-// }
-
-
 
 void Character::use(int idx, ICharacter& target)
 {
@@ -133,25 +123,3 @@ void Character::use(int idx, ICharacter& target)
     else
         std::cout << "❌Cannot use: invalid slot or no materia equipped" << std::endl;
 }
-
-
-/*for cleanup unequip*/
-// Character::Character() : _trashCount(0) 
-// {
-//     for (int i = 0; i < 4; ++i)
-//         _inventory[i] = NULL;
-
-//     for (int i = 0; i < 100; ++i)
-//         _trash[i] = NULL;
-// }
-
-
-// void Character::clearTrash() 
-// {
-//     for (int i = 0; i < _trashCount; ++i) 
-//     {
-//         if (_trash[i])
-//             delete _trash[i];
-//     }
-//     _trashCount = 0;
-// }
