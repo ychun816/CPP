@@ -13,23 +13,15 @@ class Form;
 class Bureaucrat
 {
     public:
-        Bureaucrat();//default
-        Bureaucrat(Bureaucrat& other);//copy
-        Bureaucrat& operator=(Bureaucrat& other);//assign
-        Bureaucrat(std::string _name, int grade);//init with name and grade
-        ~Bureaucrat();//destructor
+        Bureaucrat();
+        Bureaucrat(Bureaucrat& other);
+        Bureaucrat& operator=(Bureaucrat& other);
+        Bureaucrat(std::string _name, int grade);
+        ~Bureaucrat();
 
         std::string getName() const;
         int getGrade() const;
         
-        // void incrementGrade();
-        // void decrementGrade();
-        
-        //nested classes
-        //custom exception classes
-        // class GradeTooLowException;
-        // class GradeTooHighException;
-    
         //ex01 func
         //signForm() must call Form::beSigned() to attempt to sign the form
         void signForm(Form& form);
@@ -38,7 +30,5 @@ class Bureaucrat
         std::string _name;
         int _grade;
 };
-
-// std::ostream& operator<<(std::ostream& output, const Bureaucrat& bureaucrat);
 
 #endif 

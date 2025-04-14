@@ -1,12 +1,12 @@
 #ifndef FORM_HPP
 # define FORM_HPP
 
-// #include "Bureaucrat.hpp"
+#include "Bureaucrat.hpp"
 #include <iostream>
 #include <string>
 #include <exception>
 
-class Bureaucrat;  // ✅ Forward declaration (fixes circular dependency)
+// class Bureaucrat;  // ✅ Forward declaration (fixes circular dependency)
 
 //private attributes:
 // • A constant name.
@@ -52,11 +52,30 @@ class Form
 
 std::ostream& operator<<(std::ostream& output, const Form& form);
 
+///NEST CLASS
+class GradeTooLowException : public std::exception
+{
+    public:
+        const char* what() const throw()
+        {
+            return "Form grade too low!";
+        } 
+};
+
+class GradeTooHighException : public std::exception
+{
+    public:
+        const char* what() const throw()
+        {
+            return "Form grade too high!";
+        } 
+};
+
+
 
 #endif
 
 /*
 If you're only using the Bureaucrat class as a reference or pointer in the Form class (i.e., you don't need to access its members), forward declaring is typically sufficient and can reduce unnecessary dependencies.
 If you need the complete definition of Bureaucrat for things like member function calls, or if you plan to use it in other parts of the Form class, then including Bureaucrat.hpp directly would be the better choice.
-
 */
