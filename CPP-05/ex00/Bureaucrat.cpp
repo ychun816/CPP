@@ -1,99 +1,79 @@
 #include "Bureaucrat.hpp"
 
-///nested classes
-//custom exception classes
-//Both classes inherit from std::exception and override the what() function to return custom error messages.
-//: public std::exception → This makes it a subclass of std::exception, allowing it to be used in try-catch blocks.
-//what() const throw() → Overrides std::exception::what() to return "Grade is too high!"
-//note!! throw() must come after the function parameters, not before the return type
-class Bureaucrat::GradeTooHighException : public std::exception
-{
-    public:
-        const char* what() const throw()
-        {
-            return ("Grade is too high!");
-        }
-};
-
-class Bureaucrat::GradeTooLowException : public std::exception
-{
-    public:
-        const char* what() const throw()
-        {
-            return ("Grade is too low!");
-        }
-};
-
-//con/de-structors
-Bureaucrat::Bureaucrat() : _name(NULL), _grade(0)//default
+////constructors & destructor
+Bureaucrat::Bureaucrat() : _name("DEFAULT"), _grade(0)
 {
     std:: cout << "--- Bureaucrat default constructor called ---" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat& other)//copy
+Bureaucrat::Bureaucrat(Bureaucrat& other)
 {
     _name = other._name;
     _grade = other._grade;
-    std::cout << "--- Bureaucrat " << _name << " is copied ---" << std::endl;
+    std::cout << "--- Bureaucrat " << _name << " Copy Constructor calld ---" << std::endl;
 }
 
-Bureaucrat& Bureaucrat::operator=(Bureaucrat& other)//assign
+Bureaucrat& Bureaucrat::operator=(Bureaucrat& other)
 {
     if (this != &other)
     {
         this->_name = other._name;
         this->_grade = other._grade;
+        if (this->_grade < 1)
+            throw Bureaucrat::GradeTooHighException();
+        if (this->_grade > 150)
+            throw Bureaucrat::GradeTooLowException();
     }
-    std::cout << "--- Bureaucrat " << _name << " is assigned ---" << std::endl;
+    std::cout << "--- Bureaucrat " << _name << " Assign Operator called ---" << std::endl;
     return (*this);
 }
 
-Bureaucrat::Bureaucrat(std::string _name, int grade)//init with name and grade
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
-    this->_name = _name;
-    this->_grade = grade;
-    std:: cout << "--- Bureaucrat " << _name << " , grade [" << _grade << "] is created ---" << std::endl;
+    if (this->_grade < 1)
+        throw Bureaucrat::GradeTooHighException();
+    if (this->_grade > 150)
+        throw Bureaucrat::GradeTooLowException();
+    // this->_name = _name;
+    // this->_grade = grade;
+    std:: cout << "--- Bureaucrat " << _name << " ; grade [" << _grade << "] | Assignment Constructor called ---" << std::endl;
 }
 
-Bureaucrat::~Bureaucrat()//destructor
+Bureaucrat::~Bureaucrat()
 {
-    std:: cout << "--- Bureaucrat " << _name << " is destroyed ---" << std::endl;
-    // std:: cout << "--- Bureaucrat default destructor called ---" << std::endl;
+    std:: cout << "--- Bureaucrat " << _name << " Destructor called ---" << std::endl;
 }
 
 
-//getter
-std::string Bureaucrat::getName() const
-{
-    return (_name);
-}
+////getter
+std::string Bureaucrat::getName() const { return (_name); }
+int Bureaucrat::getGrade() const { return (_grade); }
 
-int Bureaucrat::getGrade() const
-{
-    return (_grade);
-}
 
-//member funcs
+////member funcs
 // grade 1 is the highest ; 150 the lowest
-// incrementing a grade 3 should result in a grade 2 for the bureaucrat.
+// incrementing a grade 3 should result in a grade 2 for the bureaucrat
+
+// if it's already at 1, decreasing it would make it 0 or below, which is invalid!!
+// Check before decrement!!!
 void Bureaucrat::incrementGrade()
 {
-    if (_grade <= 1)
+    if (this->_grade - 1 < 1)
         throw Bureaucrat::GradeTooHighException();
-    _grade--;
+    this->_grade--;
 }
 
+// if it's already at 150, increasing it would make it 151 or above, which is invalid!!
 void Bureaucrat::decrementGrade()
 {
-    if (_grade >= 150)
+    if (this->_grade + 1 > 150)
         throw Bureaucrat::GradeTooLowException();
-    _grade++;
+    this->_grade++;
 }
 
 //operator<<
 std::ostream& operator<<(std::ostream& output, const Bureaucrat& bureaucrat)
 {
-    // <name>, bureaucrat grade <grade>
     output << bureaucrat.getName() << ", bureaucrat grade [ " << bureaucrat.getGrade() << " ] " << std::endl;
-    return (output);  
+    return (output);
 }
