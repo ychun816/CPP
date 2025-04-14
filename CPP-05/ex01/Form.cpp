@@ -30,7 +30,7 @@ Form& Form::operator=(const Form& other)
 
 Form::Form(std::string formName, int sGrade, int eGrade) :  _name(formName), _isSigned(false), _signGrade(sGrade), _exeGrade(eGrade)
 {
-    std:: cout << "--- Form " << _name << "Constructor called ---" << std::endl;
+    std:: cout << "--- Form " << _name << " Constructor called ---" << std::endl;
 }
 
 Form::~Form()
@@ -48,8 +48,7 @@ bool Form::isSigned() const { return (_isSigned);}
 
 ////MEMBER FUNCS
 //beSigned
-//a bureacrat has a grade,
-//a form has sign grade
+//a bureacrat has a grade, a form has sign grade
 //a bureaucrat needs to have higher grade, so can sign the form (or exe Form in ex02)
 //if the grade is too low (>= 150), the bureaucrat wont sign the form
 bool Form::beSigned(const Bureaucrat& bureaucrat)
@@ -63,8 +62,8 @@ bool Form::beSigned(const Bureaucrat& bureaucrat)
     return (true);
 }
 
-////OPERATOR<< -> print result
-//conclusion: From <form name> , required sign grade <> , required exe grade <> , 
+////OPERATOR<<
+//From <form name> , required sign grade <> , required exe grade <> , 
 std::ostream& operator<<(std::ostream& output, const Form& form)//const Form&? Form&?
 {
     
