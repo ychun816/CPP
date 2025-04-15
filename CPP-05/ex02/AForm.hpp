@@ -8,9 +8,7 @@
 
 class Bureaucrat; //Forward declaration (fixes circular dependency)
 
-//ABSTRACT CLASS
-//the base class Form must be an abstract class
-//Make It an Abstract Class!! -> derived class must implement the pure virtual function
+//Base Abstract Class
 class AForm
 {
     private:
@@ -25,7 +23,7 @@ class AForm
         AForm(const AForm& other);
         AForm& operator=(const AForm& other);
         AForm(std::string formName, int sGrade, int eGrade);
-        virtual~AForm();
+        virtual~AForm();//abstract class
 
         ////getter
         std::string getName() const;
@@ -38,7 +36,6 @@ class AForm
         bool beSigned(const Bureaucrat& bureaucrat);
         
         ////nested class
-        //AForm::GradeTooHighException and AForm::GradeTooLowException
         class GradeTooLowException{};
         class GradeTooHighException{};
         class FormNotSignedException{};

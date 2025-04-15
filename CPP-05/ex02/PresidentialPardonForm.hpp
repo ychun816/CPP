@@ -6,14 +6,12 @@
 #include <string>
 #include <exception>
 
-//Required grades: sign 25, exec 5
-//Informs that <target> has been pardoned by Zaphod Beeblebrox.
-// take only one parameter in their constructor: the target of the form
+//Derived Concrete class 
 class PresidentialPardonForm : public AForm
 {
     private:
         std::string _target;
-        
+
     public:
         PresidentialPardonForm();
         PresidentialPardonForm(PresidentialPardonForm& other);
@@ -27,3 +25,9 @@ class PresidentialPardonForm : public AForm
 };
 
 #endif 
+
+/*PRESIDENTIALPARDONFORM RULES
+- Required grades: sign 25, exec 5
+- Informs that <target> has been pardoned by Zaphod Beeblebrox
+- take only one parameter in their constructor: the target of the form
+*/

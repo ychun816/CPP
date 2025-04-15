@@ -6,17 +6,14 @@
 #include <iostream>
 #include <string>
 #include <exception>
-#include <fstream> //for std::ofstream
+#include <fstream>//for std::ofstream
 
-//CONCRETE CLASS
-//required grades: sign 145, exec 137
-//Creates a file <target>_shrubbery in the working directory and writes ASCII trees inside it.
-// take only one parameter in their constructor: the target of the form
+//Derived Concrete class 
 class ShrubberyCreationForm : public AForm
 {
     private:
-        std::string _target;//target of the form
-        
+        std::string _target;
+
     public:
         ShrubberyCreationForm();
         ShrubberyCreationForm(ShrubberyCreationForm& other);
@@ -24,8 +21,14 @@ class ShrubberyCreationForm : public AForm
         ShrubberyCreationForm(std::string target);
         ~ShrubberyCreationForm();
 
-        //member funcs
+        //member funcs to override
         void execute(const Bureaucrat& executor) const;
 };
 
-#endif 
+#endif
+
+/* SHRUBBERYCREATIONFORM RULES
+- required grades: sign 145, exec 137
+- Creates a file <target>_shrubbery in the working directory and writes ASCII trees inside it
+- take only one parameter in their constructor: the target of the form
+*/

@@ -8,10 +8,7 @@
 #include <exception>
 #include <cstdlib> // for rand()
 
-//required grades: sign 72, exec 45
-//Makes some drilling noises, then informs that <target> has been robotomized successfully 50% of the time
-//Otherwise, it informs that the robotomy failed
-// take only one parameter in their constructor: the target of the form
+//Derived Concrete class 
 class RobotomyRequestForm : public AForm
 {
     private:
@@ -29,3 +26,10 @@ class RobotomyRequestForm : public AForm
 };
 
 #endif
+
+/* ROBOTOMYREQUESTFORM RULES
+- required grades: sign 72, exec 45
+- Makes some drilling noises, then informs that <target> has been robotomized successfully 50% of the time
+- Otherwise, it informs that the robotomy failed
+- take only one parameter in their constructor: the target of the form
+*/

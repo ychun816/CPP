@@ -1,63 +1,55 @@
 #include "ShrubberyCreationForm.hpp"
 
 
-//con/de-structors
-ShrubberyCreationForm::ShrubberyCreationForm() : _target("")//default
+////CONSTRUCTOR & DESTRUCTOR
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm(), _target("DEFAULT")
 {
     std:: cout << "--- ShrubberyCreationForm default constructor called ---" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm& other)//copy
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm& other) : AForm(), _target(other._target)
 {
-    _target = other._target;
-    // std::cout << "--- ShrubberyCreationForm " << " is copied ---" << std::endl;
-    std::cout << "--- ShrubberyCreationForm " << _target << " is copied ---" << std::endl;
+    // _target = other._target;
+    std::cout << "--- ShrubberyCreationForm Copy Constructor called ---" << std::endl;
 }
 
-ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm& other)//assign
+ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm& other)
 {
     if (this != &other)
-    {
         this->_target = other._target;
-    }
-    // std::cout << "--- ShrubberyCreationForm " << " is assigned ---" << std::endl;
-    std::cout << "--- ShrubberyCreationForm " << _target << " is assigned ---" << std::endl;
+    std::cout << "--- ShrubberyCreationForm Assign Operator called ---" << std::endl;
     return (*this);
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target)//init with name and grade
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137), _target(target)
 {
-    this->_target = target;
-    std:: cout << "--- ShrubberyCreationForm with target [" << _target << "] is created ---" << std::endl;
+    // this->_target = target;
+    std:: cout << "--- ShrubberyCreationForm with target [ " << _target << " ] is created ---" << std::endl;
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm()//destructor
+ShrubberyCreationForm::~ShrubberyCreationForm()
 {
     std:: cout << "--- ShrubberyCreationForm default destructor called ---" << std::endl;
-    // std:: cout << "--- ShrubberyCreationForm " << _name << " is destroyed ---" << std::endl;
 }
 
 //MEMBER FUNS 
-//execute
-//create file
-//open+write ascii tree inside
-//close
-
-/**
- * @note 
- * std::ofstream in C++98 expects a const char* (C-style string)!!
- * alling the c_str() method on the string!! 
+/** //execute
+ * (1) create file / (2) open+write ascii tree inside / (3) close
+ * 
+ * @note .c_str()
+ * -> std::ofstream in C++98 expects a const char* (C-style string)!!
+ * -> alling the c_str() method on the string!! 
  * 
  * @note std::ofstream file(target + "_shrubbery")
- * is an output file stream, used to create and write to files
- * file(target + "_shrubbery") creates a file named <target>_shrubbery in the current working directory.
+ * -> an output file stream, used to create and write to files
+ * -> file(target + "_shrubbery") creates a file named <target>_shrubbery in the current working directory.
  * @note file << "🌳 ASCII TREE 🌳\n";
- * file << writes the given text into the file
+ * -> file << writes the given text into the file
  */
 void ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 {
-    (void)executor;
-    //if cannot signed&execute cases frm AForm
+    (void)executor;//put void?
+
     std::ofstream filename((_target + "_shrubbery").c_str());
     if (!filename)
     {

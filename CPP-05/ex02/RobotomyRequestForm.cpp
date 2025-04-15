@@ -1,50 +1,48 @@
 #include "RobotomyRequestForm.hpp"
 
-//construc & deconstruc
-RobotomyRequestForm::RobotomyRequestForm() : _target(NULL)//default
+////CONSTRUCTOR & DESTRUCTOR
+RobotomyRequestForm::RobotomyRequestForm() :  AForm(), _target("DEFAULT")
 {
-    std:: cout << "--- RobotomyRequestForm default constructor called ---" << std::endl;
+    std:: cout << "--- RobotomyRequestForm default Constructor called ---" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm& other)//copy
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm& other) : AForm(other), _target(other._target)
 {
-    _target = other._target;
-    std::cout << "--- RobotomyRequestForm " << _target << " is copied ---" << std::endl;
+    // _target = other._target;
+    std::cout << "--- RobotomyRequestForm Copy Constructor called ---" << std::endl;
 }
 
-RobotomyRequestForm& RobotomyRequestForm::operator=(RobotomyRequestForm& other)//assign
+RobotomyRequestForm& RobotomyRequestForm::operator=(RobotomyRequestForm& other)
 {
     if (this != &other)
     {
         this->_target = other._target;
     }
-    std::cout << "--- RobotomyRequestForm " << _target << " is assigned ---" << std::endl;
+    std::cout << "--- RobotomyRequestForm Assign Operator called ---" << std::endl;
     return (*this);
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target)//init with name and grade
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45), _target(target)
 {
-    this->_target = target;
-    std:: cout << "--- RobotomyRequestForm with target [" << _target << "] is created ---" << std::endl;
+    // this->_target = target;
+    std:: cout << "--- RobotomyRequestForm with target [ " << _target << " ] Assign Constructor called ---" << std::endl;
 }
 
-RobotomyRequestForm::~RobotomyRequestForm()//destructor
+RobotomyRequestForm::~RobotomyRequestForm()
 {
-    // std:: cout << "--- RobotomyRequestForm default destructor called ---" << std::endl;
-    std:: cout << "--- RobotomyRequestForm " << _target << " is destroyed ---" << std::endl;
+    std:: cout << "--- RobotomyRequestForm Destructor called ---" << std::endl;
 }
 
-//execute
-/**
- *  * @note rand() % 2
- * rand() generates a random number.
- * % 2 takes the remainder when dividing by 2, so the result is either 0 or 1
- * if (rand() % 2) => 50% chance the condition will be true (1) or false (0).
+////MEMBER FUNCS
+/** execute
+ * @note rand() % 2
+ * rand() generates a random number
+ * if (rand() % 2) => 50% chance the condition will be true (1) or false (0)
  */
 void RobotomyRequestForm::execute(Bureaucrat const& executor) const
 {
-    (void)executor;
-    //if cannot signed&execute cases frm AForm
+    (void)executor;//put void?
+
     rand() % 2 ? \
     std::cout << "🔩🔩🔩 RobotomyRequestForm " << _target << " has been robotomized successfully 🔩🔩🔩" << std::endl : \
     std::cout << "❌ RobotomyRequestForm " << _target << " robotomy failed ❌" << std::endl;

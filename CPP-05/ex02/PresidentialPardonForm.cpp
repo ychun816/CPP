@@ -1,19 +1,18 @@
 #include "PresidentialPardonForm.hpp"
 
-
-//construc & deconstruc
-PresidentialPardonForm::PresidentialPardonForm() : _target(NULL)//default
+////CONSTRUCTOR & DESTRUCTOR
+PresidentialPardonForm::PresidentialPardonForm() : AForm(), _target("DEFAULT")
 {
     std:: cout << "--- PresidentialPardonForm default constructor called ---" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm& other)//copy
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm& other) : AForm(other), _target(other._target)
 {
-    _target = other._target;
-    std::cout << "--- PresidentialPardonForm " << _target << " is copied ---" << std::endl;
+    // _target = other._target;
+    std::cout << "--- PresidentialPardonForm Copy Constructor called ---" << std::endl;
 }
 
-PresidentialPardonForm& PresidentialPardonForm::operator=(PresidentialPardonForm& other)//assign
+PresidentialPardonForm& PresidentialPardonForm::operator=(PresidentialPardonForm& other)
 {
     if (this != &other)
     {
@@ -23,22 +22,22 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(PresidentialPardonForm
     return (*this);
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target)//init with name and grade
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialPardonForm", 25, 5), _target(target)
 {
-    this->_target = target;
-    std:: cout << "--- PresidentialPardonForm with target [" << _target << "] is created ---" << std::endl;
+    // this->_target = target;
+    std:: cout << "--- PresidentialPardonForm with target [" << _target << "] Assign Constructor called ---" << std::endl;
 }
 
-PresidentialPardonForm::~PresidentialPardonForm()//destructor
+PresidentialPardonForm::~PresidentialPardonForm()
 {
-    // std:: cout << "--- PresidentialPardonForm default destructor called ---" << std::endl;
-    std:: cout << "--- PresidentialPardonForm " << _target << " is destroyed ---" << std::endl;
+    std:: cout << "--- PresidentialPardonForm Destructor called ---" << std::endl;
 }
 
-//mem func
-//exe
+////member funcs
+//execute
 void PresidentialPardonForm::execute(Bureaucrat const& executor) const
 {
     //if cannot signed&execute cases frm AForm
+    (void)executor;//put void?
     std::cout << "🔏 PresidentialPardonForm " << _target << " has been pardoned by Zaphod Beeblebrox 🔏" << std::endl;
 }

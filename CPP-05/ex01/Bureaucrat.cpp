@@ -50,13 +50,12 @@ std::string Bureaucrat::getName() const { return (_name); }
 int Bureaucrat::getGrade() const { return (_grade); }
 
 ////member funcs
-
 //sign form
 //Uses try-catch to handle form signing errors.
 //@note *this Refers to the Current Object
 //Inside a member function of the Bureaucrat class, this is a pointer to the calling object.
 //*this dereferences the pointer, giving the actual object.
-//Since beSigned() expects a const Bureaucrat&, we can pass *this directly.
+//Since beSigned() expects a const Bureaucrat&, we can pass *this directly
 
 //outcome:
 //<bureaucrat> signed <form>
@@ -65,7 +64,7 @@ void Bureaucrat::signForm(Form& form)
 {
     try
     {
-        form.beSigned(*this);//beSigned() Takes a Bureaucrat Object -> *this refers to the current object: 
+        form.beSigned(*this);
         std::cout << _name << " signed " << form.getName() << std::endl;
     }
     catch(const std::exception& e)
@@ -74,13 +73,3 @@ void Bureaucrat::signForm(Form& form)
                   << " ,because " << e.what() << std::endl;
     }
 }
-
-/*
-//operator<<
-std::ostream& operator<<(std::ostream& output, const Bureaucrat& bureaucrat)
-{
-    // <name>, bureaucrat grade <grade>
-    output << bureaucrat.getName() << ", bureaucrat grade [ " << bureaucrat.getGrade() << " ] " << std::endl;
-    return (output);  
-}
-*/
