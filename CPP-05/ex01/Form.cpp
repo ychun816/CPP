@@ -1,25 +1,6 @@
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
-////NESTED CLASS -> better declare in cpp file
-// class GradeTooLowException : public std::exception
-// {
-//     public:
-//         const char* what() const throw()
-//         {
-//             return "Form grade too low!";
-//         } 
-// };
-
-// class GradeTooHighException : public std::exception
-// {
-//     public:
-//         const char* what() const throw()
-//         {
-//             return "Form grade too high!";
-//         } 
-// };
-
 ////CONSTRUCTOR & DESTRUCTOR
 Form::Form() : _name("DEFAULT"), _isSigned(false), _signGrade(0), _exeGrade(0)
 {

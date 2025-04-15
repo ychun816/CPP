@@ -1,12 +1,10 @@
 #ifndef AForm_HPP
 # define AForm_HPP
 
-// #include "Bureaucrat.hpp"
+#include "Bureaucrat.hpp"
 #include <iostream>
 #include <string>
 #include <exception>
-
-class Bureaucrat; //Forward declaration (fixes circular dependency)
 
 //Base Abstract Class
 class AForm
@@ -32,46 +30,37 @@ class AForm
         bool isSigned() const;
 
         ////member funcs
-        //check if signed
         bool beSigned(const Bureaucrat& bureaucrat);
-        
-        ////nested class
-        class GradeTooLowException{};
-        class GradeTooHighException{};
-        class FormNotSignedException{};
-        
         virtual void execute(Bureaucrat const & executor) const = 0;//pure virtual
-};
-
-////NESTED CLASS
-class GradeTooLowException : public std::exception
-{
-    public:
-        const char *what() const throw()
+        
+        ////NESTED CLASS
+        class GradeTooLowException : public std::exception
         {
-            return "Form grade too low!";
-        } 
-};
+            public:
+                const char *what() const throw()
+                {
+                    return "Form grade too low!";
+                } 
+        };
 
-class GradeTooHighException : public std::exception
-{
-    public:
-        const char *what() const throw()
+        class GradeTooHighException : public std::exception
         {
-            return "Form grade too high!";
-        } 
-};
+            public:
+                const char *what() const throw()
+                {
+                    return "Form grade too high!";
+                } 
+        };
 
-//added exception class
-class FormNotSignedException : public std::exception
-{
-    public:
-        const char *what() const throw()
+        class FormNotSignedException : public std::exception
         {
-            return "Form is not signed!";
-        }
+            public:
+                const char *what() const throw()
+                {
+                    return "Form is not signed!";
+                }
+        };
 };
-
 
 std::ostream& operator<<(std::ostream& output, const AForm& form);
 

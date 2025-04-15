@@ -12,83 +12,102 @@ int main()
 
     try {
         // Create bureaucrats with different ranks
-        Bureaucrat highRank("HighRank", 1);       // Can sign and execute all forms
-        Bureaucrat midRank("MidRank", 50);       // Can sign and execute some forms
-        Bureaucrat lowRank("LowRank", 150);      // Cannot sign or execute most forms
+        Bureaucrat highRank("HIGH RANK👩🏻‍💻", 1);       // Can sign and execute all forms
+        Bureaucrat midRank("MID RANK🧝‍♀️", 50);       // Can sign and execute some forms
+        Bureaucrat lowRank("LOW RANK🧟", 150);      // Cannot sign or execute most forms
 
         // Test ShrubberyCreationForm
-        ShrubberyCreationForm shrubbery("Garden");
-        std::cout << "\n--- Testing ShrubberyCreationForm ---\n";
-        try {
-            highRank.signForm(shrubbery);
-            highRank.executeForm(shrubbery);
-        } catch (const std::exception& e) {
+        std::cout << "\n=== TEST ShrubberyCreationForm ===\n";
+        ShrubberyCreationForm shrub("GARDEN");
+        try 
+        {
+            highRank.signForm(shrub);
+            highRank.executeForm(shrub);
+        } catch (const std::exception& e) 
+        {
             std::cerr << e.what() << std::endl;
         }
 
-        try {
-            midRank.signForm(shrubbery);
-            midRank.executeForm(shrubbery);
-        } catch (const std::exception& e) {
+        try 
+        {
+            midRank.signForm(shrub);
+            midRank.executeForm(shrub);
+        } catch (const std::exception& e) 
+        {
             std::cerr << e.what() << std::endl;
         }
 
-        try {
-            lowRank.signForm(shrubbery);
-            lowRank.executeForm(shrubbery);
-        } catch (const std::exception& e) {
+        try 
+        {
+            lowRank.signForm(shrub);
+            lowRank.executeForm(shrub);
+        } catch (const std::exception& e) 
+        {
             std::cerr << e.what() << std::endl;
         }
 
         // Test RobotomyRequestForm
-        RobotomyRequestForm robotomy("Target");
-        std::cout << "\n--- Testing RobotomyRequestForm ---\n";
-        try {
-            highRank.signForm(robotomy);
-            highRank.executeForm(robotomy);
-        } catch (const std::exception& e) {
+        std::cout << "\n=== TEST RobotomyRequestForm ===\n";
+        RobotomyRequestForm robot("TARGET");
+        try 
+        {
+            highRank.signForm(robot);
+            highRank.executeForm(robot);
+        } catch (const std::exception& e) 
+        {
             std::cerr << e.what() << std::endl;
         }
 
-        try {
-            midRank.signForm(robotomy);
-            midRank.executeForm(robotomy);
-        } catch (const std::exception& e) {
+        try 
+        {
+            midRank.signForm(robot);
+            midRank.executeForm(robot);
+        } catch (const std::exception& e) 
+        {
             std::cerr << e.what() << std::endl;
         }
 
-        try {
-            lowRank.signForm(robotomy);
-            lowRank.executeForm(robotomy);
-        } catch (const std::exception& e) {
+        try 
+        {
+            lowRank.signForm(robot);
+            lowRank.executeForm(robot);
+        } catch (const std::exception& e) 
+        {
             std::cerr << e.what() << std::endl;
         }
 
         // Test PresidentialPardonForm
-        PresidentialPardonForm pardon("Offender");
-        std::cout << "\n--- Testing PresidentialPardonForm ---\n";
-        try {
+        PresidentialPardonForm pardon("VILLAIN");
+        std::cout << "\n=== TEST PresidentialPardonForm ===\n";
+        try 
+        {
             highRank.signForm(pardon);
             highRank.executeForm(pardon);
-        } catch (const std::exception& e) {
+        } catch (const std::exception& e) 
+        {
             std::cerr << e.what() << std::endl;
         }
 
-        try {
+        try 
+        {
             midRank.signForm(pardon);
             midRank.executeForm(pardon);
-        } catch (const std::exception& e) {
+        } catch (const std::exception& e) 
+        {
             std::cerr << e.what() << std::endl;
         }
 
-        try {
+        try 
+        {
             lowRank.signForm(pardon);
             lowRank.executeForm(pardon);
-        } catch (const std::exception& e) {
+        } catch (const std::exception& e) 
+        {
             std::cerr << e.what() << std::endl;
         }
     } 
-    catch (const std::exception& e) {
+    catch (const std::exception& e) 
+    {
         std::cerr << "Unexpected error: " << e.what() << std::endl;
     }
 

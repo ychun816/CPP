@@ -28,6 +28,10 @@ AForm& AForm::operator=(const AForm& other)
 
 AForm::AForm(std::string formName, int sGrade, int eGrade) :  _name(formName), _isSigned(false), _signGrade(sGrade), _exeGrade(eGrade)
 {
+    if (sGrade < 1 || eGrade < 1)
+        throw AForm::GradeTooHighException();
+    if (sGrade > 150 || eGrade > 150)
+        throw AForm::GradeTooLowException();
     std:: cout << "--- AForm " << _name << " Constructor called ---" << std::endl;
 }
 
@@ -49,12 +53,11 @@ bool AForm::isSigned() const { return (_isSigned);}
 //if the grade is too low (>= 150), the bureaucrat wont sign the AForm
 bool AForm::beSigned(const Bureaucrat& bureaucrat)
 {
-    if (bureaucrat.getGrade() > _signGrade)
-    {
+    if (bureaucrat.getGrade() > this->_signGrade)// || bureaucrat.getGrade() > 150
         throw GradeTooLowException();
-        //return (false);
-    }
-    _isSigned = true;
+    if (bureaucrat.getGrade() < 1)
+        throw GradeTooHighException();
+    this->_isSigned = true;
     return (true);
 }
 
@@ -77,6 +80,6 @@ std::ostream& operator<<(std::ostream& output, const AForm& form)
     output << "AForm: " << form.getName() 
             << " | Required sign grade: " << form.getSignGrade()
             << " | Required execute grade: " << form.getExeGrade() << std::endl
-            << " || If signed: " << (form.isSigned() ? "NO" : "YES") << std::endl;
+            << " || If signed: " << (form.isSigned() ? "YES" : "NO") << std::endl;
     return (output);
 }
