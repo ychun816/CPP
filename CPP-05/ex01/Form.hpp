@@ -38,30 +38,27 @@ class Form
         bool beSigned(const Bureaucrat& bureaucrat);
     
         ////nested class
-        class GradeTooLowException{};
-        class GradeTooHighException{};
+        class GradeTooLowException : public std::exception
+        {
+            public:
+                const char* what() const throw()
+                {
+                    return "Form grade too low!";
+                } 
+        };
+        
+        class GradeTooHighException : public std::exception
+        {
+            public:
+                const char* what() const throw()
+                {
+                    return "Form grade too high!";
+                } 
+        };
 
 };
 
 std::ostream& operator<<(std::ostream& output, const Form& form);
 
-////nested class
-class GradeTooLowException : public std::exception
-{
-    public:
-        const char* what() const throw()
-        {
-            return "Form grade too low!";
-        } 
-};
-
-class GradeTooHighException : public std::exception
-{
-    public:
-        const char* what() const throw()
-        {
-            return "Form grade too high!";
-        } 
-};
 
 #endif
