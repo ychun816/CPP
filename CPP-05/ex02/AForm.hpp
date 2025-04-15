@@ -6,7 +6,7 @@
 #include <string>
 #include <exception>
 
-class Bureaucrat;  // ✅ Forward declaration (fixes circular dependency)
+class Bureaucrat; //Forward declaration (fixes circular dependency)
 
 //ABSTRACT CLASS
 //the base class Form must be an abstract class
@@ -16,39 +16,65 @@ class AForm
     private:
         const std::string _name;
         bool _isSigned;
-        const int _signGrade;//The minimum grade required to sign the AForm.
-        const int _exeGrade;//The minimum grade required to execute the AForm. -> for ex02
+        const int _signGrade;
+        const int _exeGrade;
 
     public:
         ////construct/destruct
         AForm();
-        AForm(const AForm& other);//copy
-        AForm& operator=(const AForm& other);//assign
-        AForm(std::string formName, int sGrade, int eGrade);//init
+        AForm(const AForm& other);
+        AForm& operator=(const AForm& other);
+        AForm(std::string formName, int sGrade, int eGrade);
         virtual~AForm();
 
-        //member function to the AForm that takes a Bureaucrat as a parameter.
-        //It changes the AForm’s status to signed if the bureaucrat’s grade is high enough (greater than or equal to the required one)
-        bool beSigned(const Bureaucrat& bureaucrat);
-        
-        ////member funcs
-        //getter
+        ////getter
         std::string getName() const;
         int getSignGrade() const;
         int getExeGrade() const;
         bool isSigned() const;
-                
+
+        ////member funcs
+        //check if signed
+        bool beSigned(const Bureaucrat& bureaucrat);
+        
         ////nested class
         //AForm::GradeTooHighException and AForm::GradeTooLowException
         class GradeTooLowException{};
         class GradeTooHighException{};
-        //added
         class FormNotSignedException{};
         
-        //ADDED
-        virtual void execute(Bureaucrat const & executor) const = 0; //Make execute() pure virtual
-        //implement a func to execute the AForm’s action in the concrete classes
+        virtual void execute(Bureaucrat const & executor) const = 0;//pure virtual
 };
+
+////NESTED CLASS
+class GradeTooLowException : public std::exception
+{
+    public:
+        const char *what() const throw()
+        {
+            return "Form grade too low!";
+        } 
+};
+
+class GradeTooHighException : public std::exception
+{
+    public:
+        const char *what() const throw()
+        {
+            return "Form grade too high!";
+        } 
+};
+
+//added exception class
+class FormNotSignedException : public std::exception
+{
+    public:
+        const char *what() const throw()
+        {
+            return "Form is not signed!";
+        }
+};
+
 
 std::ostream& operator<<(std::ostream& output, const AForm& form);
 

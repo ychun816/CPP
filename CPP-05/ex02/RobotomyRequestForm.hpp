@@ -6,7 +6,7 @@
 #include <iostream>
 #include <string>
 #include <exception>
-#include <cstdlib>  // Required for rand()
+#include <cstdlib> // for rand()
 
 //required grades: sign 72, exec 45
 //Makes some drilling noises, then informs that <target> has been robotomized successfully 50% of the time
@@ -14,18 +14,18 @@
 // take only one parameter in their constructor: the target of the form
 class RobotomyRequestForm : public AForm
 {
+    private:
+            std::string _target;
+
     public:
-        RobotomyRequestForm();//default
-        RobotomyRequestForm(RobotomyRequestForm& other);//copy
-        RobotomyRequestForm& operator=(RobotomyRequestForm& other);//assign
-        RobotomyRequestForm(std::string target);//init with name and grade
-        ~RobotomyRequestForm();//destructor
+        RobotomyRequestForm();
+        RobotomyRequestForm(RobotomyRequestForm& other);
+        RobotomyRequestForm& operator=(RobotomyRequestForm& other);
+        RobotomyRequestForm(std::string target);
+        ~RobotomyRequestForm();
 
         //memeber func to override
-        void execute(Bureaucrat const& executor) const;// override
-
-    private:
-        std::string _target;
+        void execute(Bureaucrat const& executor) const;
 };
 
 #endif

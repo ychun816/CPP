@@ -7,6 +7,13 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
+
+//If successful, print something like:<bureaucrat> executed <form>
+//If not, print an explicit error message
+
+
+
+
 //You cannot create an object of an abstract class (AForm)
 //You must use a concrete subclass that implements all pure virtual functions.
 // int main()

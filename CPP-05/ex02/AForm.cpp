@@ -1,34 +1,6 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-////NESTED CLASS
-class GradeTooLowException : public std::exception
-{
-    public:
-        const char *what() throw()
-        {
-            return "Form grade too low!";
-        } 
-};
-
-class GradeTooHighException : public std::exception
-{
-    public:
-        const char *what() throw()
-        {
-            return "Form grade too high!";
-        } 
-};
-
-//added exception class
-class FormNotSignedException : public std::exception
-{
-    public:
-        const char *what() throw()
-        {
-            return "Form is not signed!";
-        }
-};
 
 ////CON&DE-STRUCTOR
 AForm::AForm() : _name(NULL), _isSigned(false), _signGrade(0), _exeGrade(0)

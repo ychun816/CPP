@@ -11,19 +11,19 @@
 // take only one parameter in their constructor: the target of the form
 class PresidentialPardonForm : public AForm
 {
-    public:
-        PresidentialPardonForm();//default
-        PresidentialPardonForm(PresidentialPardonForm& other);//copy
-        PresidentialPardonForm& operator=(PresidentialPardonForm& other);//assign
-        PresidentialPardonForm(std::string _target);//init with name and grade
-        ~PresidentialPardonForm();//destructor
-
-        //memeber func to override
-        void execute(Bureaucrat const& executor) const;// override
-    
     private:
         std::string _target;
-};
+        
+    public:
+        PresidentialPardonForm();
+        PresidentialPardonForm(PresidentialPardonForm& other);
+        PresidentialPardonForm& operator=(PresidentialPardonForm& other);
+        PresidentialPardonForm(std::string _target);
+        ~PresidentialPardonForm();
 
+        //memeber func to override
+        void execute(Bureaucrat const& executor) const;
+    
+};
 
 #endif 

@@ -43,6 +43,7 @@ RobotomyRequestForm::~RobotomyRequestForm()//destructor
  */
 void RobotomyRequestForm::execute(Bureaucrat const& executor) const
 {
+    (void)executor;
     //if cannot signed&execute cases frm AForm
     rand() % 2 ? \
     std::cout << "🔩🔩🔩 RobotomyRequestForm " << _target << " has been robotomized successfully 🔩🔩🔩" << std::endl : \
