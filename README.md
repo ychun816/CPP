@@ -37,7 +37,7 @@ https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rJndvhisye
 + Shallow Copy v.s. Deep Copy
 + Abstract v.s. Interface
 
-++ Ex03 Classes Relations:
++ Ex03 Classes Relations:
 ****************************************************************************
 [WHOLE STRUCTOR NOTE]
 
