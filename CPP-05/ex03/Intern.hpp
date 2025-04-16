@@ -20,7 +20,7 @@ class Intern
         ////member funcs
         AForm& makeForm(std::string fromName, std::string target);
 
-        ////exceptions
+        ////NESTED CLASS (EXCEPTION)
         class WrongFormNameException : public std::exception
         {
             public:

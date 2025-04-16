@@ -73,3 +73,16 @@ void Bureaucrat::signForm(AForm& form) const
                   << " ], because: " << e.what() << std::endl;
     }
 }
+
+void Bureaucrat::executeForm(AForm const& form) const
+{
+    Bureaucrat staff;
+    
+    if (this->_grade <= form.getExeGrade())
+    {
+        form.execute(staff);
+        std::cout << this->_name << " executed " << form.getName() << std::endl;
+    }
+    else
+        throw AForm::GradeTooLowException();
+}

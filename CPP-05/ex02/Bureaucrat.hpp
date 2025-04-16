@@ -9,6 +9,10 @@ class AForm;
 
 class Bureaucrat
 {
+    private:
+        std::string _name;
+        int _grade;
+
     public:
         Bureaucrat();
         Bureaucrat(Bureaucrat& other);
@@ -23,10 +27,6 @@ class Bureaucrat
         ////member funcs
         void signForm(AForm& form) const;
         void executeForm(AForm const& form) const;
-
-    private:
-        std::string _name;
-        int _grade;
 };
 
 

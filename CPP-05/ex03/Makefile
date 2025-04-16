@@ -2,7 +2,7 @@
 #                                 VARIABLES                                    #
 # **************************************************************************** #
 
-NAME	= AForm
+NAME	= Intern
 
 CXX		= c++
 CCFLAGS	= -Wall -Wextra -std=c++98 #-MMD -MP#-g

@@ -60,16 +60,29 @@ int Bureaucrat::getGrade() const { return (_grade); }
 //outcome:
 //<bureaucrat> signed <form>
 //<bureaucrat> couldn’t sign <form> because <reason>
-void Bureaucrat::signForm(AForm& form)
+void Bureaucrat::signForm(AForm& form) const
 {
     try
     {
         form.beSigned(*this);
-        std::cout << _name << " signed " << form.getName() << std::endl;
+        std::cout << this->_name << " signed " << form.getName() << std::endl;
     }
     catch(const std::exception& e)
     {
-        std::cout << _name << " couldn't sign [ " << form.getName()
+        std::cout << this->_name << " couldn't sign [ " << form.getName()
                   << " ], because: " << e.what() << std::endl;
     }
+}
+
+void Bureaucrat::executeForm(AForm const& form) const
+{
+    Bureaucrat staff;
+    
+    if (this->_grade <= form.getExeGrade())
+    {
+        form.execute(staff);
+        std::cout << this->_name << " executed " << form.getName() << std::endl;
+    }
+    else
+        throw AForm::GradeTooLowException();
 }

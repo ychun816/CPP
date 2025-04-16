@@ -12,13 +12,13 @@ int main()
 
     try {
         // Create bureaucrats with different ranks
-        Bureaucrat highRank("HIGH RANK👩🏻‍💻", 1);       // Can sign and execute all forms
-        Bureaucrat midRank("MID RANK🧝‍♀️", 50);       // Can sign and execute some forms
+        Bureaucrat highRank("HIGH RANK👩", 1);       // Can sign and execute all forms
+        Bureaucrat midRank("MID RANK🧝", 50);       // Can sign and execute some forms
         Bureaucrat lowRank("LOW RANK🧟", 150);      // Cannot sign or execute most forms
 
         // Test ShrubberyCreationForm
         std::cout << "\n=== TEST ShrubberyCreationForm ===\n";
-        ShrubberyCreationForm shrub("GARDEN");
+        ShrubberyCreationForm shrub("GARDEN🌱");
         try 
         {
             highRank.signForm(shrub);
@@ -48,7 +48,7 @@ int main()
 
         // Test RobotomyRequestForm
         std::cout << "\n=== TEST RobotomyRequestForm ===\n";
-        RobotomyRequestForm robot("TARGET");
+        RobotomyRequestForm robot("TARGET🍥");
         try 
         {
             highRank.signForm(robot);
@@ -77,7 +77,7 @@ int main()
         }
 
         // Test PresidentialPardonForm
-        PresidentialPardonForm pardon("VILLAIN");
+        PresidentialPardonForm pardon("VILLAIN🧌");
         std::cout << "\n=== TEST PresidentialPardonForm ===\n";
         try 
         {

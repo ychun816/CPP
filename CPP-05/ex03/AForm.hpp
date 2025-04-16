@@ -21,7 +21,7 @@ class AForm
         AForm(const AForm& other);
         AForm& operator=(const AForm& other);
         AForm(std::string formName, int sGrade, int eGrade);
-        virtual~AForm();//abstract class
+        virtual ~AForm();
 
         ////getter
         std::string getName() const;
