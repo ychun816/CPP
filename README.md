@@ -44,7 +44,7 @@ https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rJndvhisye
 + Abstract v.s. Interface
 
 + Ex03 Classes Relations:
-****************************************************************************
+
 [WHOLE STRUCTOR NOTE]
 
  
@@ -62,8 +62,6 @@ virtual void use(ICharacter& target);//virtual func
 AMateria* Cure::clone() const -> deep copy whole class (new Cure(*this))
 void Cure::use(ICharacter& target) -> need to implement
 
-****************************************************************************
-
     ICharacter            (Interface)
         |
     Character             (Concrete class)
@@ -76,8 +74,6 @@ No variable / All is pure virtual func
 void equip(AMateria* m);
 void unequip(int idx);
 void use(int idx, ICharacter& target);
-
-****************************************************************************
 
     IMateriaSource        (Interface)
           |
