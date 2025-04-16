@@ -18,18 +18,24 @@ https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/r1TCoR4hJg
 + [Walk-thru] For bonus ex2, Understanding Reverse Engineering:
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rJndvhisye
 
+****************************************************************************
+
 ### 1️⃣ CPP-01 (Pointer/Reference / File Handlings / Switch Statement)
 + Pointer & Reference in C++ : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rkVAGOghyg
+
+****************************************************************************
 
 ### 2️⃣ CPP-02 (Orthodox Canonical class form / Fixed-Point / Operator Overload)
 
 + Orthodox Canonical class form : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/ry9Uc8TTyl
 + Fixed- Point : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/S1uenO661l
 + Operator overload : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/BJRoauTTkx
+****************************************************************************
 
 ### 3️⃣ CPP-03 (Inheritance / Class Ambiguity)
 + Inheritance (Abstract & Concrete class) : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/S1IIYb2pkg  
 + Multiple Inheritance Ambiguity : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/SJTVPv-0Je
+****************************************************************************
 
 ### 4️⃣ CPP-04 (Abstract Class v.s. Interface v.s. Derived Concrete Class / Subtype Polymorphism)
 + Abstract & Concrete class : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/S1IIYb2pkg
@@ -47,12 +53,12 @@ https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rJndvhisye
     Ice         Cure    (Derived Concrete Class)
 
 
-//In Base Abstract Class (AMateria):
+// In Base Abstract Class (AMateria):
 virtual ~AMateria();
 virtual AMateria* clone() const = 0;//pure virtual func
 virtual void use(ICharacter& target);//virtual func
 
-//In Derived Concrete Class (Ice, Cure):
+// In Derived Concrete Class (Ice, Cure):
 AMateria* Cure::clone() const -> deep copy whole class (new Cure(*this))
 void Cure::use(ICharacter& target) -> need to implement
 
@@ -62,15 +68,14 @@ void Cure::use(ICharacter& target) -> need to implement
         |
     Character             (Concrete class)
 
-//In Ineterface (ICharacter):
+// In Ineterface (ICharacter):
 No variable / All is pure virtual func
 
-//In Concrete Class (Character):
+// In Concrete Class (Character):
 !! NEED TO IMPLEMENT ALL PURE VIRTUAL FUNC !!
 void equip(AMateria* m);
 void unequip(int idx);
 void use(int idx, ICharacter& target);
-
 
 ****************************************************************************
 
@@ -80,6 +85,8 @@ void use(int idx, ICharacter& target);
 
 
 *~~ REST IS THE SAME LOGIC AS ICharacter*
+
+****************************************************************************
 
 
 ### 5️⃣ CPP-05 (Nested class, Try/Catch statement)
