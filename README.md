@@ -79,10 +79,7 @@ void use(int idx, ICharacter& target);
     MateriaSource         (Concrete class)
 
 
-~~~SAME LOGIC AS ICharacter
-
-****************************************************************************
-
+*~~ REST IS THE SAME LOGIC AS ICharacter*
 
 
 ### 5️⃣ CPP-05 (Nested class, Try/Catch statement)
