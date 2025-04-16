@@ -52,26 +52,26 @@ https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rJndvhisye
 
 
 // In Base Abstract Class (AMateria):
-virtual ~AMateria();
-virtual AMateria* clone() const = 0;//pure virtual func
-virtual void use(ICharacter& target);//virtual func
+// virtual ~AMateria();
+// virtual AMateria* clone() const = 0;//pure virtual func
+// virtual void use(ICharacter& target);//virtual func
 
 // In Derived Concrete Class (Ice, Cure):
-AMateria* Cure::clone() const -> deep copy whole class (new Cure(*this))
-void Cure::use(ICharacter& target) -> need to implement
+// AMateria* Cure::clone() const -> deep copy whole class (new Cure(*this))
+// void Cure::use(ICharacter& target) -> need to implement
 
     ICharacter            (Interface)
         |
     Character             (Concrete class)
 
 // In Ineterface (ICharacter):
-No variable / All is pure virtual func
+// No variable / All is pure virtual func
 
 // In Concrete Class (Character):
-!! NEED TO IMPLEMENT ALL PURE VIRTUAL FUNC !!
-void equip(AMateria* m);
-void unequip(int idx);
-void use(int idx, ICharacter& target);
+// !! NEED TO IMPLEMENT ALL PURE VIRTUAL FUNC !!
+// void equip(AMateria* m);
+// void unequip(int idx);
+// void use(int idx, ICharacter& target);
 
     IMateriaSource        (Interface)
           |
