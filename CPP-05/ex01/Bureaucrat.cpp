@@ -7,10 +7,10 @@ Bureaucrat::Bureaucrat() : _name("DEFAULT"), _grade(0)
     std:: cout << "--- Bureaucrat default constructor called ---" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat& other)
+Bureaucrat::Bureaucrat(Bureaucrat& other) : _name(other._name), _grade(other._grade)
 {
-    _name = other._name;
-    _grade = other._grade;
+    // _name = other._name;
+    // _grade = other._grade;
     std::cout << "--- Bureaucrat " << _name << " Copy Constructor calld ---" << std::endl;
 }
 

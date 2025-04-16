@@ -55,17 +55,9 @@ bool Form::isSigned() const { return (_isSigned);}
 bool Form::beSigned(const Bureaucrat& bureaucrat)
 {
     if (bureaucrat.getGrade() > this->_signGrade)// || bureaucrat.getGrade() > 150
-    {
         throw GradeTooLowException();
-        // _isSigned = false;
-        // return (false);
-    }
     if (bureaucrat.getGrade() < 1)
-    {
         throw GradeTooHighException();
-        // _isSigned = false;
-        // return (false);
-    }
     this->_isSigned = true;
     return (true);
 }
