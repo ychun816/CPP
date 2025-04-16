@@ -54,7 +54,6 @@ void ShrubberyCreationForm::execute(const Bureaucrat& executor) const
     if (!filename)
     {
         std::cerr << "Error : Cannot create file" << std::endl;
-        // return;
     }
     else
     {

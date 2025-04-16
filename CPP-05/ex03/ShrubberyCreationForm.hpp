@@ -23,6 +23,7 @@ class ShrubberyCreationForm : public AForm
 
         //member funcs to override
         void execute(const Bureaucrat& executor) const;
+        AForm* createShrubberyCreation(std::string target);
 };
 
 #endif

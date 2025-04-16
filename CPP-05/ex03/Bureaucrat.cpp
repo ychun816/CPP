@@ -60,7 +60,7 @@ int Bureaucrat::getGrade() const { return (_grade); }
 //outcome:
 //<bureaucrat> signed <form>
 //<bureaucrat> couldn’t sign <form> because <reason>
-void Bureaucrat::signForm(AForm& form)
+void Bureaucrat::signForm(AForm& form) const
 {
     try
     {
