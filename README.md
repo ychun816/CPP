@@ -87,3 +87,6 @@ https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rJndvhisye
 + Nested class, Try/Catch statement : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/Bkk1hNupkl
 + Notes on Exception Classes : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/BJaCAwnAJl
 
+### 6️⃣ CPP-06 (Casts)
+
+
