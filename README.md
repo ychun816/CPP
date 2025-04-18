@@ -88,5 +88,6 @@ https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rJndvhisye
 + Notes on Exception Classes : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/BJaCAwnAJl
 
 ### 6️⃣ CPP-06 (Casts)
-
++ Basic Terms/Notions : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/ByGYm7J1ee
++ 5 Main Cast Types : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/SyXVxQyyxg
 
