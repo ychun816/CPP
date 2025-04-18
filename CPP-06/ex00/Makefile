@@ -2,12 +2,12 @@
 #                                 VARIABLES                                    #
 # **************************************************************************** #
 
-NAME	= Intern
+NAME	= Convert
 
 CXX		= c++
 CCFLAGS	= -Wall -Wextra -std=c++98 #-MMD -MP#-g
-INCLU = AForm.hpp Bureaucrat.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp ShrubberyCreationForm.hpp Intern.hpp
-SRCS = main.cpp AForm.cpp Bureaucrat.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp Intern.cpp 
+INCLU = ScalarConverter.hpp
+SRCS = main.cpp ScalarConverter.cpp 
 OBJS = $(SRCS:.cpp=.o)
 
 # **************************************************************************** #
