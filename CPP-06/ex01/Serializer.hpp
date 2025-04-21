@@ -3,11 +3,12 @@
 #pragma once
 
 #include "Data.hpp"
+
+#include <stdint.h> // uintptr_t ??
 #include <iostream>
 #include <string>
 #include <vector>
 #include <sstream>
-#include <stdint.h> // uintptr_t ??
 #include <stdexcept>
 
 //practice reinterpret_cast!

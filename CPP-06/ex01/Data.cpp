@@ -10,7 +10,6 @@ Data::Data(std::string name, int id, double score) : _name(name), _id(id), _scor
 
 Data::~Data(){};
 
-
 ////getters
 int Data::getID() const { return (_id); }
 std::string Data::getName() const { return (_name); }

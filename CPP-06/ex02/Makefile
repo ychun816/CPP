@@ -2,12 +2,12 @@
 #                                 VARIABLES                                    #
 # **************************************************************************** #
 
-NAME	= Convert
+NAME	= Identify
 
 CXX		= c++
 CCFLAGS	= -Wall -Wextra -Werror -std=c++98 #-MMD -MP#-g
-INCLU = ScalarConverter.hpp
-SRCS = main.cpp ScalarConverter.cpp parsing.cpp
+INCLU = 
+SRCS = main.cpp 
 OBJS = $(SRCS:.cpp=.o)
 
 # **************************************************************************** #

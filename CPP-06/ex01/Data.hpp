@@ -3,18 +3,18 @@
 #pragma once
 
 #include <iostream>
-#include <cstdint> // for uintptr_t
 
 class Data
 {
     private:
-        int _id;
         std::string _name;
+        int _id;
         double _score;
     
     public:
         Data();
         Data(std::string name, int id, double score);
+        ~Data();
 
         //getters
         int getID() const;
