@@ -7,14 +7,12 @@
 // ScalarConverter& ScalarConverter::operator=(const ScalarConverter&) { return *this; }
 // ScalarConverter::~ScalarConverter() {}
 
-
 ////MEMBER FUNCS
 //convert 
 static void convert(const std::string& input)
 {
 
 }
-
 
 //check input
 //.length() / std::isdidgit() / std::isprint()
@@ -74,10 +72,34 @@ static bool isFloat(const std::string& input)
     return false;//f no find in the end
 }
 
-//
+//1 Handle pseudo-literals first: special double values
+//2 check first sign -> Skip '+' or '-'
+//3 Flag to ensure there's one decimal point
+//4 Loop through characters in the input :
+// // If there's more than one '.', it's invalid
+
 static bool isDouble(const std::string& input)
 {
-
+    bool hasDecimal = false;
+    
+    if (input == "nanf" || input == "+inff" || input == "-inff")
+        return true;
+   
+    size_t i = 0;
+    if (input[i] == '-' || input[i] == '+')
+            i++;
+    for (; i < input.length(); i++)
+    {
+        if (input[i] == '.')
+        {
+            if (hasDecimal)
+                return false;
+            hasDecimal = true; // first '.' is allowed
+        }
+        else if (std::isdigit(input[i]))// Any non-digit (and not '.') character is invalid
+            return false;
+    }
+    return true; // If reach here, it's a valid double
 }
 
 static bool isPseudoLiteral(const std::string& input)
@@ -89,29 +111,45 @@ static bool isPseudoLiteral(const std::string& input)
 
 
 ////print value
-static void printChar(double value)
+static void printInt(int intValue)
 {
-    std::cout << "Char: ";
-        std::cout << "'" << static_cast<char>(value) << "'" << std::endl;
-
+    std::cout << "Int: " << intValue << std::endl;
 }
 
-static void printInt(double value)
+static void printChar(char charValue)
 {
-    std::cout << "Int: ";
-    std::cout << "'" << static_cast<int>(value) << "'" << std::endl;
-
+    if (isprint(charValue))
+        std::cout << "Char: "<< charValue << std::endl;
+    else
+        std::cout << "Char Error: Non displayable" << std::endl;
 }
 
-static void printFloat(double value)
+//std::setprecision(1)
+//-> manipulator from the <iomanip> header in C++
+//-> set the number of digits to be displayed after the decimal point for floating-point output — but only when used with std::fixed.
+
+//oss is a variable of type std::ostringstream — a stream that works like std::cout, 
+//but instead of printing to the console, it stores the output in a string buffer.
+//Think of it as: a string version of std::cout.
+
+static void printFloat(float floatValue)
 {
     std::cout << "Float: ";
-    std::cout << "'" << static_cast<float>(value) << "'" << std::endl;
-
+    std::cout << std::fixed << std::setprecision(1) << floatValue << "f" << std::endl;
 }
 
-static void printDouble(double value)
+static void printDouble(double doubleValue)
 {
     std::cout << "Double: ";
-    std::cout << "'" << static_cast<double>(value) << "'" << std::endl;
+    std::cout << std::fixed << std::setprecision(1) << doubleValue << std::endl;
 }
+
+//print conversions
+static void printConversionInt(int i)
+{}
+static void printConversionFloat(float f)
+{}
+static void printConversionDouble(double d)
+{}
+
+

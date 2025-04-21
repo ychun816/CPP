@@ -36,6 +36,10 @@ class ScalarConverter
         static void printFloat(double value);
         static void printDouble(double value);
 
+        static void printConversionInt(int i);
+        static void printConversionFloat(float f);
+        static void printConversionDouble(double d);
+
 };
 
 
