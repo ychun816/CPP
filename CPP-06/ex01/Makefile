@@ -5,9 +5,9 @@
 NAME	= Serializer
 
 CXX		= c++
-CCFLAGS	= -Wall -Wextra -std=c++98 #-MMD -MP#-g
-INCLU = Serializer.hpp
-SRCS = main.cpp 
+CCFLAGS	= -Wall -Wextra -Werror -std=c++98 #-MMD -MP#-g
+INCLU = Serializer.hpp Data.hpp
+SRCS = main.cpp Serializer.cpp Data.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # **************************************************************************** #
