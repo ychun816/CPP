@@ -7,7 +7,7 @@ NAME	= Convert
 CXX		= c++
 CCFLAGS	= -Wall -Wextra -std=c++98 #-MMD -MP#-g
 INCLU = ScalarConverter.hpp
-SRCS = main.cpp ScalarConverter.cpp 
+SRCS = main.cpp ScalarConverter.cpp parsing.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # **************************************************************************** #

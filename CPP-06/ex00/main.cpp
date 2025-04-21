@@ -3,42 +3,29 @@
 //1 string parsing & check
 //2 convert
 
-
 int main(int ac, char *av[])
 {
-    //1 check ac 
-    if (ac != 2)
+    if (ac != 2 || av[1][0] == '\0')
     {
-        std::cerr << "Error! Usage: ./Convert <literal>" << std::endl;
+        std::cerr << "Error : Invalid Argument" << std::endl;
+        // std::cerr << "Correct Usage: ./convert <input>" << std::endl;
         return 1;
     }
-
-    //2 check arg 
-    //check arg literal 
-    //special literal (nan), +inf, -inf, "+inff , inff
-    // if ( !isCharLiteral(av[1]) || !isSpecialLiteral(av[1]))//false(0)   -> should be in loop? 
-    // {
-    //     std::cerr << "Error: Invalid argument" << std::endl;
-    //     return 1;
-    // }
-    for (int i = 1; i < ac; i++)
-    {
-        if (isCharLiteral(av[i]))
-        {
-            std::cout << "char: " << av[i] << std::endl;
-        }
-        else if (isSpecialLiteral(av[i]))
-        {
-            std::cout << "special literal: " << av[i] << std::endl;
-        }
-        else
-        {
-            std::cerr << "Error: Invalid argument" << std::endl;
-            return 1;
-        }
-    }
-
-    //3 convert 
     ScalarConverter::convert(av[1]);
     return 0;
 }
+
+/*
+Input | Expected Output (char, int, float, double)
+a     | char: 'a', int: 97, float: 97.0f, double: 97.0
+0     | char: Non displayable, int: 48, float: 48.0f, double: 48.0
+42    | char: '*', int: 42, float: 42.0f, double: 42.0
+-42   | char: impossible, int: -42, float: -42.0f, double: -42.0
+4.2f  | char: Non displayable, int: 4, float: 4.2f, double: 4.2
+4.2   | char: Non displayable, int: 4, float: 4.2f, double: 4.2
+nan   | char: impossible, int: impossible, float: nanf, double: nan
+nanf  | char: impossible, int: impossible, float: nanf, double: nan
++inf  | char: impossible, int: impossible, float: inff, double: inf
+-inff | char: impossible, int: impossible, float: -inff, double: -inf
+hello | all: impossible (invalid literal)
+*/
