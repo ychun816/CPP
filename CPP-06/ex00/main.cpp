@@ -20,7 +20,7 @@ Input | Expected Output (char, int, float, double)
 a     | char: 'a', int: 97, float: 97.0f, double: 97.0
 0     | char: Non displayable, int: 48, float: 48.0f, double: 48.0
 42    | char: '*', int: 42, float: 42.0f, double: 42.0
--42   | char: impossible, int: -42, float: -42.0f, double: -42.0
+-42   | char: non-displayable, int: -42, float: -42.0f, double: -42.0
 4.2f  | char: Non displayable, int: 4, float: 4.2f, double: 4.2
 4.2   | char: Non displayable, int: 4, float: 4.2f, double: 4.2
 nan   | char: impossible, int: impossible, float: nanf, double: nan

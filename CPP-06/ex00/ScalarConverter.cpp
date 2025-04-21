@@ -16,7 +16,7 @@ void ScalarConverter::printChar(char charValue)
     if (isprint(charValue))
         std::cout << "Char: "<< charValue << std::endl;
     else
-        std::cout << "Char Error: Non displayable" << std::endl;
+        std::cout << "Char: Non displayable" << std::endl;
 }
 void ScalarConverter::printInt(int intValue)
 {
@@ -47,7 +47,6 @@ void ScalarConverter::printDouble(double doubleValue)
 void ScalarConverter::printConversionChar(char c)
 {
     printChar(c);
-    
     printInt(static_cast<char>(c));
     printFloat(static_cast<float>(c));
     printDouble(static_cast<double>(c));
@@ -55,36 +54,34 @@ void ScalarConverter::printConversionChar(char c)
 
 void ScalarConverter::printConversionInt(int i)
 {
-    printInt(i);
-    
     printChar(static_cast<char>(i));
+    printInt(i);
     printFloat(static_cast<float>(i));
     printDouble(static_cast<double>(i));
 }
 
 void ScalarConverter::printConversionFloat(float f)
 {
-    printFloat(f);
-
     printChar(static_cast<char>(f));
     printInt(static_cast<int>(f));
+    printFloat(f);
     printDouble(static_cast<double>(f));
 }
 
 void ScalarConverter::printConversionDouble(double d)
 {
-    printDouble(d);
-
     printChar(static_cast<char>(d));
     printInt(static_cast<int>(d));
     printFloat(static_cast<float>(d));
+    printDouble(d);
 }
-
 
 //controller : check input type and return different type
 ScalarConverter::Type ScalarConverter::checkType(const std::string& input)
 {
-    if (isChar(input))
+    if (isPseudoLiteral(input))
+        return PSEUDO_LITERAL;
+    else if (isChar(input))
         return CHAR;
     else if (isInt(input))
         return INT;
@@ -92,8 +89,6 @@ ScalarConverter::Type ScalarConverter::checkType(const std::string& input)
         return FLOAT;
     else if (isDouble(input))
         return DOUBLE;
-    else if (isPseudoLiteral(input))
-        return PSEUDO_LITERAL;
     else
         return INVALID;
 }
