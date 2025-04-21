@@ -2,28 +2,39 @@
 #define SCLARCONVERTER_HPP
 
 #include <iostream>
-#include <iomanip>
-//std::fixed → Show fixed-point notation (like 3.0 instead of 3e+00)
-//std::setprecision(n) → Control the number of decimal places
-#include <sstream> //std::stringstream ->  treat a string like a stream 
+#include <iomanip>//std::fixed → Show fixed-point notation (like 3.0 instead of 3e+00)//std::setprecision(n) → Control the number of decimal places
+#include <limits> //Get the min/max values of numeric types
+#include <cmath> //Math functions and special values//std::isnan(value) → Checks if a number is NaN (Not a Number)//std::isinf(value) → Checks for infinity
+#include <cctype>//std::isdigit(c) //std::isprint(c) //std::isalpha(c)
+#include <limits>
 
 
+//constructor & desturctor made private -> declare only, no implementation
 class ScalarConverter
 {
-    //
+    //make private -> Prevent the class from being instantiated
     private:
-        ScalarConverter();
+        ScalarConverter();//declared only, not defined
         ScalarConverter(const ScalarConverter& src);
         ScalarConverter& operator=(const ScalarConverter& src);
         ~ScalarConverter();
 
     public:
-        static void convert(const std::string &literal);
-
-        static void printChar(char c);
-        static void printInt(int i);
-        static void printFloat(float f);
-        static void printDouble(double d);
+        //convert
+        static void convert(std::string const& input);
+        
+        //check input
+        static bool isChar(const std::string& input);
+        static bool isInt(const std::string& input);
+        static bool isFloat(const std::string& input);
+        static bool isDouble(const std::string& input);
+        static bool isPseudoLiteral(const std::string& input);
+        
+        //print value
+        static void printChar(double value);
+        static void printInt(double value);
+        static void printFloat(double value);
+        static void printDouble(double value);
 
 };
 
@@ -60,3 +71,7 @@ std::stod() → string to double
 
 */
 
+/*
+Convert using static_cast
+
+*/

@@ -74,9 +74,10 @@ static bool isFloat(const std::string& input)
     return false;//f no find in the end
 }
 
+//
 static bool isDouble(const std::string& input)
 {
-    
+
 }
 
 static bool isPseudoLiteral(const std::string& input)

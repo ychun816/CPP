@@ -1,30 +1,7 @@
 #include "ScalarConverter.hpp"
 
-//string parsing & check
-//convert
-//print
-
-//check len & digit
-//.length()
-//.isdigit
-//note: true (1) / false(0)
-static bool isCharLiteral(const std::string& arg)
-{
-    if (arg.length() == 1 && std::isdigit(arg[0]) == false)
-        return true;//1!!!
-}
-
-
-//check if arg is a special literal (nan), +inf, -inf, "+inff , inff
-static bool isSpecialLiteral(const std::string &arg)
-{
-    if (arg == "nan" || arg == "+inf" || arg == "-inf" || arg == "nanf" || arg == "+inff" || arg == "-inff")
-        return true;//1!!!
-    return false;
-}
-
-
-
+//1 string parsing & check
+//2 convert
 
 
 int main(int ac, char *av[])
