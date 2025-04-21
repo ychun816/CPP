@@ -57,44 +57,13 @@ bool ScalarConverter::isFloat(const std::string& input)
 
     return (i == input.length() - 1 && input[i] == 'f');
 }
-//OG
-// bool ScalarConverter::isFloat(const std::string& input)
-// {
-//     bool hasDecimal = false;
-    
-//     if (input == "nanf" || input == "+inff" || input == "-inff")
-//         return true;
-//     //check first sign
-//     size_t i = 0;
-//     if (input[i] == '-' || input[i] == '+')
-//         i++;
-//     //check digits after sign
-//     for (; i < input.length(); i++) //;-> as i is declared&init before 
-//     {
-//         if (std::isdigit(input[i]))
-//             continue;
-//         //check point . -> has to be f after 
-//         if (input[i] == '.')
-//         {
-//             if (hasDecimal)
-//             {
-//                 return false;
-//                 hasDecimal = true;
-//             }
-//             else if (input[i] == 'f')
-//             {
-//                 if (i == input.length() - 1 && hasDecimal)//f at the end & has decimal
-//                     return false;
-//             }
-//             else if (std::isdigit(input[i]))
-//                     return false;
-//         }
-//     }
-//     return false;//f no find in the end
-// }
-
 
 //v2
+//1 Handle pseudo-literals first: special double values
+//2 check first sign -> Skip '+' or '-'
+//3 Flag to ensure there's one decimal point
+//4 Loop through characters in the input :
+// // If there's more than one '.', it's invalid
 bool ScalarConverter::isDouble(const std::string& input)
 {
     if (input == "nan" || input == "+inf" || input == "-inf")
@@ -126,35 +95,6 @@ bool ScalarConverter::isDouble(const std::string& input)
 
     return (hasDigits && hasDecimal && i == input.length());
 }
-// //OG
-// //1 Handle pseudo-literals first: special double values
-// //2 check first sign -> Skip '+' or '-'
-// //3 Flag to ensure there's one decimal point
-// //4 Loop through characters in the input :
-// // // If there's more than one '.', it's invalid
-// bool ScalarConverter::isDouble(const std::string& input)
-// {
-//     bool hasDecimal = false;
-    
-//     if (input == "nan" || input == "+inf" || input == "-inf")
-//         return true;
-   
-//     size_t i = 0;
-//     if (input[i] == '-' || input[i] == '+')
-//             i++;
-//     for (; i < input.length(); i++)
-//     {
-//         if (input[i] == '.')
-//         {
-//             if (hasDecimal)
-//                 return false;
-//             hasDecimal = true; // first '.' is allowed
-//         }
-//         else if (std::isdigit(input[i]))// Any non-digit (and not '.') character is invalid
-//             return false;
-//     }
-//     return true; // If reach here, it's a valid double
-// }
 
 //check special case -> psuedo literals
 bool ScalarConverter::isPseudoLiteral(const std::string& input)
@@ -193,3 +133,66 @@ void ScalarConverter::handleSpecialCase(const std::string& input)
         std::cout << "double: impossible" << std::endl; 
     }
 }
+
+
+/*OGs*/
+
+//OG
+// bool ScalarConverter::isFloat(const std::string& input)
+// {
+//     bool hasDecimal = false;
+    
+//     if (input == "nanf" || input == "+inff" || input == "-inff")
+//         return true;
+//     //check first sign
+//     size_t i = 0;
+//     if (input[i] == '-' || input[i] == '+')
+//         i++;
+//     //check digits after sign
+//     for (; i < input.length(); i++) //;-> as i is declared&init before 
+//     {
+//         if (std::isdigit(input[i]))
+//             continue;
+//         //check point . -> has to be f after 
+//         if (input[i] == '.')
+//         {
+//             if (hasDecimal)
+//             {
+//                 return false;
+//                 hasDecimal = true;
+//             }
+//             else if (input[i] == 'f')
+//             {
+//                 if (i == input.length() - 1 && hasDecimal)//f at the end & has decimal
+//                     return false;
+//             }
+//             else if (std::isdigit(input[i]))
+//                     return false;
+//         }
+//     }
+//     return false;//f no find in the end
+// }
+
+// bool ScalarConverter::isDouble(const std::string& input)
+// {
+//     bool hasDecimal = false;
+    
+//     if (input == "nan" || input == "+inf" || input == "-inf")
+//         return true;
+   
+//     size_t i = 0;
+//     if (input[i] == '-' || input[i] == '+')
+//             i++;
+//     for (; i < input.length(); i++)
+//     {
+//         if (input[i] == '.')
+//         {
+//             if (hasDecimal)
+//                 return false;
+//             hasDecimal = true; // first '.' is allowed
+//         }
+//         else if (std::isdigit(input[i]))// Any non-digit (and not '.') character is invalid
+//             return false;
+//     }
+//     return true; // If reach here, it's a valid double
+// }

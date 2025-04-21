@@ -6,7 +6,6 @@
 #include <limits> //Get the min/max values of numeric types
 #include <iomanip>//std::fixed → Show fixed-point notation (like 3.0 instead of 3e+00)//std::setprecision(n) → Control the number of decimal places
 #include <cmath> //Math functions and special values//std::isnan(value) → Checks if a number is NaN (Not a Number)//std::isinf(value) → Checks for infinity
-
 #include <cstdlib> // std::atoi, std::atof
 
 //constructor & desturctor made private -> declare only, no implementation
@@ -26,9 +25,9 @@ class ScalarConverter
         //define type
         enum Type
         {
-            CHAR,//0
-            INT,//1
-            FLOAT,//2
+            CHAR,
+            INT,
+            FLOAT,
             DOUBLE,
             PSEUDO_LITERAL,
             INVALID

@@ -8,8 +8,6 @@
 // ScalarConverter::~ScalarConverter() {}
 
 ////MEMBER FUNCS
-
-
 ////print value
 void ScalarConverter::printChar(char charValue)
 {
