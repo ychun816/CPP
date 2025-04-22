@@ -82,7 +82,6 @@ https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rJndvhisye
 
 ****************************************************************************
 
-
 ### 5️⃣ CPP-05 (Nested class, Try/Catch statement)
 + Nested class, Try/Catch statement : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/Bkk1hNupkl
 + Notes on Exception Classes : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/BJaCAwnAJl
@@ -90,4 +89,7 @@ https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rJndvhisye
 ### 6️⃣ CPP-06 (Casts)
 + Basic Terms/Notions : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/ByGYm7J1ee
 + 5 Main Cast Types : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/SyXVxQyyxg
+****************************************************************************
+### CPP-07 (Template)
++ Template Basics : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/B1xYWHr1gl
 
