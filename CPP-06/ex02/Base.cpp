@@ -19,9 +19,7 @@ Base* Base::generate()
         return (new B());
     else
         return (new C());
-
 }
-
 
 void Base::identify(Base* p)
 {
@@ -42,7 +40,7 @@ void Base::identify(Base& p)
     {
         A &a = dynamic_cast<A&>(p);
         std::cout << "A" << std::endl;
-        // (void)a; // Avoid unused variable warning
+        (void)a; // Avoid unused variable warning
     }
     catch (std::bad_cast &e) {}
     
@@ -50,7 +48,7 @@ void Base::identify(Base& p)
     {
         B &b = dynamic_cast<B&>(p);
         std::cout << "B" << std::endl;
-        // (void)b; // Avoid unused variable warning
+        (void)b; // Avoid unused variable warning
     }
     catch (std::bad_cast &e) {}
 
@@ -58,7 +56,7 @@ void Base::identify(Base& p)
     {
         C &c = dynamic_cast<C&>(p);
         std::cout << "C" << std::endl;
-        // (void)b; // Avoid unused variable warning
+        (void)c; // Avoid unused variable warning
     }
     catch (std::bad_cast &e) {}
         

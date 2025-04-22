@@ -6,8 +6,8 @@ NAME	= Identify
 
 CXX		= c++
 CCFLAGS	= -Wall -Wextra -Werror -std=c++98 #-MMD -MP#-g
-INCLU = 
-SRCS = main.cpp 
+INCLU = Base.hpp ABC.hpp
+SRCS = main.cpp ABC.cpp Base.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # **************************************************************************** #
