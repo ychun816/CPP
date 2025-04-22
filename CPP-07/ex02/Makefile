@@ -6,7 +6,7 @@ NAME	= Array
 
 CXX		= c++
 CCFLAGS	= -Wall -Wextra -Werror -std=c++98 #-MMD -MP#-g
-INCLU = Array.hpp
+INCLU = Array.hpp Array.tpp
 SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
