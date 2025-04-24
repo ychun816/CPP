@@ -6,8 +6,8 @@ NAME	= Span
 
 CXX		= c++
 CCFLAGS	= -Wall -Wextra -Werror -std=c++98 #-MMD -MP#-g
-INCLU = Span.hpp
-SRCS = main.cpp Span.cpp
+INCLU = Span.hpp Span.tpp
+SRCS = main.cpp 
 OBJS = $(SRCS:.cpp=.o)
 
 # **************************************************************************** #
