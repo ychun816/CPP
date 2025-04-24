@@ -46,10 +46,9 @@ https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rJndvhisye
 + Ex03 | ENTIRE CLASSES STRUCTURES: 
 
  
-       AMateria         (Base Abstract Class)
-      /        \
-    Ice         Cure    (Derived Concrete Class)
-
+            AMateria         (Base Abstract Class)
+           /        \
+        Ice         Cure    (Derived Concrete Class)
 
 // In Base Abstract Class (AMateria):
 // virtual ~AMateria();
