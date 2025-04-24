@@ -11,8 +11,8 @@ template <typename T>
 class Array
 {
     private:
-        T* array;// Pointer to the array of type T
-        size_t arrayLen;// Size of the array
+        T* array; // Pointer to the array of type T
+        size_t arrayLen; // Size of the array
 
     public:
         Array();

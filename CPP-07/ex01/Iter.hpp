@@ -61,7 +61,6 @@ void multiplyTWO(const T &value)
 // };
 
 
-
 #endif 
 
 /* NOTES
