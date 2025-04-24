@@ -25,3 +25,10 @@ nanf  | char: impossible, int: impossible, float: nanf, double: nan
 -inff | char: impossible, int: impossible, float: -inff, double: -inf
 hello | all: impossible (invalid literal)
 */
+
+/*
+nan / nanf : Can't be cast to char or int because NaN isn't a number.
++inf, -inf / +inff, -inff :	Infinity can’t be represented as int or char.
+hello : Not a number — parsing it fails.
+float/double with decimals (e.g., 4.2f) → char : Not valid or meaningful for display as a character.
+*/

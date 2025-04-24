@@ -4,7 +4,7 @@
 #include "Base.hpp"
 #include <iostream>
 
-// Derived classes A, B, and C (inherit frm Base)
+// Derived classes A/B/C (inherit frm Base)
 class A : public Base
 {
     public:

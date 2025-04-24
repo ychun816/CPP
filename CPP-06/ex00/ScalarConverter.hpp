@@ -8,20 +8,16 @@
 #include <cmath>   //std::isnan(value) //std::isinf(value)
 #include <cstdlib> //std::atoi //std::atof //std::stod()
 
+//utility class -> set constructor&destructor private -> prevent instantiation
+//static methods -> set member funcs "static" -> access without instantiation
 class ScalarConverter
 {
-    /* ////CONTRUCTOR & DESTRUCTOR -> NO NEED IMPLEMENTATION OR MAKE PRIVATE -> Prevent the class from being instantiated
     private:
-        ScalarConverter();//declared only, not defined
+        ScalarConverter();
         ScalarConverter(const ScalarConverter& src);
         ScalarConverter& operator=(const ScalarConverter& src);
         ~ScalarConverter();
-    */
 
-    public:
-        static void convert(const std::string& input);
-
-    private:
         enum Type
         {
             CHAR,
@@ -31,6 +27,11 @@ class ScalarConverter
             PSEUDO_LITERAL,
             INVALID
         };
+
+    public:
+        ////convert
+        static Type checkType(const std::string& input);
+        static void convert(const std::string& input);
 
         ////parsing & check input
         static bool isChar(const std::string& input);
@@ -50,11 +51,7 @@ class ScalarConverter
         static void printConversionInt(int i);
         static void printConversionFloat(float f);
         static void printConversionDouble(double d);
-        
-        ////convert
-        static Type checkType(const std::string& input);
 };
-
 
 #endif 
 
@@ -64,12 +61,23 @@ class ScalarConverter
 //implicit cast
 automatic, safe conversion. E.g., int a = 3.5; → a becomes 3.
 
-
 //explicit cast 
 - static_cast: Safe conversion between compatible types.
 - reinterpret_cast: Bit-level, rarely used (not needed here).
 - dynamic_cast: For polymorphism (also not needed here).
 - const_cast: Removes const (not needed here either).
+
+
+//"static" member funcs in a class
+-> A static member function belongs to the class itself, not any instance. 
+-> It can be called without creating an object and cannot access non-static members.
+
+
+// Pseudo Literal Heirachy : char → int → float → double (When mixing types, C++ will promote to the larger or more precise type 
+// (e.g., char + float → float, int + double → double))
+// double : -inf / +inf / nan
+// float : -inff /  +inff / nanf
+
 
 //#include <cstdlib>
 std::stoi() → string to int
@@ -83,6 +91,5 @@ std::setprecision(n) → Control the number of decimal places
 //#include <cmath>
 std::isnan(value) → Checks if a number is NaN (Not a Number)
 std::isinf(value) → Checks for infinity
-
 
 */

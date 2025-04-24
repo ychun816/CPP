@@ -2,7 +2,6 @@
 #include "ABC.hpp"
 
 ////constructor & destructor
-// Base::Base(){}
 Base::~Base(){}
 
 ////member funcs
@@ -10,7 +9,6 @@ Base::~Base(){}
  * create random instances of A/B/C
  * @note std::srand(std::time(nullptr)) 
  * -> seeds the random number generator using the current time
- * 
  * @note int randomNB = std::rand() % 3;
  * -> Generate a random number between 0 and 2
  */
@@ -27,7 +25,6 @@ Base* Base::generate()
 }
 
 //identify (use pointer)
-//Dynamic_cast will return NULL if the cast fail
 void Base::identify(Base* p)
 {
     if (dynamic_cast<A*>(p))
@@ -41,7 +38,6 @@ void Base::identify(Base* p)
 }
 
 //identify (use reference)
-//Dynamic_cast will throw std::bad_cast exception if the cast fail
 void Base::identify(Base& p)
 {
      
@@ -77,34 +73,4 @@ std::time(nullptr) -> returns the current system time (in seconds), ensuring the
 Imagine random numbers are pages in a shuffled book.
 Without srand(), you open the book at the same place every time.
 With srand(time), you open the book at a different spot based on the current time.
-
-
-///Dynamic_cast with reference, if can use typeinfo
-void Base::identify(Base& p)
-{
-    try  
-    {
-        A &a = dynamic_cast<A&>(p);
-        std::cout << "A" << std::endl;
-        (void)a; // Avoid unused variable warning
-    }
-    catch (std::bad_cast &e) {}
-    
-    try  
-    {
-        B &b = dynamic_cast<B&>(p);
-        std::cout << "B" << std::endl;
-        (void)b; // Avoid unused variable warning
-    }
-    catch (std::bad_cast &e) {}
-
-    try  
-    {
-        C &c = dynamic_cast<C&>(p);
-        std::cout << "C" << std::endl;
-        (void)c; // Avoid unused variable warning
-    }
-    catch (std::bad_cast &e) {} 
-    std::cout << "Unknown type" << std::endl;
-}
 */

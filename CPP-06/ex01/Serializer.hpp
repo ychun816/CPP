@@ -11,8 +11,8 @@
 #include <sstream>
 #include <stdexcept>
 
-// Private constructor to prevent instantiation
-//Classes that can’t be instantiated: Preventing users from creating an object of a class
+//utility class -> set constructor&destructor private -> prevent instantiation
+//static methods -> set member funcs "static" -> Functions that belong to a class but not to an object -> access without instantiation
 class Serializer
 {
     private:
@@ -29,15 +29,18 @@ class Serializer
 
 
 /* NOTES: 
-// reinterpret_cast
-=> doesn't check safety, but it lets you do powerful conversions!
+
+//Reinterpret_Cast
+-> doesn't check safety, but it does powerful conversions(forcefully)!
 - Pointer ↔ integer conversions
 - One pointer type ↔ another pointer type (like void* ↔ int*)
 - Raw memory reinterpretation
 
-//Type casting: Changing a variable from one type to another
+//uintptr_t 
+-> an unsigned integer type that is guaranteed to be able to hold a pointer value.
+-> allows converting a pointer to an integer, or vice versa, safely and portably.
 
-//Static methods: Functions that belong to a class but not to an object.
+//Type casting
+-> Change a variable from one type to another
 
-//uintptr_t: An unsigned integer type that can safely hold a pointer as a number.
 */
