@@ -10,6 +10,7 @@ A::~A()
     std::cout << "A destructor called" << std::endl;
 }
 
+
 //B
 B::B() : Base() 
 {
@@ -19,6 +20,7 @@ B::~B()
 {
     std::cout << "B destructor called" << std::endl;
 }
+
 
 //C
 C::C() : Base() 
