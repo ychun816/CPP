@@ -16,7 +16,7 @@ class Data
         Data(std::string name, int id, double score);
         ~Data();
 
-        //getters
+        ////getter
         int getID() const;
         std::string getName() const;
         double getScore() const;

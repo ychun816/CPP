@@ -1,6 +1,8 @@
 #include "Serializer.hpp"
 
-//converts the pointer to a uintptr_t, which is an unsigned integer type that can safely hold a pointer as a number.
+//serialize
+//take a pointer to a Data object -> convert it to an unsigned integer type (uintptr_t)
+//an unsigned integer type -> can safely hold a pointer as a number
 uintptr_t Serializer::serialize(Data* ptr)
 {
     if (ptr == NULL)
@@ -8,7 +10,8 @@ uintptr_t Serializer::serialize(Data* ptr)
     return reinterpret_cast<uintptr_t>(ptr);
 }
 
-//converts the uintptr_t back to a pointer of type Data*.
+//deserialize
+//converts the uintptr_t back to a pointer of type Data*
 Data* Serializer::deserialize(uintptr_t raw)
 {
     return reinterpret_cast<Data*>(raw);

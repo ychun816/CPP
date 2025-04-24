@@ -1,12 +1,12 @@
 #include "Serializer.hpp"
 #include "Data.hpp"
 
-
 int main()
 {
     try {
         std::cout << "=== CREATE DATA ===" << std::endl;
-        Data girl("CHOUCHOU", 1, 1000.0);
+        Data girl("👧CHOUCHOU", 1, 1000.0);
+
         std::cout << "\n----- DATA INFO -----" << std::endl;
         std::cout << "Name: " << girl.getName() << std::endl;
         std::cout << "ID: " << girl.getID() << std::endl;

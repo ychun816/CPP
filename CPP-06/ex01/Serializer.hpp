@@ -4,26 +4,23 @@
 
 #include "Data.hpp"
 
-#include <stdint.h> // uintptr_t ??
+#include <stdint.h>
 #include <iostream>
 #include <string>
 #include <vector>
 #include <sstream>
 #include <stdexcept>
 
-//practice reinterpret_cast!
-//Type casting: Changing a variable from one type to another
-//Static methods: Functions that belong to a class but not to an object.
-//Classes that can’t be instantiated: Preventing users from creating an object of a class.
-//uintptr_t: An unsigned integer type that can safely hold a pointer as a number.
+// Private constructor to prevent instantiation
+//Classes that can’t be instantiated: Preventing users from creating an object of a class
 class Serializer
 {
-    // Private constructor to prevent instantiation
     private:
         Serializer();
         ~Serializer();
     
     public:
+        ////member funcs
         static uintptr_t serialize(Data* ptr);
         static Data* deserialize(uintptr_t raw);
 };
@@ -31,11 +28,16 @@ class Serializer
 #endif
 
 
-/*
-reinterpret_cast is for:
+/* NOTES: 
+// reinterpret_cast
+=> doesn't check safety, but it lets you do powerful conversions!
 - Pointer ↔ integer conversions
 - One pointer type ↔ another pointer type (like void* ↔ int*)
 - Raw memory reinterpretation
 
-It doesn't check safety, but it lets you do powerful conversions, which is exactly what we need here.
+//Type casting: Changing a variable from one type to another
+
+//Static methods: Functions that belong to a class but not to an object.
+
+//uintptr_t: An unsigned integer type that can safely hold a pointer as a number.
 */
