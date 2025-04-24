@@ -1,21 +1,17 @@
 #include "ScalarConverter.hpp"
 
-//1 string parsing & check
-//2 convert
-
 int main(int ac, char *av[])
 {
     if (ac != 2 || av[1][0] == '\0')
     {
         std::cerr << "Error : Invalid Argument" << std::endl;
-        // std::cerr << "Correct Usage: ./convert <input>" << std::endl;
         return 1;
     }
     ScalarConverter::convert(av[1]);
     return 0;
 }
 
-/*
+/* OUTPUT
 Input | Expected Output (char, int, float, double)
 a     | char: 'a', int: 97, float: 97.0f, double: 97.0
 0     | char: Non displayable, int: 48, float: 48.0f, double: 48.0

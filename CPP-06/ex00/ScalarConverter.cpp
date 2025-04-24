@@ -1,11 +1,11 @@
 #include "ScalarConverter.hpp"
 
-////CONTRUCTOR & DESTRUCTOR -> NO NEED IMPLEMENTATION
-// Remove this — not needed
-// ScalarConverter::ScalarConverter() {}
-// ScalarConverter::ScalarConverter(const ScalarConverter&) {}
-// ScalarConverter& ScalarConverter::operator=(const ScalarConverter&) { return *this; }
-// ScalarConverter::~ScalarConverter() {}
+/* ////CONTRUCTOR & DESTRUCTOR -> NO NEED IMPLEMENTATION OR MAKE PRIVATE
+ScalarConverter::ScalarConverter() {}
+ScalarConverter::ScalarConverter(const ScalarConverter&) {}
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter&) { return *this; }
+ScalarConverter::~ScalarConverter() {}
+*/
 
 ////MEMBER FUNCS
 ////print value
@@ -21,14 +21,10 @@ void ScalarConverter::printInt(int intValue)
     std::cout << "Int: " << intValue << std::endl;
 }
 
-
-//std::setprecision(1)
-//-> manipulator from the <iomanip> header in C++
-//-> set the number of digits to be displayed after the decimal point for floating-point output — but only when used with std::fixed.
-
-//oss is a variable of type std::ostringstream — a stream that works like std::cout, 
-//but instead of printing to the console, it stores the output in a string buffer.
-//Think of it as: a string version of std::cout
+/** print floate & double  
+ * @note std::setprecision(1)
+ * -> set the number of digits to be displayed after the decimal point for floating-point output — but only when used with std::fixed.
+ */
 void ScalarConverter::printFloat(float floatValue)
 {
     std::cout << "Float: ";
@@ -41,7 +37,7 @@ void ScalarConverter::printDouble(double doubleValue)
     std::cout << std::fixed << std::setprecision(1) << doubleValue << std::endl;
 }
 
-//print conversions
+////prit conversion value
 void ScalarConverter::printConversionChar(char c)
 {
     printChar(c);
@@ -74,7 +70,7 @@ void ScalarConverter::printConversionDouble(double d)
     printDouble(d);
 }
 
-//controller : check input type and return different type
+//checkType
 ScalarConverter::Type ScalarConverter::checkType(const std::string& input)
 {
     if (isPseudoLiteral(input))
@@ -92,8 +88,7 @@ ScalarConverter::Type ScalarConverter::checkType(const std::string& input)
 }
 
 //covert
-//convert 
-void ScalarConverter::convert(const std::string& input)//no need to put static?
+void ScalarConverter::convert(const std::string& input)
 {
     Type inputType = checkType(input);
 
@@ -107,7 +102,6 @@ void ScalarConverter::convert(const std::string& input)//no need to put static?
             break;
         case FLOAT:
             printConversionFloat(static_cast<float>(std::atof(input.c_str())));
-            // printConversionFloat(std::atof(input.c_str()));
             break;
         case DOUBLE:
             printConversionDouble(std::atof(input.c_str()));
@@ -116,7 +110,7 @@ void ScalarConverter::convert(const std::string& input)//no need to put static?
             handleSpecialCase(input);
             break;
         case INVALID:
-            std::cerr << "char: impossible" << std::endl;//cerr?
+            std::cerr << "char: impossible" << std::endl;
             std::cerr << "int: impossible" << std::endl;
             std::cerr << "float: impossible" << std::endl;
             std::cerr << "double: impossible" << std::endl;
