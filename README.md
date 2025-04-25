@@ -94,4 +94,8 @@ https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rJndvhisye
 ****************************************************************************
 ### 8️⃣ CPP-08 (Containers)
 + Commonly-used Containers : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/ryUUcSu1lx
++ std::stack Explained : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/BJ2HZXFJee
+****************************************************************************
+### 8️⃣ CPP-09
++ 
 
