@@ -5,7 +5,7 @@ int main()
     //test int array
     std::cout << "=== TEST INT ARRAY ===" << std::endl;
     Array<int> intArray(5);
-    std::cout << "--- OG INT ARRAY ---" << std::endl;
+    std::cout << "--------- OG INT ARRAY ---------" << std::endl;
     for (size_t i = 0; i < intArray.size(); i++)
         std::cout << "intArray[" << i << "] = " << intArray[i] << std::endl;
 
@@ -28,7 +28,7 @@ int main()
     strArray[4] = "💇";
     strArray[4] = "💅";
     
-    std::cout << "--- OG STR ARRAY ---" << std::endl;
+    std::cout << "------ OG STR ARRAY ------" << std::endl;
     for (size_t i = 0; i < strArray.size(); i++)
         std::cout << "strArray[" << i << "] " << strArray[i] << std::endl;
     std::cout << "\n--- MODIFIED STR ARRAY ---" << std::endl;

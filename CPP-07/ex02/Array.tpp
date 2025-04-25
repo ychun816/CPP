@@ -1,21 +1,20 @@
 #include "Array.hpp"
 
+////CONSTRUCTORS & DESTRUCTOR
 template <typename T>
 Array<T>::Array() : array(NULL), arrayLen(0) {}
 
-//must have '()' -> initialize value (0, 0, 0)
+//constructor with arrayLen
+//[] : allocate WHOLE array (for new & delete)
+//must have '()' -> init vlaue (0,0,0)
 template <typename T>
 Array<T>::Array(unsigned int len) : arrayLen(len)
 {
-    array = new T[arrayLen](); //[]-> allocate whole array
-    // for (unsigned int i = 0; i < len; i++)
-    //     array[i] = T();
+    array = new T[arrayLen]();
 }
 
 //copy constructor
-//new T[arraySize]; already calls the default constructor of each element.
-//after allocate => must loop to manually assign value to each element
-//Immediately after, you're overwriting every element with other.array[i].
+//after allocate space => must loop to manually assign value to each element!!
 template <typename T>
 Array<T>::Array(const Array<T>& src) : arrayLen(src.arrayLen) 
 {
@@ -25,20 +24,20 @@ Array<T>::Array(const Array<T>& src) : arrayLen(src.arrayLen)
 }
 
 //assignment operator
-//delete[] / new[] => for arrays!
-//must delete[]
-//The old array is still in memory but no longer accessible -> must free it before!!
-//-> array = new T[arraySize]; would overwrite the pointer, losing the link to previously allocated memory.
+// 1 MUST free old existing arrays (no long accessble) -> otherwise cause memory leak (pointer to old array still exist)
+// 2 allocate new array with src size -> know size first, know how much space to allocate
+// 3 allocate space for new array
+// 4 loop through the old array and copy each element to the new array 
 template <typename T>
 Array<T>& Array<T>::operator=(const Array<T>& src)
 {
     if (this != &src)
     {
-        delete[] array; // Free the existing arrays! []
-        arrayLen = src.arrayLen; // Copy the array len
-        array = new T[arrayLen]; // Allocate new memory
+        delete[] array;
+        arrayLen = src.arrayLen;
+        array = new T[arrayLen];
         for (unsigned int i = 0; i < arrayLen; i++)
-            array[i] = src.array[i]; // Copy the elements
+            array[i] = src.array[i];
     }
     return (*this);
 }
@@ -50,8 +49,9 @@ Array<T>::~Array()
     array = NULL;
 }
 
-//getter 
-//arraySize
+
+////MEMBER FUNCS
+//getter //arraySize
 template <typename T>
 unsigned int Array<T>::size() const { return (arrayLen);}
 

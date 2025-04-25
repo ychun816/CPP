@@ -6,13 +6,13 @@
 #include <stdexcept>
 
 //template class -> work with any data type 'T'
-//he `<T>` after `Array` tells the compiler: *“Use `T` for this specific instantiation of the template.”*
+//<T> after Array -> tell compiler: “Use `T` for this specific instantiation of the template”
 template <typename T>
 class Array
 {
     private:
-        T* array; // Pointer to the array of type T
-        size_t arrayLen; // Size of the array
+        T* array; //Pointer to the array of type T
+        size_t arrayLen;
 
     public:
         Array();
