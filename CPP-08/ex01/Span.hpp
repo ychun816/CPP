@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <exception>
 #include <vector>
-#include <limits>     // For INT_MAX in shortestSpan()
+#include <limits>    //INT_MAX in shortestSpan()
 
 template <typename T>
 class Span
@@ -15,13 +15,13 @@ class Span
         std::vector<T> _vec;
 
     public:
-        Span();// Optional, may be omitted if not used
+        Span();
         Span(unsigned int N);
         Span(const Span& src);
         Span& operator=(const Span& src);
         ~Span();
 
-        //member funcs
+        ////MEMBER FUNCS
         void addNumber(T n);
         int shortestSpan() const; 
         int longestSpan() const;
@@ -31,9 +31,6 @@ class Span
 
 };
 
-// Test your Span with at least 10,000 numbers.
-
 #include "Span.tpp"
-
 
 #endif 

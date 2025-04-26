@@ -2,7 +2,7 @@
 #define MUTANTSTACK_HPP
 
 #include <iostream>
-#include <stack>     //Key Methods: push(), pop(), top(), empty(), size()
+#include <stack>     //push(), pop(), top(), empty(), size()
 #include <iterator>
 
 template <typename T>
@@ -13,16 +13,15 @@ class MutantStack : public std::stack<T>
         typedef typename std::stack<T>::container_type::iterator iterator;
         typedef typename std::stack<T>::container_type::const_iterator const_iterator;
 
-        //CONSTRUCTORS
+        ////CONSTRUCTORS & DESTURCTOR
         MutantStack();
         MutantStack(const MutantStack& src);
         MutantStack &operator=(const MutantStack& src);
         ~MutantStack();
     
-        //MEMBER FUNCS -ITERATORS
+        ////MEMBER FUNCS -ITERATORS
         iterator begin();
         iterator end();
-        
         const_iterator begin() const;
         const_iterator end() const;
 };
@@ -54,7 +53,6 @@ container_type : a typedef inside std::stack that refers to the type of the unde
 
 typename: this is necessary because container_type::iterator is a dependent type — it depends on the template parameter T.
 (In C++98 and later, you must use typename to tell the compiler this is a type, not a static value or function)
-
 
 
 // MutantStack::iterator and const_iterator

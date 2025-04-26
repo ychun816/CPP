@@ -1,9 +1,5 @@
 #include "MutantStack.hpp"
 
-
-// typedef typename std::stack<T>::container_type::iterator iterator;
-// typedef typename std::stack<T>::container_type::const_iterator const_iterator;
-
 //CONSTRUCTORS & DESTRUCTOR
 template <typename T>
 MutantStack<T>::MutantStack() : std::stack<T>() {}
@@ -26,12 +22,12 @@ MutantStack<T>::~MutantStack(){}
 //MEMBER FUNCS -ITERATORS
 //typedef typename std::stack<T>::container_type::iterator iterator;
 
-
 //iterator
+//this -> help to access the protected member c of std::stack<T>
 template <typename T>
 typename MutantStack<T>::iterator MutantStack<T>::begin()
 {
-    return this->c.begin(); //use this-> to help name lookup
+    return this->c.begin();
 }
 
 template <typename T>

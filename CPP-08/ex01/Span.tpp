@@ -1,6 +1,8 @@
 #include "Span.hpp"
 
-//constructor & destructor
+////CONSTRUCTORS & DESTURCOTR
+//reserve() pre-allocate capacity -> have 0 size! (not change the vector size!!)
+//.push_back() : trully allocate elements into vector container -> have actual size!
 template <typename T>
 Span<T>::Span() : _N(0) { _vec.reserve(0);}
 
@@ -9,8 +11,7 @@ Span<T>::Span(unsigned int N) : _N(N)
 {
     if (N == 0)
         throw std::length_error("Span size cannot be zero");
-    // _vec = _vec.reserve(N);
-    _vec.reserve(N);//std::vector::reserve() returns void, not a vector.
+    _vec.reserve(N);
 }
 
 template <typename T>
@@ -31,26 +32,27 @@ template <typename T>
 Span<T>::~Span(){}
 
 
-////member funcs
-//add nb
-//If _vec.size() >= _N -> throw exception
-//.push_back() -> to add the number to the vector
+////MEMBER FUNCS
+//add number
 template <typename T>
 void Span<T>::addNumber(T n)
 {
     if (_vec.size() >= _N)
         throw std::length_error("Span is full!");
     _vec.push_back(n);
-
     // std::cout << "Added Number: " << n << std::endl;
     // std::cout << "Current Vector Size: " << _vec.size() << std::endl;
 }
 
-//shorest span
-//If _vec.size() < 2 -> not enough nbs -> throw exception
-//Copy and sort _vec -> sort(_vec.begin(), _vec.end()); / 
-//Loop to find the smallest span => @NOTE!! avoid go outa bound => order [latter] - [former] 
-//std::numeric_limits<int>::max() -> give the largest value an int can represent (2147483647)!!!
+/** shorest span
+ * 1 If _vec.size() < 2 -> not enough nbs -> throw exception
+ * 2 Copy and sort _vec -> sort(_vec.begin(), _vec.end()); / 
+ * 3 Loop to find the smallest span => @NOTE!! avoid go outa bound => order [latter] - [former]
+ * 
+ * @note std::numeric_limits<int>::max() -> give the largest value an int can represent (2147483647)!!!
+ * @note init i frm [latter] to avoid go outa bound
+ * @note span will be always smaller than intMAX -> enter loop & updae intMAX value! -> find the smallest span!
+ */
 template <typename T>
 int Span<T>::shortestSpan() const
 {
@@ -62,29 +64,27 @@ int Span<T>::shortestSpan() const
 
     T intMAX = std::numeric_limits<T>::max();
 
-    for (size_t i = 1; i < sortedVec.size() - 1; i++) //init i frm [latter] to avoid go outa bound
+    for (size_t i = 1; i < sortedVec.size() - 1; i++)
     {
         T span = sortedVec[i] - sortedVec[i - 1];
-        if (span < intMAX)//span will be always smaller than intMAX -> enter loop & updae intMAX value
+        if (span < intMAX)
             intMAX = span;
     }
     std::cout << "The smallest span: [ " << intMAX << " ]" << std::endl;
     return intMAX;
 } 
 
-
-//longest span
-//If _vec.size() < 2 -> not enough nbs -> throw exception
-//Copy and sort _vec
-//Return max - min from _vec
-
-/** template <typename ForwardIterator>
+/** longest span
+ * 1 If _vec.size() < 2 -> not enough nbs -> throw exception
+ * 2 Copy and sort _vec
+ * 3 Return max - min from _vec
+ * 
+ * //template <typename ForwardIterator>
  * @note ForwardIterator min_element(ForwardIterator first, ForwardIterator last);
  * @note ForwardIterator max_element(ForwardIterator first, ForwardIterator last);
- * 
- * @note  an iterator is an object that points to an element in a container (such as an array, vector, list, etc.), allowing you to traverse and access the elements within the container.
- * @note Why Use *?
- * -> dereference operator(*) => you don't get the value itself, but instead, you get a pointer to the value (i.e., an iterator pointing to that element)
+ * @note an iterator is an object that points to an element in a container (such as an array, vector, list, etc.), allowing you to traverse and access the elements within the container.
+ * @note dereference operator(*) 
+ * -> you don't get the value itself, instead uou get a pointer to the value (i.e., an iterator pointing to that element)
  */
 template <typename T>
 int Span<T>::longestSpan() const
@@ -95,8 +95,7 @@ int Span<T>::longestSpan() const
     std::vector<int> sortedVec = _vec;
     T minValue = *std::min_element(sortedVec.begin(), sortedVec.end());
     T maxValue = *std::max_element(sortedVec.begin(), sortedVec.end());
-    // std::vector<int> maxSpan = maxValue - minValue;
-    std::cout << "The longest span: [ " << maxValue - minValue << " ]"<< std::endl;
+    std::cout << "The longest span: [ " << maxValue - minValue << " ]" << std::endl;
     
     return (maxValue - minValue);
 }
