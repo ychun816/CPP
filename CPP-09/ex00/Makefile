@@ -2,7 +2,7 @@
 #                                 VARIABLES                                    #
 # **************************************************************************** #
 
-NAME	= BitcoinExchange
+NAME	= btc
 
 CXX		= c++
 CCFLAGS	= -Wall -Wextra -Werror -std=c++98 #-MMD -MP#-g
