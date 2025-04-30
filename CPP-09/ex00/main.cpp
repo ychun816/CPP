@@ -13,7 +13,7 @@ int main(int ac, char *av[])
     try 
     {
         BitcoinExchange btc;
-        btc.loadData(av[1]);
+        btc.loadData("data.csv");
         btc.parseInputFile(av[1]);
     }
     catch (const std::exception& e)

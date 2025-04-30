@@ -125,7 +125,7 @@ void BitcoinExchange::parseInputFile(const std::string& fileName)
 
     }
     
-    file.close();    //close
+    file.close();
 }
 
 
