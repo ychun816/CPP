@@ -3,19 +3,22 @@
 
 int main(int ac, char *av[])
 {
+    
     if (ac != 2)
-        BitcoinExchange::printError(ERR_OPEN_FILE);
-        
+    {
+        std::cerr << "Error: could not open file." << std::endl;
+        return 1;
+    }    
+    
     try 
     {
         BitcoinExchange btc;
         btc.loadData(av[1]);
         btc.parseInputFile(av[1]);
-
     }
     catch (const std::exception& e)
     {
-        std::err << e.what() << std::endl;
+        std::cerr << e.what() << std::endl;
         return 1;
     }     
 

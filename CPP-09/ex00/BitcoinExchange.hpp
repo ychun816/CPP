@@ -5,19 +5,21 @@
 #include <map>
 #include <limits>
 #include <string>
-#include <fstream> // for open file
+#include <fstream> //for open file
 
 #define ERR_OPEN_FILE "Error: could not open file." 
+#define ERR_NB "Error: invalid number."
 #define ERR_NON_POSITIVE "Error: not a positive number."
 #define ERR_DATE "Error: bad input => "
 #define ERR_LARGE_NB "Error: too large a number."
 
-enum class eError
+enum eError
 {
     OPEN_FILE,
     NON_POSITIVE,
     DATE,
-    LARGE_NB
+    LARGE_NB,
+    INVALID_NB
 };
 
 // template <typename T>
@@ -39,15 +41,16 @@ class BitcoinExchange
 
         //open and parse input file
         void loadData(const std::string& filename);
-        void parseInputFile(const std::string& fileContent);
+        void parseInputFile(const std::string& fileName);
+        bool parseFileContent(const std::string& line);
         
         //static -> check date & value
         static bool isValidDate(const std::string& date);
         static bool isValidValue(const std::string& value);
 
         //printer
-        int printError(const std::string& error);
-        // void printOutcome();
+        void printError(eError error);
+        void printResult(const std::string& date, double value);
 
 };
 
@@ -63,7 +66,6 @@ class BitcoinExchange
         //second const -> the map itself is const -> The function does not change the object’s internal state
         //=> (1) protect your class’s internal data (const reference)
         //=> (2) Ensure the function is safe to call on const objects (function is const)
-
 
 
 */
