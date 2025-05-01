@@ -44,7 +44,10 @@ void BitcoinExchange::loadData(const std::string& filename)
         {
             std::string date = line.substr(0, comma); //extract frm 0 to comma
             if (!isValidDate(date))
-                throw std::runtime_error(ERR_DATE);
+            {
+                std::cerr << ERR_DATE << date << std::endl;
+                return ;
+            }
 
             std::string priceStr = line.substr(comma + 1);//extract frm after comma to end
             float price;
@@ -59,10 +62,12 @@ void BitcoinExchange::loadData(const std::string& filename)
 //pase file content
 bool BitcoinExchange::parseFileContent(const std::string& line, std::string& date, float& value)
 {
+
     size_t pipe = line.find('|');
-    if (pipe == std::string::npos)
+    if (!line.empty() && pipe == std::string::npos)
     {
-        printError(INVALID_NB);
+        std::cerr << ERR_DATE << line << std::endl;
+        // printError(INVALID_NB);
         return false;
     }
 
@@ -77,8 +82,8 @@ bool BitcoinExchange::parseFileContent(const std::string& line, std::string& dat
 
     if (!isValidDate(date))
     {
-        printError(DATE);
-        std::cerr << date << std::endl;
+        // std::cerr << "Error: bad input => " << date << std::endl;
+        std::cerr << ERR_DATE << date << std::endl;
         return false;
     }
 
@@ -106,79 +111,17 @@ bool BitcoinExchange::parseFileContent(const std::string& line, std::string& dat
     {
         if (it == _data.begin())
         {
-            printError(DATE);
-            std::cerr << date << std::endl;
-            return false;
+            std::cerr << ERR_DATE << date << std::endl;
+            // printError(DATE);
+            // std::cerr << date << std::endl;
+            // return false;
         }
         --it;
     }
 
-    printResult(it->first, value * it->second);
+    printResult(date, value, value * it->second);
     return true;
 }
-
-// bool BitcoinExchange::parseFileContent(const std::string& line, std::string& date, float& value)
-// {
-//     size_t pipe = line.find('|');
-//     if (pipe != std::string::npos) //if not find pipe
-//     {
-//         date = line.substr(0, pipe);
-//         std::string valueStr = line.substr(pipe + 1);
-
-//         //trim spaces
-//         date.erase(0, date.find_first_not_of(" \t"));
-//         date.erase(date.find_last_not_of(" \t") + 1);
-//         valueStr.erase(0, valueStr.find_first_not_of(" \t"));
-//         valueStr.erase(valueStr.find_last_not_of(" \t") + 1);
-
-//         //check date
-//         if (!isValidDate(date))
-//         {
-//             printError(DATE);
-//             std::cerr << date << std::endl;
-//             return false;
-//         }
-
-//         //check value
-//         if (!isValidValue(valueStr))
-//         {
-//             printError(INVALID_NB);
-//             return false;
-//         }
-
-//         //convert value str to double
-//         std::istringstream(valueStr) >> value; //Convert the string to a float
-
-//         //check value double range
-//         if (value < 0)
-//         {
-//             printError(NON_POSITIVE);
-//             return false;
-//         }
-//         if (value > 1000)
-//         {
-//             printError(LARGE_NB);
-//             return false;
-//         }
-
-//         //check if date in map
-//         std::map<std::string, float>::iterator it = _data.find(date);
-//         if (it == _data.end() || it->first != date)
-//         {
-//             if (it != _data.begin())
-//                 --it;
-//         }
-//         if (it != _data.end())
-//             printResult(it->first, value * it->second);
-//         else
-//         {
-//             printError(DATE);
-//             std::cerr << date << std::endl;
-//             return false;
-//         }
-//     }
-//     return true;
-// }
 
 
 //PARSE INPUT FILE
@@ -198,9 +141,7 @@ void BitcoinExchange::parseInputFile(const std::string& fileName)
     {
         std::string date;
         float value = 0.0f;
-        if (parseFileContent(line, date, value))
-            printResult(date, value);
-
+        parseFileContent(line, date, value);
     }
     file.close();
 }
@@ -276,7 +217,7 @@ bool BitcoinExchange::isValidValue(const std::string& valueStr)
     // Check if the conversion was successful
     if (iss.fail() || !iss.eof())
         return false;
-    return (value >= 0.0f && value <= 1000.0f); //return value must be within this range!!
+    return true; //return value must be within this range!! //value >= 0.0f && value <= 1000.0f
 }
 
 //printer
@@ -286,14 +227,13 @@ void BitcoinExchange::printError(eError error)
     {
         case OPEN_FILE:
             std::cerr << ERR_OPEN_FILE << std::endl;
-            // return 1;
             break;
         case NON_POSITIVE:
             std::cerr << ERR_NON_POSITIVE << std::endl;
             break;
-        case DATE:
-            std::cerr << ERR_DATE;
-            break;
+        // case DATE:
+        //     std::cerr << ERR_DATE;
+        //     break;
         case LARGE_NB:
             std::cerr << ERR_LARGE_NB << std::endl;
             break;
@@ -307,7 +247,7 @@ void BitcoinExchange::printError(eError error)
 }
 
 //PRINT RESULT
-void BitcoinExchange::printResult(const std::string& date, float value) const
+void BitcoinExchange::printResult(const std::string& date, float value, float result) const
 {
-    std::cout << date << " => " << value << std::endl;
+    std::cout << date << " => " << value << " = " << result << std::endl;
 }

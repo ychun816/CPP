@@ -18,7 +18,7 @@ enum eError
 {
     OPEN_FILE,
     NON_POSITIVE,
-    DATE,
+    // DATE,
     LARGE_NB,
     INVALID_NB
 };
@@ -50,7 +50,7 @@ class BitcoinExchange
 
         //printer
         void printError(eError error);
-        void printResult(const std::string& date, float value) const;
+        void printResult(const std::string& date, float value, float result) const;
 
 };
 
