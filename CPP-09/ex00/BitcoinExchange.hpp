@@ -5,6 +5,7 @@
 #include <map>
 #include <limits>
 #include <string>
+#include <sstream> //for istringstream
 #include <fstream> //for open file
 
 #define ERR_OPEN_FILE "Error: could not open file." 
@@ -22,12 +23,14 @@ enum eError
     INVALID_NB
 };
 
-// template <typename T>
 class BitcoinExchange
 {
     private:
-        std::map<std::string, double> _data;
+        std::map<std::string, float> _data;
 
+        //static -> check date & value
+        static bool isValidDate(const std::string& date);
+        static bool isValidValue(const std::string& value);
         
     public:
         BitcoinExchange();
@@ -37,20 +40,17 @@ class BitcoinExchange
         
         ////MEMBER FUNCS
         //getter
-        const std::map<std::string, double>& getData() const;
+        const std::map<std::string, float>& getData() const;
 
         //open and parse input file
         void loadData(const std::string& filename);
         void parseInputFile(const std::string& fileName);
-        bool parseFileContent(const std::string& line);
+        bool parseFileContent(const std::string& line, std::string& date, float& value);
         
-        //static -> check date & value
-        static bool isValidDate(const std::string& date);
-        static bool isValidValue(const std::string& value);
 
         //printer
         void printError(eError error);
-        void printResult(const std::string& date, double value);
+        void printResult(const std::string& date, float value) const;
 
 };
 

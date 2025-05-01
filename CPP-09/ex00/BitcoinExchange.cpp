@@ -18,7 +18,7 @@ BitcoinExchange::~BitcoinExchange(){}
 
 ////MEMBER FUNCS
 //getter
-const std::map<std::string, double>& BitcoinExchange::getData() const
+const std::map<std::string, float>& BitcoinExchange::getData() const
 {
     return _data;
 }
@@ -47,10 +47,9 @@ void BitcoinExchange::loadData(const std::string& filename)
                 throw std::runtime_error(ERR_DATE);
 
             std::string priceStr = line.substr(comma + 1);//extract frm after comma to end
-            double price = std::stod(priceStr); //Convert the string to a double
-            if (!isValidValue(priceStr))
-                throw std::runtime_error(ERR_LARGE_NB);
-            
+            float price;
+            std::istringstream(priceStr) >> price; //Convert the string to a float //c+98 cannot do std::stod(priceStr);
+
             _data[date] = price;
         }
     }
@@ -58,47 +57,128 @@ void BitcoinExchange::loadData(const std::string& filename)
 }
 
 //pase file content
-bool BitcoinExchange::parseFileContent(const std::string& line)
+bool BitcoinExchange::parseFileContent(const std::string& line, std::string& date, float& value)
 {
     size_t pipe = line.find('|');
-    if (pipe != std::string::npos) //if not find pipe
+    if (pipe == std::string::npos)
     {
-        std::string date = line.substr(0, pipe);
-        std::string valueStr = line.substr(pipe + 1);
+        printError(INVALID_NB);
+        return false;
+    }
 
-        //check date
-        if (!isValidDate(date))
+    date = line.substr(0, pipe);
+    std::string valueStr = line.substr(pipe + 1);
+
+    // Trim spaces
+    date.erase(0, date.find_first_not_of(" \t"));
+    date.erase(date.find_last_not_of(" \t") + 1);
+    valueStr.erase(0, valueStr.find_first_not_of(" \t"));
+    valueStr.erase(valueStr.find_last_not_of(" \t") + 1);
+
+    if (!isValidDate(date))
+    {
+        printError(DATE);
+        std::cerr << date << std::endl;
+        return false;
+    }
+
+    if (!isValidValue(valueStr))
+    {
+        printError(INVALID_NB);
+        return false;
+    }
+
+    std::istringstream(valueStr) >> value;
+
+    if (value < 0)
+    {
+        printError(NON_POSITIVE);
+        return false;
+    }
+    if (value > 1000)
+    {
+        printError(LARGE_NB);
+        return false;
+    }
+
+    std::map<std::string, float>::iterator it = _data.lower_bound(date);
+    if (it == _data.end() || it->first != date)
+    {
+        if (it == _data.begin())
         {
             printError(DATE);
             std::cerr << date << std::endl;
             return false;
         }
-        //check value
-        if (!isValidValue(valueStr))
-        {
-            printError(INVALID_NB);
-            return false;
-        }
-
-        //convert value str to double
-        double value = std::stod(valueStr);
-        // printError(INVALID_NB);
-        //     return false;
-
-        //check value double range
-        if (value < 0)
-        {
-            printError(NON_POSITIVE);
-            return false;
-        }
-        if (value > 1000)
-        {
-            printError(LARGE_NB);
-            return false;
-        }
+        --it;
     }
+
+    printResult(it->first, value * it->second);
     return true;
 }
+
+// bool BitcoinExchange::parseFileContent(const std::string& line, std::string& date, float& value)
+// {
+//     size_t pipe = line.find('|');
+//     if (pipe != std::string::npos) //if not find pipe
+//     {
+//         date = line.substr(0, pipe);
+//         std::string valueStr = line.substr(pipe + 1);
+
+//         //trim spaces
+//         date.erase(0, date.find_first_not_of(" \t"));
+//         date.erase(date.find_last_not_of(" \t") + 1);
+//         valueStr.erase(0, valueStr.find_first_not_of(" \t"));
+//         valueStr.erase(valueStr.find_last_not_of(" \t") + 1);
+
+//         //check date
+//         if (!isValidDate(date))
+//         {
+//             printError(DATE);
+//             std::cerr << date << std::endl;
+//             return false;
+//         }
+
+//         //check value
+//         if (!isValidValue(valueStr))
+//         {
+//             printError(INVALID_NB);
+//             return false;
+//         }
+
+//         //convert value str to double
+//         std::istringstream(valueStr) >> value; //Convert the string to a float
+
+//         //check value double range
+//         if (value < 0)
+//         {
+//             printError(NON_POSITIVE);
+//             return false;
+//         }
+//         if (value > 1000)
+//         {
+//             printError(LARGE_NB);
+//             return false;
+//         }
+
+//         //check if date in map
+//         std::map<std::string, float>::iterator it = _data.find(date);
+//         if (it == _data.end() || it->first != date)
+//         {
+//             if (it != _data.begin())
+//                 --it;
+//         }
+//         if (it != _data.end())
+//             printResult(it->first, value * it->second);
+//         else
+//         {
+//             printError(DATE);
+//             std::cerr << date << std::endl;
+//             return false;
+//         }
+//     }
+//     return true;
+// }
 
 
 //PARSE INPUT FILE
@@ -117,14 +197,11 @@ void BitcoinExchange::parseInputFile(const std::string& fileName)
     while (std::getline(file, line))
     {
         std::string date;
-        double value = 0.0; //init
-
-        //parseFileContent
-        if (parseFileContent(line))
+        float value = 0.0f;
+        if (parseFileContent(line, date, value))
             printResult(date, value);
 
     }
-    
     file.close();
 }
 
@@ -150,20 +227,25 @@ bool BitcoinExchange::isValidDate(const std::string& date)
     }
 
     //parse checks
-    int year = std::stoi(date.substr(0, 4));
-    int month = std::stoi(date.substr(5, 2));
-    int day = std::stoi(date.substr(8, 2));
+    int year, month, day;
+    
+    std::istringstream y(date.substr(0, 4));
+    y >> year;
+
+    std::istringstream m(date.substr(5, 2));
+    m >> month;
+
+    std::istringstream d(date.substr(8, 2));
+    d >> day;
+
 
     //basic range check
     if (month < 0 || month > 12 || day < 1 || day > 31)
         return false;
     
     //check month with only 30 days
-    if (month == 4 || month == 6 || month == 9 || month == 11)
-    {
-        if (day > 30)
-            return false;
-    }
+    if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
+        return false;
 
     //check leap year!!
     if (month == 2)
@@ -180,22 +262,21 @@ bool BitcoinExchange::isValidDate(const std::string& date)
     return true;
 }
 
-//std::stod -> convert str to double
+//std::stod -> convert str to float
+//std::istringstream : Creates an input string stream from the line / extract the two fields (date, rateStr) from that line
+// iss.fail() → the extraction failed (not a number)
+// iss.eof() →  there are extra characters after the number
 bool BitcoinExchange::isValidValue(const std::string& valueStr)
 {    
-    try
-    {
-        double value = std::stod(valueStr);
-        if (value >= 0.0 && value <= 1000.0)
-            return true;
-        return false;
-    }
-    catch(const std::exception& e)
-    {
-        return false;
-        // std::cerr << e.what() << '\n';
-    }
 
+    std::istringstream iss(valueStr);
+    float value;
+    iss >> value; //Convert the string to a float
+    
+    // Check if the conversion was successful
+    if (iss.fail() || !iss.eof())
+        return false;
+    return (value >= 0.0f && value <= 1000.0f); //return value must be within this range!!
 }
 
 //printer
@@ -226,7 +307,7 @@ void BitcoinExchange::printError(eError error)
 }
 
 //PRINT RESULT
-void BitcoinExchange::printResult(const std::string& date, double value)
+void BitcoinExchange::printResult(const std::string& date, float value) const
 {
     std::cout << date << " => " << value << std::endl;
 }
