@@ -13,9 +13,11 @@ bool    RPN::isOperator(const std::string& token) const
     return false;
 }
 
-//check isNB
-bool RPN::isValidInt(const std::string& token, int& value) const
-// bool    RPN::isValidNB(const std::string &token) const
+//check valid int
+//std::strtol: converts the string to a long. It also sets end to the first non-numeric character
+//errno = 0;: clears any old error state before conversion
+//ERANGE: indicates that the result is out of range for the type long
+bool RPN::isValidINT(const std::string& token, int& value) const
 {
     char* end = NULL;
     errno = 0;
@@ -83,16 +85,8 @@ void    RPN::execRPN(const std::string& args)
     {
         //check if nb
         int nb = 0;
-        if (isValidInt(token, nb))
-        {
-            // int nb = std::atoi(token.c_str());
-            // if (token.length() > 10 && (nb > intMAX || nb < intMIN))
-            // {
-            //     std::cerr << "Error: Number out of range." << std::endl;
-            //     return;
-            // }
+        if (isValidINT(token, nb))
             _stack.push(nb); //add to stack
-        }
         //check if valid operator
         else if (isOperator(token))
         {

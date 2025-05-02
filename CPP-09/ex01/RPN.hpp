@@ -30,10 +30,8 @@ class RPN
 
         //checkers
         bool    isOperator(const std::string& token) const;
+        bool isValidINT(const std::string& token, int& value) const;
 
-        bool isValidInt(const std::string& token, int& value) const;
-
-        // bool    isValidNB(const std::string& token) const;
         int     applyOperator(int front, int latter, const std::string& op) const;
         void    applyPrintStack(const std::stack<int>& stack);
 };
