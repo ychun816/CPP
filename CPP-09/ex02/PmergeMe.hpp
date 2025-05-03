@@ -20,7 +20,7 @@ std::vector<int> checkInput(int ac, char *av[]);
 
 //Ford Johnhson template func
 template <typename Container>
-void mergeInsertionSort(Container& container);
+void fordJohnsonSort(Container& container);
 
 //binary insert after 
 template <typename Container, typename T>
@@ -28,10 +28,17 @@ void binaryInsert(Container& container, const T& value);
 
 //print container
 template <typename Container>
-void printContainer(const Container& container);
+void printContainer(const Container& container) {
+    typename Container::const_iterator it;
+    for (it = container.begin(); it != container.end(); it++)
+        std::cout << *it << " ";
+    std::cout << std::endl;
+}
 
 //timing funcs
-double timer(std::vector<int>& input, const std::string& containerType);
+template <typename Container>
+double timer(Container& input, const std::string& containerType);
+
 
 #endif
 
