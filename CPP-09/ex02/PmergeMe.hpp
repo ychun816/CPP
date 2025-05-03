@@ -31,7 +31,7 @@ template <typename Container>
 void printContainer(const Container& container);
 
 //timing funcs
-double timingContainer(std::vector<int>& input, const std::string& containerType);
+double timer(std::vector<int>& input, const std::string& containerType);
 
 #endif
 
