@@ -5,7 +5,6 @@
 #include <deque>
 #include <cstdlib>  // For std::atoi (C++98 standard)
 
-// Main function to handle input, process it and display results
 int main(int ac, char **av) {
     if (ac < 2) {
         std::cerr << "Usage: ./PmergeMe <list of integers>" << std::endl;
