@@ -1,37 +1,60 @@
-#include "PmergeMe.hpp"
+#include "PmergeMe.hpp"  // Include the header file
 
-int main(int ac, char* av[]) 
-{
+#include <iostream>
+#include <vector>
+#include <deque>
+#include <cstdlib>  // For std::atoi (C++98 standard)
+
+// Main function to handle input, process it and display results
+int main(int ac, char **av) {
     if (ac < 2) {
-        std::cerr << "Usage: ./PmergeMe <positive integers>" << std::endl;
+        std::cerr << "Usage: ./PmergeMe <list of integers>" << std::endl;
         return 1;
     }
 
-    try {
-        std::vector<int> vec = checkInput(ac, av);
-        std::deque<int> deq(vec.begin(), vec.end());
+    // Call checkInput to process input
+    std::vector<int> inputVec = checkInput(ac, av);
+    std::deque<int> inputDeq(inputVec.begin(), inputVec.end()); // Copy input into a deque
 
-        std::cout << "Before: ";
-        printContainer(vec);
-
-        double timeVec = timer(vec, "vector");
-        double timeDeq = timer(deq, "deque");
-
-        std::cout << "After: ";
-        printContainer(vec);
-
-        std::cout << "Time to process a range of " << vec.size()
-                  << " elements with std::vector : " << std::fixed << std::setprecision(5)
-                  << timeVec << " us" << std::endl;
-
-        std::cout << "Time to process a range of " << deq.size()
-                  << " elements with std::deque : " << std::fixed << std::setprecision(5)
-                  << timeDeq << " us" << std::endl;
+    // Display the "Before" output for vector
+    std::cout << "Before : "; //(vector)
+    for (unsigned int i = 0; i < inputVec.size(); ++i) {
+        std::cout << inputVec[i] << " ";
     }
-    catch (const std::exception& e) {
-        std::cerr << e.what() << std::endl;
-        return 1;
+    std::cout << std::endl;
+
+    // Display the "After" output for vector (after sorting)
+    std::cout << "After : ";//(vector)
+    for (unsigned int i = 0; i < inputVec.size(); ++i) {
+        std::cout << inputVec[i] << " ";
     }
+    std::cout << std::endl;
+
+    // Timer for std::vector sorting
+    double timeVec = timer(inputVec); // Sort the vector and measure time
+    std::cout << "Time to process a range of " << inputVec.size() << " elements with std::vector : " 
+              << timeVec << " us" << std::endl;
+
+
+    // // Display the "Before" output for deque
+    // std::cout << "Before (deque): ";
+    // for (unsigned int i = 0; i < inputDeq.size(); ++i) {
+    //     std::cout << inputDeq[i] << " ";
+    // }
+    // std::cout << std::endl;
+
+    // // Display the "After" output for deque (after sorting)
+    // std::cout << "After (deque): ";
+    // for (unsigned int i = 0; i < inputDeq.size(); ++i) {
+    //     std::cout << inputDeq[i] << " ";
+    // }
+    // std::cout << std::endl;
+
+    // Timer for std::deque sorting
+    double timeDeq = timer(inputDeq); // Sort the deque and measure time
+    std::cout << "Time to process a range of " << inputDeq.size() << " elements with std::deque : " 
+              << timeDeq << " us" << std::endl;
+
 
     return 0;
 }

@@ -3,34 +3,27 @@
 
 #include <vector>
 #include <deque>
-#include <list>
-#include <iostream>  // std::cout
-#include <iomanip>   // std::setw
-#include <string>    // std::string
-#include <sstream>   // std::stringstream
-#include <algorithm> // std::sort, std::lower_bound
-#include <iterator>  // std::iterator
-#include <cstdlib>   // std::atoi
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <cstdlib>
 #include <exception>
 #include <ctime>
 
-// Helper: parse input
-std::vector<int> checkInput(int ac, char *av[]);
-
-// Ford-Johnson template function
+// Template function declarations
 template <typename Container>
 void fordJohnsonSort(Container& container);
 
-// Binary insert after 
-template <typename Container, typename T>
-void binaryInsert(Container& container, const T& value);
-
-// Print container
 template <typename Container>
 void printContainer(const Container& container);
 
-// Timing functions
 template <typename Container>
 double timer(Container& input);
+
+// Declare the checkInput function
+std::vector<int> checkInput(int ac, char **av);
+
+// Include the template implementation file
+#include "PmergeMe.tpp"
 
 #endif

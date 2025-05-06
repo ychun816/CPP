@@ -1,20 +1,22 @@
 #include "PmergeMe.hpp"
+#include <cstdlib>  // For std::atoi
 
-std::vector<int> checkInput(int ac, char* av[]) {
-    std::vector<int> input;
+std::vector<int> checkInput(int ac, char **av) {
+    std::vector<int> result;
+
     for (int i = 1; i < ac; ++i) {
-        std::string arg(av[i]);
-        if (arg.find_first_not_of("0123456789") != std::string::npos)
-            throw std::invalid_argument("Error");
-
+        // Convert the string argument to an integer
         int value = std::atoi(av[i]);
-        if (value < 0)
-            throw std::invalid_argument("Error");
 
-        if (std::find(input.begin(), input.end(), value) != input.end())
-            throw std::invalid_argument("Error");
+        // Check if the value is valid by checking the original input
+        if (value == 0 && av[i][0] != '0') {
+            std::cerr << "Error: Invalid argument '" << av[i] << "'" << std::endl;
+            exit(1);  // Exit on invalid input
+        }
 
-        input.push_back(value);
+        result.push_back(value);
     }
-    return input;
+    return result;
 }
+
+
