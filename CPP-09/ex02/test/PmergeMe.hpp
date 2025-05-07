@@ -1,29 +1,36 @@
 #ifndef PMERGEME_HPP
-#define PMERGEME_HPP
+# define PMERGEME_HPP
 
-#include <vector>
-#include <deque>
-#include <iostream>
-#include <iomanip>
-#include <string>
-#include <cstdlib>
-#include <exception>
-#include <ctime>
+# include <algorithm>
+# include <climits>
+# include <cmath>
+# include <cstdlib>
+# include <cstring>
+# include <ctime>
+# include <deque>
+# include <iomanip>
+# include <iostream>
+# include <stdexcept>
+# include <string>
+# include <vector>
 
-// Template function declarations
-template <typename Container>
-void fordJohnsonSort(Container& container);
+template<typename Container>
+void jacobsthalSequence(Container& container, int size);
 
-template <typename Container>
-void printContainer(const Container& container);
+template<typename Container>
+Container PmergeSort(Container& tab);
 
-template <typename Container>
-double timer(Container& input);
+template<typename Container>
+void printContainer(std::ostream& os, const Container& container);
 
-// Declare the checkInput function
-std::vector<int> checkInput(int ac, char **av);
+template<typename Container>
+std::ostream& operator<<(std::ostream& os, const Container& container);
 
-// Include the template implementation file
-#include "PmergeMe.tpp"
+bool isNumOnly(const char *arg);
+std::vector<int> parseArgs(char **av);
+void printTimes(int size, double vecTime, double dequeTime, double stdVecTime);
+void startSorts(std::vector<int> vec, std::deque<int> deq);
+
+# include "PmergeMe.tpp"
 
 #endif
