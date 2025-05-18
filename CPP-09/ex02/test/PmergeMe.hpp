@@ -4,7 +4,7 @@
 #include <vector>
 #include <deque>
 #include <set>
-#include <list>
+// #include <list>
 
 #include <iostream>
 #include <string>
@@ -28,16 +28,19 @@ typedef std::deque<std::pair<int, int> > deqPair;
 class PmergeMe
 {
     protected:
-        std::deque<int> deque;
-        std::vector<int> vector;
-        std::vector<std::string> strs; //Store input arguments as strings for validation
+        std::deque<int> _dequeData;
+        std::vector<int> _vectorData;
+        std::vector<std::string> _input;
+        // std::deque<int> deque;
+        // std::vector<int> vector;
+        // std::vector<std::string> strs; //Store input arguments as strings for validation
 
         bool initContainers(int ac, char *av[]);
-        bool hasDuplicate();
+        bool hasDuplicate() const;
     
     public:
-        bool _isOdd; //Flag -> check if number of elements is odd (unused in code)
-        int odd;     //Stores odd value (unused in code)
+        // bool _isOdd; //Flag -> check if number of elements is odd (unused in code)
+        // int odd;     //Stores odd value (unused in code)
 
         PmergeMe();
         PmergeMe(PmergeMe const &src);

@@ -6,22 +6,25 @@
 
 
 
-PmergeMe::PmergeMe() : _isOdd(false), odd(0) {}
+PmergeMe::PmergeMe(){} //: _isOdd(false), odd(0) 
 
-PmergeMe::PmergeMe(PmergeMe const &src) : _isOdd(src._isOdd), odd(src.odd)
+PmergeMe::PmergeMe(PmergeMe const &src) //: _isOdd(src._isOdd), odd(src.odd)
 {
-//    *this = src;
+   *this = src;
 }
 
 PmergeMe& PmergeMe::operator=(PmergeMe const& src)
 {
     if (this != &src)
     {
-        this->deque = src.deque;
-        this->vector = src.vector;
-        this->strs = src.strs;
-        this->_isOdd = src._isOdd;
-        this->odd = src.odd;
+        this->_dequeData = src._dequeData;
+        this->_vectorData = src._vectorData;
+        this->_input = src._input;
+        // this->deque = src.deque;
+        // this->vector = src.vector;
+        // this->strs = src.strs;
+        // this->_isOdd = src._isOdd;
+        // this->odd = src.odd;
     }
     return *this;
 }
@@ -314,13 +317,9 @@ void mergeInsertSort(Container &vector, C_P &vecPair)
 template <class Container>
 void printContainer(Container vec, bool started)
 {
+    (void)vec;
     if (!started)
         std::cout << "Before start: ";
-    else
-        std::cout << "After start: ";
-    for (typename Container::iterator it = vec.begin(); it != vec.end(); it++)
-        std::cout << *it << " ";
-    std::cout << std::endl;
 }
 
 
@@ -337,74 +336,162 @@ void printTime(clock_t start, clock_t end, std::string const& containerType, int
 bool PmergeMe::initContainers(int ac, char *av[])
 {
     if (ac < 3)
-        return errorMsg("Usage: ./PmergeMe [Positive Integers]\n");
+        return errorMsg("Usage: ./PmergeMe [Positive Integers <nb1> <nb2> <nb3> ...]\n");
 
     for (int i = 1; i < ac; i++)
-        strs.push_back(av[i]);
-
-
-    for (std::vector<std::string>::iterator it = strs.begin(); it != strs.end(); it++)
     {
-        if (!parseStr(*it))
-            return errorMsg("Error: Invalid Input. Usage: ./PmergeMe [Positive Integers]\n");
-        deque.push_back(std::atoi(it->c_str()));
+        std::string arg(av[i]);
+        for (size_t j = 0; j < arg.length(); j++)
+        {
+            if (!std::isdigit(arg[j]))
+            {
+                std::cerr << "Error: Invalid input [" << arg << "]" << std::endl;
+                return false;
+            }
+        }
+        int num = std::atoi(av[i]);
+    
+        // Updated member name
+        _dequeData.push_back(num);   
+        _vectorData.push_back(num);  
+        _input.push_back(arg);
     }
-    this->vector.assign(this->deque.begin(),this->deque.end());
+
     if (hasDuplicate())
-        return errorMsg("Error: Duplicated values found.\n");
-    return true;
+    {
+        std::cerr << "Error: Duplicate integer found." << std::endl;
+        return false;
+    }
+    return true;   
+    // for (int i = 1; i < ac; i++)
+    //     strs.push_back(av[i]);
+
+
+    // for (std::vector<std::string>::iterator it = strs.begin(); it != strs.end(); it++)
+    // {
+    //     if (!parseStr(*it))
+    //         return errorMsg("Error: Invalid Input. Usage: ./PmergeMe [Positive Integers]\n");
+    //     deque.push_back(std::atoi(it->c_str()));
+    // }
+    // this->vector.assign(this->deque.begin(),this->deque.end());
+    // if (hasDuplicate())
+    //     return errorMsg("Error: Duplicated values found.\n");
+    // return true;
 }
 
 
-bool PmergeMe::hasDuplicate()
+bool PmergeMe::hasDuplicate() const
 {
     std::set<int> seen;
-    for (std::vector<int>::iterator it = vector.begin(); it != vector.end(); it++)
+
+    for (size_t i = 0; i < _input.size(); ++i)
     {
-        if (seen.find(*it) != seen.end())
+        int value = std::atoi(_input[i].c_str());
+        if (seen.find(value) != seen.end())
             return true;
-        seen.insert(*it);
+        seen.insert(value);
     }
     return false;
+    // for (std::vector<int>::iterator it = vector.begin(); it != vector.end(); it++)
+    // {
+    //     if (seen.find(*it) != seen.end())
+    //         return true;
+    //     seen.insert(*it);
+    // }
+    // return false;
 }
-
 
 void PmergeMe::execute(int ac, char *av[])
 {
-    // std::vector<std::pair<int, int> > vecPair;
-    // std::deque<std::pair<int, int> > deqPair;
-    vecPair vecPair;
-    deqPair deqPair;
-    clock_t start;
-    clock_t end;
+        if (!initContainers(ac, av)) return;
 
+    std::cout << "Before start: ";
+    for (size_t i = 0; i < _vectorData.size(); ++i)
+        std::cout << _vectorData[i] << " ";
+    std::cout << std::endl;
 
-    if (!initContainers(ac, av))
+    // Time vector sort
+    clock_t startVec = clock();
+    std::sort(_vectorData.begin(), _vectorData.end());
+    clock_t endVec = clock();
+
+    // Time deque sort
+    clock_t startDeq = clock();
+    std::sort(_dequeData.begin(), _dequeData.end());
+    clock_t endDeq = clock();
+
+    std::cout << "After start: ";
+    for (size_t i = 0; i < _vectorData.size(); ++i)
+        std::cout << _vectorData[i] << " ";
+    std::cout << std::endl;
+
+    double vecTime = static_cast<double>(endVec - startVec) / CLOCKS_PER_SEC;
+    double deqTime = static_cast<double>(endDeq - startDeq) / CLOCKS_PER_SEC;
+
+    std::cout << "Time to process a range of " << _vectorData.size()
+              << " elements with std::vector: "
+              << std::fixed << std::setprecision(6) << vecTime << " sec" << std::endl;
+
+    std::cout << "Time to process a range of " << _dequeData.size()
+              << " elements with std::deque: "
+              << std::fixed << std::setprecision(6) << deqTime << " sec" << std::endl;
+
+    /*
+    if (!initContainers(ac, av)) // 🔍 If this function modifies the object, leave as-is
         return;
+
+    // Example: Perform operations on deque/vector here
+    std::sort(_vectorData.begin(), _vectorData.end()); // Renamed from `vector`
+    std::sort(_dequeData.begin(), _dequeData.end());   // Renamed from `deque`
+
+    // Print results for testing
+    std::cout << "Sorted Vector: ";
+    for (std::vector<int>::const_iterator it = _vectorData.begin(); it != _vectorData.end(); ++it)
+        std::cout << *it << " ";
+    std::cout << std::endl;
+
+    std::cout << "Sorted Deque: ";
+    for (std::deque<int>::const_iterator it = _dequeData.begin(); it != _dequeData.end(); ++it)
+        std::cout << *it << " ";
+    std::cout << std::endl;
+    */
+}
+// void PmergeMe::execute(int ac, char *av[])
+// {
+//     // std::vector<std::pair<int, int> > vecPair;
+//     // std::deque<std::pair<int, int> > deqPair;
+//     vecPair vecPair;
+//     deqPair deqPair;
+//     clock_t start;
+//     clock_t end;
+
+
+//     if (!initContainers(ac, av))
+//         return;
     
-    //vector
-    printContainer(this->vector, false);
-    start = clock();
-    mergeInsertSort(this->vector, vecPair);
-    end = clock();
-    printContainer(this->vector, true);
-    printTime(start, end, "vector", this->vector.size());
+//     //vector
+//     printContainer(this->vector, false);
+//     start = clock();
+//     mergeInsertSort(this->vector, vecPair);
+//     end = clock();
+//     printContainer(this->vector, true);
+//     printTime(start, end, "vector", this->vector.size());
 
 
-    //deque
-    printContainer(this->deque, false);
-    start = clock();
-    mergeInsertSort(this->deque, deqPair);
-    end = clock();
-    printContainer(this->deque, true);
-    printTime(start, end, "deque", this->deque.size());
-}
+//     //deque
+//     printContainer(this->deque, false);
+//     start = clock();
+//     mergeInsertSort(this->deque, deqPair);
+//     end = clock();
+//     printContainer(this->deque, true);
+//     printTime(start, end, "deque", this->deque.size());
+// }
+
+/*
+𓂃𓂃𓂃𓊝 ࿐𓂃𓂃𓂃
+𓇼 ⋆.˚  𓆝⋆.˚    𓇼 ⋆｡˚ 𓆞
+𓆉𓆝𓇼𓆟  𖦹°‧𓆝𓆡𓆜
+
+*/
 
 
-
-
-
-std::pair<int, int> makePair(int a, int b) 
-{
-    return std::make_pair(a, b);
-}
