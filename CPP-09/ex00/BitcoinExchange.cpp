@@ -14,8 +14,6 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& src)
 
 BitcoinExchange::~BitcoinExchange(){}
 
-
-
 ////MEMBER FUNCS
 //getter
 const std::map<std::string, float>& BitcoinExchange::getData() const
@@ -23,11 +21,12 @@ const std::map<std::string, float>& BitcoinExchange::getData() const
     return _data;
 }
 
-//LOAD DATA 
-//open and parse input file
-//Open the exchange rate CSV file
-//std::istringstream : Creates an input string stream from the line / extract the two fields (date, rateStr) from that line
-//std::string::npos : normally used to indicate that a string was not found
+/** LOAD DATA
+ * open and parse input file
+ * Open the exchange rate CSV file
+ * std::istringstream : Creates an input string stream from the line / extract the two fields (date, rateStr) from that line
+ * std::string::npos : normally used to indicate that a string was not found
+ */
 void BitcoinExchange::loadData(const std::string& filename)
 {
     std::ifstream file(filename.c_str());
@@ -123,7 +122,6 @@ bool BitcoinExchange::parseFileContent(const std::string& line, std::string& dat
     return true;
 }
 
-
 //PARSE INPUT FILE
 //Apply it to the user input
 void BitcoinExchange::parseInputFile(const std::string& fileName)
@@ -158,6 +156,7 @@ bool BitcoinExchange::isValidDate(const std::string& date)
     //format YYYY-MM-DD
     if (date.length() != 10 || date[4] != '-' || date[7] != '-')
         return false;
+
     //check if all digit
     for (size_t i = 0; i < date.length(); i++)
     {
@@ -195,7 +194,7 @@ bool BitcoinExchange::isValidDate(const std::string& date)
             return false;
         if (day == 29)
         {
-            if ((year % 4 != 0) || (year % 100 == 0 && year % 400 != 0)) //to count leap year!
+            if ((year % 4 != 0) || (year % 100 == 0 && year % 400 != 0)) //to count leap year!!
                 return false;
         }
     }
@@ -203,10 +202,14 @@ bool BitcoinExchange::isValidDate(const std::string& date)
     return true;
 }
 
-//std::stod -> convert str to float
-//std::istringstream : Creates an input string stream from the line / extract the two fields (date, rateStr) from that line
-// iss.fail() → the extraction failed (not a number)
-// iss.eof() →  there are extra characters after the number
+/**
+ * @note std::stod -> convert str to float
+ * @note std::istringstream : Creates an input string stream from the line / extract the two fields (date, rateStr) from that line
+ * @note iss.fail() → the extraction failed (not a number)
+ * @note iss.eof() →  there are extra characters after the number
+ * 
+ * @return  return value must be within this range!! //value >= 0.0f && value <= 1000.0f
+ */
 bool BitcoinExchange::isValidValue(const std::string& valueStr)
 {    
 
@@ -217,9 +220,10 @@ bool BitcoinExchange::isValidValue(const std::string& valueStr)
     // Check if the conversion was successful
     if (iss.fail() || !iss.eof())
         return false;
-    return true; //return value must be within this range!! //value >= 0.0f && value <= 1000.0f
+    return true;
 }
 
+//// PRINT ERROR
 //printer
 void BitcoinExchange::printError(eError error)
 {

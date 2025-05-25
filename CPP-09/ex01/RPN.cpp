@@ -13,10 +13,12 @@ bool    RPN::isOperator(const std::string& token) const
     return false;
 }
 
-//check valid int
-//std::strtol: converts the string to a long. It also sets end to the first non-numeric character
-//errno = 0;: clears any old error state before conversion
-//ERANGE: indicates that the result is out of range for the type long
+//
+/** IS VALID INT
+ * @note std::strtol: converts the string to a long. It also sets end to the first non-numeric character
+ * @note errno = 0;: clears any old error state before conversion
+ * @note ERANGE: indicates that the result is out of range for the type long
+ */
 bool RPN::isValidINT(const std::string& token, int& value) const
 {
     char* end = NULL;
@@ -69,10 +71,12 @@ void    RPN::applyPrintStack(const std::stack<int>& stack)
     std::cout << stack.top() << std::endl; //add to the stack top
 }
 
-//execRPN
-//std::atoi(token.c_str()); -> add c_str() -> valid in C++98
-//token.c_str() converts the std::string to a const char* for atoi
-//atoi() doesn't check for overflow
+
+/** execRPN
+ * @note std::atoi(token.c_str()); -> add c_str() -> valid in C++98
+ * @note token.c_str() converts the std::string to a const char* for atoi
+ * @note atoi() doesn't check for overflow
+ */
 void    RPN::execRPN(const std::string& args)
 {
     std::istringstream iss(args);
@@ -87,6 +91,7 @@ void    RPN::execRPN(const std::string& args)
         int nb = 0;
         if (isValidINT(token, nb))
             _stack.push(nb); //add to stack
+
         //check if valid operator
         else if (isOperator(token))
         {
@@ -96,6 +101,7 @@ void    RPN::execRPN(const std::string& args)
                 std::cerr << "Error: respect RPN rule, plz." << std::endl;
                 return;
             }
+
             //push 2 nbs
             int latter = _stack.top();
             _stack.pop();// pop the first nb (later)
@@ -107,7 +113,7 @@ void    RPN::execRPN(const std::string& args)
             result = applyOperator(front, latter, token);
             _stack.push(result); //push back the result
 
-            //check if result is valid
+            //check if result valid
             if (result > intMAX || result < intMIN)
             {
                 std::cerr << "Error: Number out of range." << std::endl;
@@ -124,7 +130,6 @@ void    RPN::execRPN(const std::string& args)
     applyPrintStack(_stack);
 }
 
-
 /* stack example
 
 "3 4 +" => (3 + 4)
@@ -136,7 +141,5 @@ read +
 -> pop 4, pop 3 
 -> apply + => (3 + 4 = 7)
 --------> push 7 => stack = [7] (TOP)
-
-
 
 */

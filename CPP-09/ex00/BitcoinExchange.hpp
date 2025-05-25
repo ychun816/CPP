@@ -51,7 +51,6 @@ class BitcoinExchange
         //printer
         void printError(eError error);
         void printResult(const std::string& date, float value, float result) const;
-
 };
 
 
@@ -60,12 +59,15 @@ class BitcoinExchange
 
 /* NOTES:
 
-        //getter
-        const std::map<std::string, double>& getData() const;//avoids returning a copy of the whole map
-        //fist const -> return a reference to a const map -> Caller cannot modify the map
-        //second const -> the map itself is const -> The function does not change the object’s internal state
-        //=> (1) protect your class’s internal data (const reference)
-        //=> (2) Ensure the function is safe to call on const objects (function is const)
+(1) protect class’s internal data (const reference)
+(2) Ensure the function is safe to call on const objects (function is const)
 
+//getter
+const std::map<std::string, double>& getData() const;//avoids returning a copy of the whole map
 
+//fist const 
+-> return a reference to a const map -> Caller cannot modify the map
+
+//second const 
+-> the map itself is const -> The function does not change the object’s internal state
 */
