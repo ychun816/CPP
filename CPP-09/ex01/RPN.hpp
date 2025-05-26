@@ -18,8 +18,6 @@ class RPN
     
     public:
         RPN();
-        // RPN(const RPN &src); //no need?
-        // RPN &operator=(const RPN &src); //no need?
         ~RPN();
         
         ////MEMBER FUNCS
@@ -60,16 +58,13 @@ class RPN
     - Else, print "Error" to std::cerr
 
 
-
-
-
-class RPN {
-public:
-    RPN() = default;                 // Let compiler handle this
-    RPN(const RPN&) = delete;       // Forbid copying
-    RPN& operator=(const RPN&) = delete; // Forbid assignment
-    ~RPN() = default;               // Let compiler handle cleanup
+class RPN 
+{
+    public:
+        RPN() = default;                 // Let compiler handle this
+        RPN(const RPN&) = delete;       // Forbid copying
+        RPN& operator=(const RPN&) = delete; // Forbid assignment
+        ~RPN() = default;               // Let compiler handle cleanup
 };
-
 
 */

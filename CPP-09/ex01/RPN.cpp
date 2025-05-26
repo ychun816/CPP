@@ -30,12 +30,6 @@ bool RPN::isValidINT(const std::string& token, int& value) const
 
     value = static_cast<int>(result);
     return true;
-    // for (size_t i = 0; i < token.length(); i++)
-    // {
-    //     if (!isdigit(token[i]))
-    //         return false;        
-    // }
-    // return true;
 }
 
 //apply operator
@@ -75,7 +69,15 @@ void    RPN::applyPrintStack(const std::stack<int>& stack)
 /** execRPN
  * @note std::atoi(token.c_str()); -> add c_str() -> valid in C++98
  * @note token.c_str() converts the std::string to a const char* for atoi
- * @note atoi() doesn't check for overflow
+ * @note atoi() doesn't check for ovr each token:
+    a. If it's a number:
+        - Push it to the stack
+    b. If it's an operator (+, -, *, /)
+        - Pop the top two elements from the stack
+        - Apply the operator.
+        - Push the result back on the stack
+    c. If it's an invalid token:
+        - Print "Error" to std::ceerflow
  */
 void    RPN::execRPN(const std::string& args)
 {

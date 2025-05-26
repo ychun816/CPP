@@ -3,11 +3,11 @@
 
 #include <vector>
 #include <deque>
-#include <list> //do i need list? 
+#include <set>
 
-#include <iostream>  //std::cout
+#include <iostream>
+#include <string>
 #include <iomanip>   //std::setw
-#include <string>    //std::string
 #include <sstream>   //std::stringstream
 #include <algorithm> //std::sort //std::lower_bound
 #include <iterator>  //std::iterator
@@ -15,40 +15,35 @@
 #include <exception>
 #include <ctime>
 
-//helper : parse input
-std::vector<int> checkInput(int ac, char *av[]);
+#define ODD_INT 2147483647
 
-//Ford Johnhson template func
-template <typename Container>
-void fordJohnsonSort(Container& container);
+// // Define shorthand typedefs for vector and deque of pairs of integers
+typedef std::vector<std::pair<int, int> > vecPair;
+typedef std::deque<std::pair<int, int> > deqPair;  
 
-//binary insert after 
-template <typename Container, typename T>
-void binaryInsert(Container& container, const T& value);
 
-//print container
-template <typename Container>
-void printContainer(const Container& container) {
-    typename Container::const_iterator it;
-    for (it = container.begin(); it != container.end(); it++)
-        std::cout << *it << " ";
-    std::cout << std::endl;
-}
+class PmergeMe
+{
+    protected:
+        std::deque<int> _dequeData;
+        std::vector<int> _vectorData;
+        std::vector<std::string> _input;
 
-//timing funcs
-template <typename Container>
-double timer(Container& input, const std::string& containerType);
+        bool initContainers(int ac, char *av[]);
+        bool hasDuplicate() const;
+    
+    public:
+        PmergeMe();
+        PmergeMe(PmergeMe const &src);
+        PmergeMe &operator=(PmergeMe const& src);
+        virtual ~PmergeMe();
 
+        void execute(int ac, char *av[]);
+};
+
+std::vector<int> generateJacobsthal(int n);
+void printTime(clock_t start, clock_t end, std::string const& containerType, int size);
+
+#include "PmergeMe.tpp"
 
 #endif
-
-/* TIPS / STEPS:
-
-- No nessesary to use class or objects
-- Use free functions (regular functions, not inside a class).
-- Pass containers as function arguments (std::vector<int>&, std::deque<int>&, etc.).
-- Use template functions to avoid writing the same logic for both vector and deque.
-
-//better flexible implementation -> create template function to apply both vector & deque!!
-
-*/

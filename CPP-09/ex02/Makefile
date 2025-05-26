@@ -6,7 +6,7 @@ NAME	= PmergeMe
 
 CXX		= c++
 CCFLAGS	= -Wall -Wextra -Werror -std=c++98 #-MMD -MP#-g
-INCLU = PmergeMe.hpp
+INCLU = PmergeMe.hpp PmergeMe.tpp
 SRCS = main.cpp PmergeMe.cpp
 OBJS = $(SRCS:.cpp=.o)
 

@@ -22,10 +22,10 @@ const std::map<std::string, float>& BitcoinExchange::getData() const
 }
 
 /** LOAD DATA
- * open and parse input file
- * Open the exchange rate CSV file
- * std::istringstream : Creates an input string stream from the line / extract the two fields (date, rateStr) from that line
- * std::string::npos : normally used to indicate that a string was not found
+ * 1 open and parse input file
+ * 2 Open the exchange rate CSV file
+ * @note std::istringstream : Creates an input string stream from the line / extract the two fields (date, rateStr) from that line
+ * @note std::string::npos : normally used to indicate that a string was not found
  */
 void BitcoinExchange::loadData(const std::string& filename)
 {
@@ -33,25 +33,29 @@ void BitcoinExchange::loadData(const std::string& filename)
     if (!file.is_open())
         throw std::runtime_error(ERR_OPEN_FILE);
     
+    //Skip header line: "date,exchange_rate"!!
     std::string line;
-    getline(file, line); // Skip header line: "date,exchange_rate"!!
+    getline(file, line);
 
-    while (std::getline(file, line))//Reads the file line by line //Each line is stored in the line string
+    //Reads the file line by line //Each line is stored in the line string
+    while (std::getline(file, line))
     {
-        size_t comma = line.find(','); //Find the position of the comma in the line
+        size_t comma = line.find(',');
         if (comma != std::string::npos)
         {
-            std::string date = line.substr(0, comma); //extract frm 0 to comma
+            //extract frm 0 to comma
+            std::string date = line.substr(0, comma);
             if (!isValidDate(date))
             {
                 std::cerr << ERR_DATE << date << std::endl;
                 return ;
             }
 
-            std::string priceStr = line.substr(comma + 1);//extract frm after comma to end
+            //extract frm after comma to end
+            //Convert the string to a float //c+98 cannot do std::stod(priceStr);
+            std::string priceStr = line.substr(comma + 1);
             float price;
-            std::istringstream(priceStr) >> price; //Convert the string to a float //c+98 cannot do std::stod(priceStr);
-
+            std::istringstream(priceStr) >> price;
             _data[date] = price;
         }
     }
@@ -66,7 +70,6 @@ bool BitcoinExchange::parseFileContent(const std::string& line, std::string& dat
     if (!line.empty() && pipe == std::string::npos)
     {
         std::cerr << ERR_DATE << line << std::endl;
-        // printError(INVALID_NB);
         return false;
     }
 
@@ -81,7 +84,6 @@ bool BitcoinExchange::parseFileContent(const std::string& line, std::string& dat
 
     if (!isValidDate(date))
     {
-        // std::cerr << "Error: bad input => " << date << std::endl;
         std::cerr << ERR_DATE << date << std::endl;
         return false;
     }
@@ -111,9 +113,6 @@ bool BitcoinExchange::parseFileContent(const std::string& line, std::string& dat
         if (it == _data.begin())
         {
             std::cerr << ERR_DATE << date << std::endl;
-            // printError(DATE);
-            // std::cerr << date << std::endl;
-            // return false;
         }
         --it;
     }
@@ -122,8 +121,12 @@ bool BitcoinExchange::parseFileContent(const std::string& line, std::string& dat
     return true;
 }
 
-//PARSE INPUT FILE
-//Apply it to the user input
+
+
+/** PARSE INPUT FILE
+ * Apply it to the user input
+ * @note std::getline(file, line); // Skip header line: "date | value"
+ */
 void BitcoinExchange::parseInputFile(const std::string& fileName)
 {
     //open 
@@ -133,7 +136,7 @@ void BitcoinExchange::parseInputFile(const std::string& fileName)
 
     //parse/read
     std::string line;
-    std::getline(file, line); // Skip header line: "date | value"
+    std::getline(file, line);
 
     while (std::getline(file, line))
     {
@@ -145,12 +148,14 @@ void BitcoinExchange::parseInputFile(const std::string& fileName)
 }
 
 
-//static -> check dates
-//data content : 2009-01-02,0
-//check format first! YYYY-MM-DD!! 
-//1 year
-//2 month
-//3 date
+/** IS VALID DATE
+ * static -> check dates
+ * data content : 2009-01-02,0
+ * check format first! YYYY-MM-DD!! 
+ * 1 year
+ * 2 month
+ * 3 date
+*/
 bool BitcoinExchange::isValidDate(const std::string& date)
 {
     //format YYYY-MM-DD
@@ -194,7 +199,7 @@ bool BitcoinExchange::isValidDate(const std::string& date)
             return false;
         if (day == 29)
         {
-            if ((year % 4 != 0) || (year % 100 == 0 && year % 400 != 0)) //to count leap year!!
+            if ((year % 4 != 0) || (year % 100 == 0 && year % 400 != 0)) //count leap year!!
                 return false;
         }
     }
@@ -207,6 +212,7 @@ bool BitcoinExchange::isValidDate(const std::string& date)
  * @note std::istringstream : Creates an input string stream from the line / extract the two fields (date, rateStr) from that line
  * @note iss.fail() → the extraction failed (not a number)
  * @note iss.eof() →  there are extra characters after the number
+ * @note iss >> value; //Convert the string to a float
  * 
  * @return  return value must be within this range!! //value >= 0.0f && value <= 1000.0f
  */
@@ -215,7 +221,7 @@ bool BitcoinExchange::isValidValue(const std::string& valueStr)
 
     std::istringstream iss(valueStr);
     float value;
-    iss >> value; //Convert the string to a float
+    iss >> value;
     
     // Check if the conversion was successful
     if (iss.fail() || !iss.eof())
@@ -247,7 +253,6 @@ void BitcoinExchange::printError(eError error)
         default:
             std::cerr << "Unknown error." << std::endl;
     }
-    // return 1;
 }
 
 //PRINT RESULT

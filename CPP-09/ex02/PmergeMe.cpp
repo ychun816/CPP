@@ -1,158 +1,197 @@
 #include "PmergeMe.hpp"
+ 
+// std::deque<int> deque;
+// std::vector<int> vector;
+// std::vector<std::string> strs; //Store input arguments as strings for validation
 
-//check input
-//- check if positive int
-//- check no dups
-std::vector<int> checkInput(int ac, char *av[])
+// CONSTRUCTORS ////////////////////////////////////////////
+
+PmergeMe::PmergeMe(){}
+
+PmergeMe::PmergeMe(PmergeMe const &src)
 {
-    std::vector<int> input;
+   *this = src;
+}
+
+PmergeMe& PmergeMe::operator=(PmergeMe const& src)
+{
+    if (this != &src)
+    {
+        this->_dequeData = src._dequeData;
+        this->_vectorData = src._vectorData;
+        this->_input = src._input;
+    }
+    return *this;
+}
+
+PmergeMe::~PmergeMe(){}
+
+// CHECKERS ////////////////////////////////////////////
+
+//is valid int
+bool isValidInt(const std::string& str)
+{
+    if (str.empty())
+        return false;
+    
+    std::stringstream ss(str);
+    int value;
+    char remainingChar;
+    if (!(ss >> value) || (ss >> remainingChar))
+        return false;
+    return true;
+}
+
+//parse str
+bool parseStr(const std::string& input)
+{
+    std::stringstream ss(input);
+    std::string token;
+    int i = 0;//error msg 
+
+    while (ss >> token)
+    {
+        i++;
+        if (!isValidInt(token))
+            return false;
+    }
+    if (i == 0)
+        return false;
+    return true;
+}
+
+
+bool PmergeMe::hasDuplicate() const
+{
+    std::set<int> seen;
+
+    for (size_t i = 0; i < _input.size(); ++i)
+    {
+        int value = std::atoi(_input[i].c_str());
+        if (seen.find(value) != seen.end())
+            return true;
+        seen.insert(value);
+    }
+    return false;
+}
+
+//error msg 
+bool errorMsg(std::string const& msg)
+{
+    std::cerr << msg << std::endl;
+    return false;
+}
+
+// MEMBER FUNCS ////////////////////////////////////////////
+
+//init containers
+bool PmergeMe::initContainers(int ac, char *av[])
+{
+    if (ac < 3)
+        return errorMsg("Usage: ./PmergeMe [Positive Integers <nb1> <nb2> <nb3> ...]\n");
 
     for (int i = 1; i < ac; i++)
     {
-        int args = std::atoi(av[i]);
-        if (args < 0)
-            throw std::invalid_argument("Error : Negative numbers not allowed.");
-        if (std::find(input.begin(), input.end(), args) != input.end())
-            throw std::invalid_argument("Error : Duplicated numbers not allowed.");
-        input.push_back(args);
-    }
-    return input;
-}
-
-
-/** Ford Johnhson template func
- * 1 check if sortable (container < 2)
- * 2 pair up & sort within each pair
- * 3 merge 
- * 
- * 
- * 
- * 
- * 
-*/
-//std::advance(mid, N) moves the iterator N steps forward.
-
-// The Ford-Johnson merge-insertion sort for containers
-template <typename Container>
-void fordJohnsonSort(Container& container) {
-    size_t n = container.size();
-    if (n <= 1) return;
-
-    // Step 1: Pair elements and divide into "larger" and "smaller" arrays
-    std::vector<int> larger, smaller;
-
-    for (size_t i = 0; i < n; i += 2) {
-        if (i + 1 < n) {
-            if (container[i] > container[i + 1]) {
-                larger.push_back(container[i]);
-                smaller.push_back(container[i + 1]);
-            } else {
-                larger.push_back(container[i + 1]);
-                smaller.push_back(container[i]);
+        std::string arg(av[i]);
+        for (size_t j = 0; j < arg.length(); j++)
+        {
+            if (!std::isdigit(arg[j]))
+            {
+                std::cerr << "Error: Invalid input [" << arg << "]" << std::endl;
+                return false;
             }
-        } else {
-            larger.push_back(container[i]);
         }
+        int num = std::atoi(av[i]);
+    
+        // Updated member name
+        _dequeData.push_back(num);   
+        _vectorData.push_back(num);  
+        _input.push_back(arg);
     }
 
-    // Step 2: Recursively sort the larger elements
-    std::sort(larger.begin(), larger.end()); // Using std::sort as a basic solution
-
-    // Step 3: Inserting the smaller elements using binary insertion
-    for (size_t i = 0; i < smaller.size(); ++i) {
-        binaryInsert(larger, smaller[i]);
+    if (hasDuplicate())
+    {
+        std::cerr << "Error: Duplicate integer found." << std::endl;
+        return false;
     }
-
-    // Step 4: Copy back to original container
-    container = larger;
+    return true;   
 }
 
-// template <typename Container>
-// void mergeInsertionSort(container& container)
-// {
-//     //if container empty or < 2 -> return
-//     if (container.size() < 2)
-//         return;
-//     //pair & sort within each pair
-
-    
-
-
-// }
-
-//binary insert after 
-//std::lower_bound : returns an iterator pointing to the first element in the range [first, last) that is not less than value
-template <typename Container, typename T>
-void binaryInsert(Container& container, const T& value)
+//exec
+void PmergeMe::execute(int ac, char *av[])
 {
-    //find the position to insert
-    typename Container::iterator pos = std::lower_bound(container.begin(), container.end(), value);
-    
-    //insert the value at the found position
-    container.insert(pos, value);
+        if (!initContainers(ac, av)) return;
+
+    std::cout << "Before start: ";
+    for (size_t i = 0; i < _vectorData.size(); ++i)
+        std::cout << _vectorData[i] << " ";
+    std::cout << std::endl;
+
+    // Time vector sort
+    clock_t startVec = clock();
+    std::sort(_vectorData.begin(), _vectorData.end());
+    clock_t endVec = clock();
+
+    // Time deque sort
+    clock_t startDeq = clock();
+    std::sort(_dequeData.begin(), _dequeData.end());
+    clock_t endDeq = clock();
+
+    std::cout << "After start: ";
+    for (size_t i = 0; i < _vectorData.size(); ++i)
+        std::cout << _vectorData[i] << " ";
+    std::cout << std::endl;
+
+    double vecTime = static_cast<double>(endVec - startVec) / CLOCKS_PER_SEC;
+    double deqTime = static_cast<double>(endDeq - startDeq) / CLOCKS_PER_SEC;
+
+    std::cout << "Time to process a range of " << _vectorData.size()
+              << " elements with std::vector: "
+              << std::fixed << std::setprecision(6) << vecTime << " sec" << std::endl;
+
+    std::cout << "Time to process a range of " << _dequeData.size()
+              << " elements with std::deque: "
+              << std::fixed << std::setprecision(6) << deqTime << " sec" << std::endl;
 }
 
 
-//print container
-// template <typename Container>
-// void printContainer(const Container& container)
-// {
-//     typename Container::const_iterator it;
-//     for (it = container.begin(); it != container.end(); it++)
-//         std::cout << *it << " ";
-//     std::cout << std::endl;
-// }
+/*
+𓂃𓂃𓂃𓊝 ࿐𓂃𓂃𓂃
+𓇼 ⋆.˚  𓆝⋆.˚    𓇼 ⋆｡˚ 𓆞
+𓆉𓆝𓇼𓆟  𖦹°‧𓆝𓆡𓆜
+
+*/
 
 
-//timing funcs
-//clock() : returns the number of clock ticks elapsed since the program started
-// CLOCKS_PER_SEC : constant that represents the number of clock ticks per second
-//1e6 is scientific notation (floating-point literal) for 1000000.0
-// - clock() / CLOCKS_PER_SEC : gives the elapsed time in seconds
-//double(end - start) : C style cast 
-//static_cast<double>(end - start) :  C++-style cast (more explicit)
-// General template for containers
-
-// template <typename Container>
-// double timer(Container& input, const std::string& containerType)
-// {
-//     clock_t start = 0, end = 0;
-//     double duration;
-
-//     if (containerType == "vector" || containerType == "deque") {
-//         start = clock();
-//         fordJohnsonSort(input); // Sort the container (same sorting function for both types)
-//         end = clock();
-//     }
-
-//     duration = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1e6; // convert to microseconds
-//     return duration;
-// }
-
-
-
-
-double timer(std::vector<int>& input, const std::string& containerType)
+//generate jacobsthal
+std::vector<int> generateJacobsthal(int n)
 {
-    clock_t start = 0, end = 0;
-    double duration;
+    std::vector<int> jacobsthal;
+    jacobsthal.push_back(0);
+    jacobsthal.push_back(1);
+    
+    if(n == 1)
+    {
+        jacobsthal.pop_back();
+        return jacobsthal;
+    }
+    while (jacobsthal.back() < n) 
+    {
+        int next = jacobsthal[jacobsthal.size() - 1] + 2 * jacobsthal[jacobsthal.size() - 2];
+        
+        if (next >= n) 
+            break;
+        
+        jacobsthal.push_back(next);
+    }
+    return jacobsthal;
+}
 
-    //vector 
-    if (containerType == "vector")
-    {
-        // std::vector<int> vec = input;
-        start = static_cast<double>(clock());
-        fordJohnsonSort(input);
-        end = static_cast<double>(clock());
-    }
-    //deque
-    else if (containerType == "deque")
-    {
-        // std::deque<int> deq = input;
-        start = static_cast<double>(clock());
-        fordJohnsonSort(input);
-        end = static_cast<double>(clock());
-    }
-    duration = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1e6; // convert to microseconds
-    return (duration);
+
+void printTime(clock_t start, clock_t end, std::string const& containerType, int size)
+{
+    double timeTaken = double(end - start) / double(CLOCKS_PER_SEC);
+
+     std::cout << "Time to process a range of " << size << " elements with std::" << containerType  << ": " 
+        << std::fixed << timeTaken << " sec" << std::endl;
 }
