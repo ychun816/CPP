@@ -120,8 +120,10 @@ bool PmergeMe::initContainers(int ac, char *av[])
 //exec
 void PmergeMe::execute(int ac, char *av[])
 {
-        if (!initContainers(ac, av)) return;
+    if (!initContainers(ac, av))
+        return;
 
+    //BEFORE SORT//
     std::cout << "Before start: ";
     for (size_t i = 0; i < _vectorData.size(); ++i)
         std::cout << _vectorData[i] << " ";
@@ -137,11 +139,14 @@ void PmergeMe::execute(int ac, char *av[])
     std::sort(_dequeData.begin(), _dequeData.end());
     clock_t endDeq = clock();
 
+
+    //AFTER SORT//
     std::cout << "After start: ";
     for (size_t i = 0; i < _vectorData.size(); ++i)
         std::cout << _vectorData[i] << " ";
     std::cout << std::endl;
 
+    //timer
     double vecTime = static_cast<double>(endVec - startVec) / CLOCKS_PER_SEC;
     double deqTime = static_cast<double>(endDeq - startDeq) / CLOCKS_PER_SEC;
 
@@ -155,22 +160,22 @@ void PmergeMe::execute(int ac, char *av[])
 }
 
 //generate jacobsthal
-std::vector<int> generateJacobsthal(int n)
+std::vector<int>    generateJacobsthal(int nb)
 {
     std::vector<int> jacobsthal;
     jacobsthal.push_back(0);
     jacobsthal.push_back(1);
     
-    if(n == 1)
+    if(nb == 1)
     {
         jacobsthal.pop_back();
         return jacobsthal;
     }
-    while (jacobsthal.back() < n) 
+    while (jacobsthal.back() < nb) 
     {
         int next = jacobsthal[jacobsthal.size() - 1] + 2 * jacobsthal[jacobsthal.size() - 2];
         
-        if (next >= n) 
+        if (next >= nb) 
             break;
         
         jacobsthal.push_back(next);
@@ -178,7 +183,7 @@ std::vector<int> generateJacobsthal(int n)
     return jacobsthal;
 }
 
-
+//timer
 void printTime(clock_t start, clock_t end, std::string const& containerType, int size)
 {
     double timeTaken = double(end - start) / double(CLOCKS_PER_SEC);

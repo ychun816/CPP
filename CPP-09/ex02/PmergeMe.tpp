@@ -85,9 +85,7 @@ template <class C_P>
 std::pair<int, int> getPairValue(const std::vector<int>& jacobPair, C_P& vecPair)
 {    
     int jacobValue = jacobPair.back();
-    std::pair<int, int> value2Insert = std::make_pair(
-        vecPair[jacobValue].first, vecPair[jacobValue].second
-    );
+    std::pair<int, int> value2Insert = std::make_pair(vecPair[jacobValue].first, vecPair[jacobValue].second);
     vecPair.erase(vecPair.begin() + jacobValue);
     return value2Insert;
 }
@@ -109,7 +107,7 @@ template <class Container>
 int binarySearchInsert(Container& vec, std::pair<int, int> pairValue, std::vector<int>& jacob)
 {
     int value = pairValue.first;
-    int n = findInVector(vec, pairValue.second); //check again?? 
+    int n = findInVector(vec, pairValue.second); 
     int jacobSize = jacob.size();
     int low = 0;
     int mid = 0;
@@ -133,7 +131,6 @@ int binarySearchInsert(Container& vec, std::pair<int, int> pairValue, std::vecto
     }
     return(low);
 }
-
 
 
 //insert in order 
@@ -198,5 +195,4 @@ void printContainer(Container vec, bool started)
     if (!started)
         std::cout << "Before start: ";
 }
-
 
