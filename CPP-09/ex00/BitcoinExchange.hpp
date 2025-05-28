@@ -18,7 +18,6 @@ enum eError
 {
     OPEN_FILE,
     NON_POSITIVE,
-    // DATE,
     LARGE_NB,
     INVALID_NB
 };

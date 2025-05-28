@@ -89,7 +89,7 @@ void    RPN::execRPN(const std::string& args)
 
     while (iss >> token)
     {
-        //check if nb
+        //check if valid nb
         int nb = 0;
         if (isValidINT(token, nb))
             _stack.push(nb); //add to stack
@@ -133,13 +133,15 @@ void    RPN::execRPN(const std::string& args)
 }
 
 /* stack example
+stack will always be added to the top!!
 
 "3 4 +" => (3 + 4)
 
-read 3 -> push 3 => stack = [3] (TOP)
-read 4 -> push 4 => stack = [4] (TOP)
-                            [3]
-read +  
+STEP 1. read 3 -> push 3 => stack = [3] (TOP)
+
+STPE 2. read 4 -> push 4 => stack = [4] (TOP)
+                                    [3]
+STPE 3. read +  
 -> pop 4, pop 3 
 -> apply + => (3 + 4 = 7)
 --------> push 7 => stack = [7] (TOP)

@@ -7,11 +7,7 @@
 // CONSTRUCTORS ////////////////////////////////////////////
 
 PmergeMe::PmergeMe(){}
-
-PmergeMe::PmergeMe(PmergeMe const &src)
-{
-   *this = src;
-}
+PmergeMe::PmergeMe(PmergeMe const &src) { *this = src; }
 
 PmergeMe& PmergeMe::operator=(PmergeMe const& src)
 {
@@ -25,6 +21,7 @@ PmergeMe& PmergeMe::operator=(PmergeMe const& src)
 }
 
 PmergeMe::~PmergeMe(){}
+
 
 // CHECKERS ////////////////////////////////////////////
 
@@ -60,7 +57,7 @@ bool parseStr(const std::string& input)
     return true;
 }
 
-
+//check dups
 bool PmergeMe::hasDuplicate() const
 {
     std::set<int> seen;
@@ -82,6 +79,7 @@ bool errorMsg(std::string const& msg)
     return false;
 }
 
+
 // MEMBER FUNCS ////////////////////////////////////////////
 
 //init containers
@@ -90,6 +88,7 @@ bool PmergeMe::initContainers(int ac, char *av[])
     if (ac < 3)
         return errorMsg("Usage: ./PmergeMe [Positive Integers <nb1> <nb2> <nb3> ...]\n");
 
+    //check if all arg valid int
     for (int i = 1; i < ac; i++)
     {
         std::string arg(av[i]);
@@ -103,12 +102,13 @@ bool PmergeMe::initContainers(int ac, char *av[])
         }
         int num = std::atoi(av[i]);
     
-        // Updated member name
+        // Updated variable name
         _dequeData.push_back(num);   
         _vectorData.push_back(num);  
         _input.push_back(arg);
     }
 
+    //check dup
     if (hasDuplicate())
     {
         std::cerr << "Error: Duplicate integer found." << std::endl;
@@ -154,15 +154,6 @@ void PmergeMe::execute(int ac, char *av[])
               << std::fixed << std::setprecision(6) << deqTime << " sec" << std::endl;
 }
 
-
-/*
-𓂃𓂃𓂃𓊝 ࿐𓂃𓂃𓂃
-𓇼 ⋆.˚  𓆝⋆.˚    𓇼 ⋆｡˚ 𓆞
-𓆉𓆝𓇼𓆟  𖦹°‧𓆝𓆡𓆜
-
-*/
-
-
 //generate jacobsthal
 std::vector<int> generateJacobsthal(int n)
 {
@@ -195,3 +186,10 @@ void printTime(clock_t start, clock_t end, std::string const& containerType, int
      std::cout << "Time to process a range of " << size << " elements with std::" << containerType  << ": " 
         << std::fixed << timeTaken << " sec" << std::endl;
 }
+
+/*
+𓂃𓂃𓂃𓊝 ࿐𓂃𓂃𓂃
+𓇼 ⋆.˚  𓆝⋆.˚    𓇼 ⋆｡˚ 𓆞
+𓆉𓆝𓇼𓆟  𖦹°‧𓆝𓆡𓆜
+
+*/

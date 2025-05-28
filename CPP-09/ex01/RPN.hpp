@@ -12,7 +12,6 @@
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 
-
 class RPN
 {
     
@@ -56,7 +55,6 @@ class RPN
 4. After processing:
     - If the stack has exactly one number, print it as the result
     - Else, print "Error" to std::cerr
-
 
 class RPN 
 {
