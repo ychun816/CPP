@@ -1,22 +1,22 @@
 # C++ for newbs
 
-#### 📌 Some Basics Concepts for C++ (after learning C)
-https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/Sy6jdBIcJx
+#### 📌 [Some Basics Concepts for C++ (after learning C)](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/Sy6jdBIcJx)
 
-#### 📌 Contructor & Destructor
-https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rJPm_t4oJx
 
-#### 📌 Getter Method
-https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/H1eQh3oj1x
+#### 📌 [Contructor & Destructor](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rJPm_t4oJx)
 
-#### 📌 File Handling (Open / Write / Close)
-https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/r1TCoR4hJg
+
+#### 📌 [Getter Method](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/H1eQh3oj1x)
+
+
+#### 📌 [File Handling (Open / Write / Close)](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/r1TCoR4hJg)
+
 
 ## Notes for each Project
 
 ### 0️⃣ CPP-00
-+ [Walk-thru] For bonus ex2, Understanding Reverse Engineering:
-https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rJndvhisye
++ [Walk-thru] For bonus ex2: [Understanding Reverse Engineering](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rJndvhisye)
+
 
 ****************************************************************************
 
@@ -96,6 +96,7 @@ https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rJndvhisye
 + Commonly-used Containers : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/ryUUcSu1lx
 + std::stack Explained : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/BJ2HZXFJee
 ****************************************************************************
-### 9️⃣ CPP-09
+### 9️⃣ CPP-09 (Containers & Algorithm)
 + Ford Johnson Algo (very brief) : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/SJNJ_27lxx
+
 
