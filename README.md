@@ -11,37 +11,38 @@
 
 #### 📌 [File Handling (Open / Write / Close)](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/r1TCoR4hJg)
 
+---
+
 
 ## Notes for each Project
 
 ### 0️⃣ CPP-00
 + [Walk-thru] For bonus ex2: [Understanding Reverse Engineering](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rJndvhisye)
 
-
 ****************************************************************************
 
 ### 1️⃣ CPP-01 (Pointer/Reference / File Handlings / Switch Statement)
-+ Pointer & Reference in C++ : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rkVAGOghyg
++ [Pointer & Reference in C++](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rkVAGOghyg)
 
 ****************************************************************************
 
 ### 2️⃣ CPP-02 (Orthodox Canonical class form / Fixed-Point / Operator Overload)
 
-+ Orthodox Canonical class form : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/ry9Uc8TTyl
-+ Fixed- Point : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/S1uenO661l
-+ Operator overload : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/BJRoauTTkx
++ [Orthodox Canonical class form](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/ry9Uc8TTyl)
++ [Fixed- Point](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/S1uenO661l)
++ [Operator overload](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/BJRoauTTkx)
 ****************************************************************************
 
 ### 3️⃣ CPP-03 (Inheritance / Class Ambiguity)
-+ Inheritance (Abstract & Concrete class) : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/S1IIYb2pkg  
-+ Multiple Inheritance Ambiguity : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/SJTVPv-0Je
++ [Inheritance (Abstract & Concrete class)](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/S1IIYb2pkg)  
++ [Multiple Inheritance Ambiguity](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/SJTVPv-0Je)
 ****************************************************************************
 
 ### 4️⃣ CPP-04 (Abstract Class v.s. Interface v.s. Derived Concrete Class / Subtype Polymorphism)
-+ Abstract & Concrete class : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/S1IIYb2pkg
-+ Abstract class & Polymorphism : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/B1IkDJV0ye
-+ Shallow Copy v.s. Deep Copy
-+ Abstract v.s. Interface
++ [Abstract & Concrete class](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/S1IIYb2pkg)
++ [Abstract class & Polymorphism](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/B1IkDJV0ye)
++ [Shallow Copy v.s. Deep Copy](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/BysFXKrAJl)
++ [Abstract v.s. Interface
 
 + Ex03 | ENTIRE CLASSES STRUCTURES: 
 
@@ -82,21 +83,21 @@
 ****************************************************************************
 
 ### 5️⃣ CPP-05 (Nested class, Try/Catch statement)
-+ Nested class, Try/Catch statement : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/Bkk1hNupkl
-+ Notes on Exception Classes : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/BJaCAwnAJl
++ [Nested class, Try/Catch statement](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/Bkk1hNupkl)
++ [Notes on Exception Classes](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/BJaCAwnAJl)
 ****************************************************************************
 ### 6️⃣ CPP-06 (Casts)
-+ Basic Terms/Notions : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/ByGYm7J1ee
-+ 5 Main Cast Types : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/SyXVxQyyxg
++ [Basic Terms/Notions](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/ByGYm7J1ee)
++ [5 Main Cast Types](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/SyXVxQyyxg)
 ****************************************************************************
 ### 7️⃣ CPP-07 (Template)
-+ Template Basics : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/B1xYWHr1gl
++ [Template Basics](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/B1xYWHr1gl)
 ****************************************************************************
 ### 8️⃣ CPP-08 (Containers)
-+ Commonly-used Containers : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/ryUUcSu1lx
-+ std::stack Explained : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/BJ2HZXFJee
++ [Commonly-used Containers](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/ryUUcSu1lx)
++ [std::stack Explained](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/BJ2HZXFJee)
 ****************************************************************************
 ### 9️⃣ CPP-09 (Containers & Algorithm)
-+ Ford Johnson Algo (very brief) : https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/SJNJ_27lxx
++ [Ford Johnson Algo (very brief)](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/SJNJ_27lxx)
 
 
